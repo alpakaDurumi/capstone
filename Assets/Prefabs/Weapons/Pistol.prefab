@@ -496,6 +496,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 6981344130354939852, guid: 115651cba25639a40a6e0c2c463d4427,
     type: 3}
+  muzzleFlashPrefab: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
+    type: 3}
   barrelLocation: {fileID: 6713289417240260799}
 --- !u!1 &3350017209751954079
 GameObject:
