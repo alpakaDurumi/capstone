@@ -30,7 +30,7 @@ public class PistolShoot : MonoBehaviour
         // 총알 발사
         GameObject bullet = Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation);
         Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
-        bulletRigidbody.AddForce(bulletForce * transform.forward, ForceMode.Impulse);
+        bulletRigidbody.AddForce(bulletForce * transform.forward, ForceMode.VelocityChange);
 
         // 사물에 부딪히거나 적에게 적중한 경우 총알을 제거해야 함.
     }

@@ -158,7 +158,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6981344130354939853}
-  - component: {fileID: 6421847742655102072}
+  - component: {fileID: 518804500080518374}
+  - component: {fileID: 4601955937760566469}
+  - component: {fileID: 7283356686823076122}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -184,7 +186,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &6421847742655102072
+--- !u!54 &518804500080518374
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -199,7 +201,34 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
+--- !u!114 &4601955937760566469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6981344130354939852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a73872648b3eba7479043d6c2ce578ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MetalHit: {fileID: 164530744557374713, guid: 34041dce5a61a6740bad8a758da2d350, type: 3}
+--- !u!136 &7283356686823076122
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6981344130354939852}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.01
+  m_Height: 0.04218328
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: -0.007357836}
 --- !u!1001 &6981344129229647753
 PrefabInstance:
   m_ObjectHideFlags: 0
