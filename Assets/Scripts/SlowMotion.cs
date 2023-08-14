@@ -3,25 +3,48 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Inputs.Simulation;
+using UnityEngine.XR;
+
 public class SlowMotion : MonoBehaviour
 {
     /*
-     * 해당 스크립트를 VR 손 모델이나 자체에 넣으면 됨
-     * VR 키 입력을 받아야하는데, 아무리해도 안받아져서 
-     * 일단은 공백으로 비어두고 주석처리했음
-     * 
-     * 입력조건만 넣으면 정상적으로 작동함
-     * 
+     * 현재는 XR Simulator로 동작하는 함수로 설정
+     * Update 문에 바로 위에 조건문을 ~VRDevice 함수로 바꾸면 됨 
      */
+
+
     [SerializeField] const float SMOOTH_OFFSET = 0.02f;
-    [SerializeField] const float MOUSE_DETECT_SPEED = 0.1f;
+    [SerializeField] const float MOVE_DETECT_SPEED = 0.1f;
     [SerializeField] const float NORMAL_SPEED = 1f;
     [SerializeField] const float SLOWMOTION_SPEED = 0.05f;
-   
+
+
+    private List<XRNodeState> hands;
+    private XRNodeState grip;
+
+    private void Start()
+    {
+        InitVRDevice();
+    }
+
+
+    private void InitVRDevice()
+    {
+        XRNodeState leftHand = new();
+        XRNodeState rightHand = new();
+
+        leftHand.nodeType = XRNode.LeftHand;
+        rightHand.nodeType = XRNode.RightHand;
+
+        new List<XRNodeState>()
+        {
+            leftHand,
+            rightHand,
+        };
+    }
 
     private void Update()
     {
-
         if (InputXRSimulator())
         {
             // 정상 속도 
@@ -54,7 +77,7 @@ public class SlowMotion : MonoBehaviour
         Vector2 mouseVector = (Vector2)obj;
         float mouseSpeed = mouseVector.magnitude;
 
-        return (leftHandHold || rightHandHold) && mouseSpeed >= MOUSE_DETECT_SPEED;
+        return (leftHandHold || rightHandHold) && mouseSpeed >= MOVE_DETECT_SPEED;
 
         
     }
@@ -67,5 +90,34 @@ public class SlowMotion : MonoBehaviour
 
         return gripActive || leftClickActive;
         
+    }
+
+    // VR 기기 연결했을 때의 입력 구분
+    private bool InputVRDevice()
+    {
+        return (DetectHandsMoveByDevice() || DetectButtonActionByDevice());
+    }
+
+    // 손 움직임을 감지
+    private bool DetectHandsMoveByDevice()
+    {
+        foreach (XRNodeState hand in hands)
+        {
+            Vector3 velocity = new();
+
+            if (hand.TryGetVelocity(out velocity))
+            {
+                if (velocity.magnitude > MOVE_DETECT_SPEED) return true;
+            }
+        }
+
+        return false;
+    }
+
+    // 그립 버튼과 트리거 버튼 감지 
+    private bool DetectButtonActionByDevice()
+    {
+        return CommonUsages.gripButton.Equals(true) ||
+            CommonUsages.triggerButton.Equals(true) ;
     }
 }
