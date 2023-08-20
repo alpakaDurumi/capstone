@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Enemy: MonoBehaviour
 {
-    [SerializeField] public Transform target;
+    [SerializeField] public Transform target;       // target은 XR Origin으로 설정할 것
     protected NavMeshAgent agent;
     protected Animator animator;
 
@@ -50,6 +50,8 @@ public class Enemy: MonoBehaviour
         animator.SetBool("move", shouldMove);
         animator.SetFloat("velx", velocity.x);
         animator.SetFloat("vely", velocity.y);
+
+        //FaceTarget(target.position);
     }
 
     protected void OnAnimatorMove() {
