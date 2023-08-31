@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneTransition : MonoSingleton<SceneTransition>
+public class SceneTransition : MonoBehaviour
 {
     private FadeScreen fadeScreen;
 
