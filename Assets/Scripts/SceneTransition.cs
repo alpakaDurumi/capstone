@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneTransition : MonoBehaviour
+public class SceneTransition : MonoSingleton<SceneTransition>
 {
     private FadeScreen fadeScreen;
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
         fadeScreen = FindObjectOfType<FadeScreen>();
     }
 
@@ -34,6 +33,10 @@ public class SceneTransition : MonoBehaviour
             yield return null;
         }
         operation.allowSceneActivation = true;
+    }
+    public void TestMethod()
+    {
+        //Debug.Log("Do test");
     }
 
 }
