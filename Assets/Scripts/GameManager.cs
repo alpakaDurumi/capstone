@@ -9,7 +9,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Awake()
     {
-        sceneTransition = GetComponent<SceneTransition>();
+        sceneTransition = gameObject.AddComponent<SceneTransition>();
         stage = 0;
     }
 
