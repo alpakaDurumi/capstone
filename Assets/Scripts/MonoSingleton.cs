@@ -23,12 +23,4 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        if(this != _instance)
-        {
-            //Destroy(this);
-        }
-
-    }
 }
