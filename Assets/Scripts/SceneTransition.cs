@@ -9,7 +9,6 @@ public class SceneTransition : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
         fadeScreen = FindObjectOfType<FadeScreen>();
     }
 
@@ -34,6 +33,10 @@ public class SceneTransition : MonoBehaviour
             yield return null;
         }
         operation.allowSceneActivation = true;
+    }
+    public void TestMethod()
+    {
+        //Debug.Log("Do test");
     }
 
 }
