@@ -8,10 +8,12 @@ public class Bullet : MonoBehaviour
     public GameObject MetalHit; // 파티클 시스템 오브젝트 프리팹
 
     Rigidbody bulletRigidbody;
+    CapsuleCollider bulletCollider;
 
     void Start()
     {
         bulletRigidbody = GetComponent<Rigidbody>();
+        bulletCollider = GetComponent<CapsuleCollider>();
     }
 
     private void OnCollisionEnter(Collision collision) {
@@ -28,6 +30,13 @@ public class Bullet : MonoBehaviour
             bulletRigidbody.angularVelocity = Vector3.zero;
 
             Destroy(gameObject);
+        }else if(collision.gameObject.tag == "Enemy") {
+            // 총알 정지 후 게임오브젝트 제거
+            bulletCollider.enabled = false;
+            bulletRigidbody.velocity = Vector3.zero;
+            bulletRigidbody.angularVelocity = Vector3.zero;
+
+            Destroy(gameObject, 0.1f);
         }
     }
 
