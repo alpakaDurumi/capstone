@@ -7,13 +7,10 @@ public class SceneController : MonoSingleton<SceneController>
 {
     private FadeScreen fadeScreen;
 
-    public void Enable()
-    {
-        fadeScreen = FindObjectOfType<FadeScreen>();
-    }
 
     public void GoToScene(int sceneIndex)
     {
+        fadeScreen = GameObject.Find("Main Camera").transform.Find("FadeScreen").GetComponent<FadeScreen>();
         StartCoroutine(GoToSceneAsyncRoutine(sceneIndex));
     }
     

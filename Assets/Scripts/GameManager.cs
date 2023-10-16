@@ -6,39 +6,43 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoSingleton<GameManager>
 {
 
-    [SerializeField] int stage;
-    private int remainEnemy;
+    public static int Stage { get; private set; }
+
+    public static bool IsStartRound { get; private set; }
+
+    public static int remains { get; private set; }
 
     private void Awake()
     {
-        stage = 1;
+        Stage = 1;
+        IsStartRound = true;
+        DontDestroyOnLoad(this.gameObject);
         
     }
     private void OnEnable()
     {
         SceneManager.sceneLoaded += SceneManager_sceneLoaded;
     }
-
-    public void DecreaseRemainEnemy()
-    {
-        Debug.Log(remainEnemy--);
-        // 모든 적을 해치우면 다음 스테이지로 이동
-        if(remainEnemy <= 0)
-        {
-            SceneController.Instance.GoToScene(++stage);
-        }
-    }
+   
     private void SceneManager_sceneLoaded(Scene scene, LoadSceneMode load)
     {
-        remainEnemy = ScanAllEnemy();
+        InvokeRepeating("ScanAllEnemy", 1f, 1.5f);
     }
 
 
-    private int ScanAllEnemy()
+    private void ScanAllEnemy()
     {
+        if (!IsStartRound) return;
+
         Enemy[] enemies = FindObjectsOfType<Enemy>();
-        Debug.Log(enemies.Length);
-        return enemies.Length;
+        remains = enemies.Length;
+        Debug.Log(remains);
+        if (remains <= 0)
+        {
+            SceneController.Instance.GoToScene(Stage++);
+            IsStartRound = false;
+            CancelInvoke();
+        }
     }
     
 }
