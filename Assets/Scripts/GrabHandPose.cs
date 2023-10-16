@@ -11,14 +11,15 @@ public class GrabHandPose : MonoBehaviour
     private Quaternion[] startingFingerRotations;
     private Quaternion[] finalFingerRotations;
 
-
-    void Start()
-    {
+    private void Awake() {
         // 이벤트 리스너 설정
         XRGrabInteractable grabInteractable = GetComponent<XRGrabInteractable>();
         grabInteractable.selectEntered.AddListener(SetupPose);
         grabInteractable.selectExited.AddListener(UnSetPose);
-
+    }
+    
+    void Start()
+    {
         // Grab 시의 손 모양을 나타내는 오브젝트는 보이지 않게 해둠
         rightHandPose.gameObject.SetActive(false);
     }
