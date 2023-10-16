@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6407103120160966998}
   - component: {fileID: 967296434}
   - component: {fileID: 967296435}
+  - component: {fileID: 3485586010297896279}
   m_Layer: 0
   m_Name: Enemy_melee
   m_TagString: Untagged
@@ -147,6 +148,21 @@ MonoBehaviour:
   - {fileID: 4311133218527918860}
   - {fileID: 3005554860632190353}
   - {fileID: 1506526216538592011}
+--- !u!114 &3485586010297896279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6407103120160966995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d54aaf7cfc41fe94f836f2b486521a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceAmount: 10
+  targetRagdollPrefab: {fileID: 6954930145665291279, guid: 446b2b795d1c1be419632f51372d6e2e,
+    type: 3}
 --- !u!1001 &6407103119112445393
 PrefabInstance:
   m_ObjectHideFlags: 0
