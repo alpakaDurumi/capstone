@@ -50,7 +50,6 @@ public class Arrow : XRGrabInteractable
         }
         // 충돌한다면 아래 함수들 실행
         DisablePhysics();
-        ChildArrow(hit);
         CheckForHittable(hit);
     }
 
@@ -73,8 +72,16 @@ public class Arrow : XRGrabInteractable
     }
 
     private void CheckForHittable(RaycastHit hit) {
-        if(hit.transform.TryGetComponent(out IArrowHittable hittable)) {
-            hittable.Hit(this);
+        ArrowTarget target = hit.transform.GetComponentInParent<ArrowTarget>();
+
+        // ArrowTarget 컴포넌트를 찾은 경우에만
+        // 추후에 태그를 통한 식별로 변경할 수 있음
+        if(target != null) {
+            target.Hit(hit, this);
+        }
+        // ArrowTarget이 아닌 경우 화살이 박히는 효과만 발생
+        else {
+            ChildArrow(hit);
         }
     }
 
