@@ -34,9 +34,4 @@ public class SceneTransition : MonoBehaviour
         }
         operation.allowSceneActivation = true;
     }
-    public void TestMethod()
-    {
-        //Debug.Log("Do test");
-    }
-
 }
