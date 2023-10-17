@@ -140,6 +140,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -1.63
       objectReference: {fileID: 0}
+    - target: {fileID: 8804654735371390513, guid: 3f06164b1fa6041488333b597c8672db,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1183785330}
     - target: {fileID: 8804654735371390540, guid: 3f06164b1fa6041488333b597c8672db,
         type: 3}
       propertyPath: m_Name
@@ -226,6 +231,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_melee (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6407103120160966998, guid: a4c69138b1410354d869de8a663236b4,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1183785330}
     - target: {fileID: 6407103120160966999, guid: a4c69138b1410354d869de8a663236b4,
         type: 3}
       propertyPath: m_RootOrder
@@ -1098,6 +1108,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -1.63
       objectReference: {fileID: 0}
+    - target: {fileID: 8804654735371390513, guid: 3f06164b1fa6041488333b597c8672db,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1183785330}
     - target: {fileID: 8804654735371390540, guid: 3f06164b1fa6041488333b597c8672db,
         type: 3}
       propertyPath: m_Name
@@ -1427,6 +1442,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_melee (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6407103120160966998, guid: a4c69138b1410354d869de8a663236b4,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1183785330}
     - target: {fileID: 6407103120160966999, guid: a4c69138b1410354d869de8a663236b4,
         type: 3}
       propertyPath: m_RootOrder
@@ -1508,6 +1528,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_melee
       objectReference: {fileID: 0}
+    - target: {fileID: 6407103120160966998, guid: a4c69138b1410354d869de8a663236b4,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1183785330}
     - target: {fileID: 6407103120160966999, guid: a4c69138b1410354d869de8a663236b4,
         type: 3}
       propertyPath: m_RootOrder
@@ -1594,6 +1619,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -1.63
       objectReference: {fileID: 0}
+    - target: {fileID: 8804654735371390513, guid: 3f06164b1fa6041488333b597c8672db,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1183785330}
     - target: {fileID: 8804654735371390540, guid: 3f06164b1fa6041488333b597c8672db,
         type: 3}
       propertyPath: m_Name
@@ -2065,6 +2095,12 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!4 &1183785330 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7696548424635294051, guid: 895f6f3c2d334633b5800312285058d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 451855402}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1371935053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2077,6 +2113,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_melee (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6407103120160966998, guid: a4c69138b1410354d869de8a663236b4,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1183785330}
     - target: {fileID: 6407103120160966999, guid: a4c69138b1410354d869de8a663236b4,
         type: 3}
       propertyPath: m_RootOrder
@@ -2163,6 +2204,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -1.63
       objectReference: {fileID: 0}
+    - target: {fileID: 8804654735371390513, guid: 3f06164b1fa6041488333b597c8672db,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1183785330}
     - target: {fileID: 8804654735371390540, guid: 3f06164b1fa6041488333b597c8672db,
         type: 3}
       propertyPath: m_Name
@@ -2418,6 +2464,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -1.63
       objectReference: {fileID: 0}
+    - target: {fileID: 8804654735371390513, guid: 3f06164b1fa6041488333b597c8672db,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1183785330}
     - target: {fileID: 8804654735371390540, guid: 3f06164b1fa6041488333b597c8672db,
         type: 3}
       propertyPath: m_Name
@@ -3222,6 +3273,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_melee (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 6407103120160966998, guid: a4c69138b1410354d869de8a663236b4,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1183785330}
     - target: {fileID: 6407103120160966999, guid: a4c69138b1410354d869de8a663236b4,
         type: 3}
       propertyPath: m_RootOrder
