@@ -14,6 +14,9 @@ public class SceneTransition : MonoBehaviour
 
     public void GoToSceneAsync(int sceneIndex)
     {
+        Debug.Log("실행");
+        Debug.Log(sceneIndex);
+        GameManager.Instance.IncreaseStage();
         StartCoroutine(GoToSceneAsyncRoutine(sceneIndex));
     }
 
