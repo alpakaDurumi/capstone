@@ -31,6 +31,8 @@ public class Stage : MonoBehaviour
 
         if (isEnemyClear)
         {
+            // 플레이어 방향에서 똑바로 보이도록 반대로 뒤집음
+            lastEnemyRot = Quaternion.Inverse(lastEnemyRot);
             UIManager.Instance.CreateNextStageButton(lastEnemyPos, lastEnemyRot);
         }
     }
