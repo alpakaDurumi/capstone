@@ -14,7 +14,6 @@ public class GameManager : MonoSingleton<GameManager>
     private void Awake()
     {
         Stage = 0;
-        IsStartRound = true;
         DontDestroyOnLoad(this.gameObject);
         
     }
@@ -25,11 +24,20 @@ public class GameManager : MonoSingleton<GameManager>
    
     private void SceneManager_sceneLoaded(Scene scene, LoadSceneMode load)
     {
-
+        IsStartRound = false;
     }
 
     public void IncreaseStage()
     {
         Stage++;
     }
+
+    public void StartRound()
+    {
+        IsStartRound = true;
+    }
+    public void EndRound()
+    {
+        IsStartRound = false;
+    }       
 }

@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class FadeScreen : MonoBehaviour
 {
-    public bool fadeOnStart = true;
     public float fadeDuration = 3;
     public Color fadeColor;
     private Renderer rend;
@@ -12,10 +11,12 @@ public class FadeScreen : MonoBehaviour
     {
         gameObject.SetActive(true);
         rend = GetComponent<Renderer>();
-        if (fadeOnStart)
-        {
-            FadeIn();
-        }
+        FadeIn();
+    }
+    // 페이드 인이 끝나고 해당 오브젝트가 비활성화되면 IsStartRound = true 상태로
+    private void OnDisable()
+    {
+        GameManager.Instance.StartRound();
     }
 
     public void FadeIn()
