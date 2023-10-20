@@ -3,21 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class Arrow : XRGrabInteractable
+public class Arrow : Projectile
 {
     [SerializeField] private float speed = 2000.0f;
 
-    private new Rigidbody rigidbody;
     private ArrowCaster caster;
 
-    private bool launched = false;
-
-    private RaycastHit hit;
+    protected RaycastHit hit;
 
     // 초기화
     protected override void Awake() {
         base.Awake();
-        rigidbody = GetComponent<Rigidbody>();
         caster = GetComponent<ArrowCaster>();
     }
 
@@ -44,7 +40,7 @@ public class Arrow : XRGrabInteractable
 
     private IEnumerator LaunchRoutine() {
         // 화살이 무언가와 충돌할 때까지 계속 확인
-        while(!caster.CheckForCollision(out hit)) {
+        while (!caster.CheckForCollision(out hit)) {
             SetDirection();
             yield return null;
         }
@@ -54,34 +50,22 @@ public class Arrow : XRGrabInteractable
     }
 
     private void SetDirection() {
-        if(rigidbody.velocity.z > 0.5f) {
+        if (rigidbody.velocity.z > 0.5f) {
             transform.forward = rigidbody.velocity;
         }
     }
-
-    // 화살 정지
-    private void DisablePhysics() {
-        rigidbody.isKinematic = true;
-        rigidbody.useGravity = false;
-    }
-
-    // 화살에 맞은 오브젝트를 화살의 부모로 설정
-    // 화살이 꽂혀 있는 효과
-    private void ChildArrow(RaycastHit hit) {
-        transform.SetParent(hit.transform);
-    }
-
     private void CheckForHittable(RaycastHit hit) {
-        ArrowTarget target = hit.transform.GetComponentInParent<ArrowTarget>();
+        ProjectileTarget target = hit.transform.GetComponentInParent<ProjectileTarget>();
 
         // ArrowTarget 컴포넌트를 찾은 경우에만
         // 추후에 태그를 통한 식별로 변경할 수 있음
-        if(target != null) {
+        if (target != null) {
             target.Hit(hit, this);
         }
         // ArrowTarget이 아닌 경우 화살이 박히는 효과만 발생
-        else {
-            ChildArrow(hit);
+        else {;
+            // 투사체에 맞은 오브젝트를 투사체의 부모로 설정하여 꽂혀 있는 효과 구현
+            transform.SetParent(hit.transform);
         }
     }
 

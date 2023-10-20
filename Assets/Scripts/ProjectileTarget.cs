@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.ProBuilder;
 
-public class ArrowTarget : MonoBehaviour, IArrowHittable
+public class ProjectileTarget : MonoBehaviour, IProjectileHittable
 {
     //public Material otherMaterial = null;
 
@@ -10,23 +12,39 @@ public class ArrowTarget : MonoBehaviour, IArrowHittable
 
     public GameObject targetRagdollPrefab;
 
-    public void Hit(RaycastHit hit, Arrow arrow) {
+    public void Hit(RaycastHit hit, Projectile projectile) {
         // hit.point 에서 피격 이펙트 발생
         // ...
 
         string hitPart = hit.transform.name;    // 맞은 부위
 
         // 래그돌 생성
-        GenerateRagdoll(arrow, hitPart);
+        GenerateRagdoll(projectile, hitPart);
 
-        ApplyForce(arrow);
-        DisableCollider(arrow);
+        ApplyForce(projectile);
+        DisableCollider(projectile);
 
         // 기존 적 오브젝트 삭제
         Destroy(gameObject);
     }
 
-    private void GenerateRagdoll(Arrow arrow, string hitPart) {
+    public void Hit(Transform hitTransform, Projectile projectile) {
+        // hit.point 에서 피격 이펙트 발생
+        // ...
+
+        string hitPart = hitTransform.name;    // 맞은 부위
+
+        // 래그돌 생성
+        GenerateRagdoll(projectile, hitPart);
+
+        ApplyForce(projectile);
+        DisableCollider(projectile);
+
+        // 기존 적 오브젝트 삭제
+        Destroy(gameObject);
+    }
+
+    private void GenerateRagdoll(Projectile projectile, string hitPart) {
         GameObject ragdoll = Instantiate(targetRagdollPrefab, transform.position, transform.rotation);  // 래그돌 생성
 
         // 각 transform 위치를 동일하게 수정
@@ -44,7 +62,7 @@ public class ArrowTarget : MonoBehaviour, IArrowHittable
 
             // 맞은 부위에 해당하는 래그돌의 부위에 화살을 고정
             if (ragdollJoints[i].name.Equals(hitPart)) {
-                arrow.transform.SetParent(ragdollJoints[i]);
+                projectile.transform.SetParent(ragdollJoints[i]);
             }
         }
     }
@@ -54,13 +72,14 @@ public class ArrowTarget : MonoBehaviour, IArrowHittable
     //        meshRenderer.material = otherMaterial;
     //}
 
-    private void ApplyForce(Arrow arrow) {
+    private void ApplyForce(Projectile projectile) {
         if (TryGetComponent(out Rigidbody rigidbody))
-            rigidbody.AddForce(arrow.transform.forward * forceAmount);
+            rigidbody.AddForce(projectile.transform.forward * forceAmount);
     }
 
-    private void DisableCollider(Arrow arrow) {
-        if (arrow.TryGetComponent(out Collider collider))
+    // 콜라이더 비활성화 함수
+    private void DisableCollider(Projectile projectile) {
+        if (projectile.TryGetComponent(out Collider collider))
             collider.enabled = false;
     }
 }
