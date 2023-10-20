@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 2889579592018431320}
   - component: {fileID: 2291201218833825362}
   - component: {fileID: 7187046604932732204}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Direct Interactor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,7 +414,7 @@ GameObject:
   - component: {fileID: 667698815198195649}
   - component: {fileID: 3565870509465870841}
   - component: {fileID: 5731175693366783930}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Direct Interactor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
