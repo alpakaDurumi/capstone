@@ -36,6 +36,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         IsStartRound = true;
     }
+
     public void EndRound()
     {
         IsStartRound = false;
