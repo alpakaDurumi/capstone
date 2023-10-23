@@ -9,10 +9,7 @@ using Unity.VisualScripting;
 public class UIManager : MonoSingleton<UIManager>
 {
     private const float HEIGHT_OFFSET = 1f;
-<<<<<<< HEAD
     private const float AXIS_Y_ROTATION_OFFSET = 180;
-=======
->>>>>>> 37868fb4bb8cde4629be434f21103fe88a03389f
 
     private SceneTransition sceneTransition;
 
@@ -44,11 +41,7 @@ public class UIManager : MonoSingleton<UIManager>
         Vector3 rotation = target.rotation.eulerAngles;
 
         position.y += HEIGHT_OFFSET;
-<<<<<<< HEAD
         rotation.y += AXIS_Y_ROTATION_OFFSET;
-=======
-        rotation.y += 180;
->>>>>>> 37868fb4bb8cde4629be434f21103fe88a03389f
 
         canvas.gameObject.transform.position = position;
         canvas.gameObject.transform.rotation = Quaternion.Euler(rotation);
