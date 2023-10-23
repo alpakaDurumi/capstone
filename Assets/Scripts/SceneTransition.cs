@@ -5,23 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransition : MonoBehaviour
 {
-    private FadeScreen fadeScreen;
-
-    private void Awake()
-    {
-        fadeScreen = FindObjectOfType<FadeScreen>();
-    }
-
     public void GoToSceneAsync(int sceneIndex)
     {
-        Debug.Log("실행");
-        Debug.Log(sceneIndex);
         GameManager.Instance.IncreaseStage();
         StartCoroutine(GoToSceneAsyncRoutine(sceneIndex));
     }
 
     private IEnumerator GoToSceneAsyncRoutine(int sceneIndex)
     {
+        GameManager.Instance.EndRound();
+        FadeScreen fadeScreen = FindFadeScreen();
         fadeScreen.FadeOut();
 
         // sceneIndex 씬으로 이동
@@ -36,5 +29,11 @@ public class SceneTransition : MonoBehaviour
             yield return null;
         }
         operation.allowSceneActivation = true;
+    }
+
+    private FadeScreen FindFadeScreen()
+    {
+        Transform screenParent = FindObjectOfType<Camera>().transform;
+        return screenParent.Find("Fader Screen").GetComponent<FadeScreen>();
     }
 }

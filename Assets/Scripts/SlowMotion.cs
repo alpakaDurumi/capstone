@@ -45,12 +45,12 @@ public class SlowMotion : MonoBehaviour
 
     private void Update()
     {
-        if (InputXRSimulator())
+        if (InputXRSimulator() || !GameManager.Instance.IsStartRound)
         {
             // 정상 속도 
             Time.timeScale = NORMAL_SPEED;
         }
-        else
+        else 
         {
             // 슬로우 모션 
             Time.timeScale = SLOWMOTION_SPEED ;
