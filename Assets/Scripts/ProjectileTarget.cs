@@ -6,11 +6,15 @@ using UnityEngine.ProBuilder;
 
 public class ProjectileTarget : MonoBehaviour, IProjectileHittable
 {
-    //public Material otherMaterial = null;
+    private Enemy enemy;
 
     public float forceAmount = 1.0f;
 
     public GameObject targetRagdollPrefab;
+
+    private void Awake() {
+        enemy = GetComponent<Enemy>();
+    }
 
     public void Hit(RaycastHit hit, Projectile projectile) {
         // hit.point 에서 피격 이펙트 발생
@@ -24,8 +28,8 @@ public class ProjectileTarget : MonoBehaviour, IProjectileHittable
         ApplyForce(projectile);
         DisableCollider(projectile);
 
-        // 기존 적 오브젝트 삭제
-        Destroy(gameObject);
+        // 적 사망 함수 호출
+        enemy.Die();
     }
 
     public void Hit(Transform hitTransform, Projectile projectile) {
@@ -40,8 +44,8 @@ public class ProjectileTarget : MonoBehaviour, IProjectileHittable
         ApplyForce(projectile);
         DisableCollider(projectile);
 
-        // 기존 적 오브젝트 삭제
-        Destroy(gameObject);
+        // 적 사망 함수 호출
+        enemy.Die();
     }
 
     private void GenerateRagdoll(Projectile projectile, string hitPart) {
@@ -66,11 +70,6 @@ public class ProjectileTarget : MonoBehaviour, IProjectileHittable
             }
         }
     }
-
-    //private void ApplyMaterial() {
-    //    if (TryGetComponent(out MeshRenderer meshRenderer))
-    //        meshRenderer.material = otherMaterial;
-    //}
 
     private void ApplyForce(Projectile projectile) {
         if (TryGetComponent(out Rigidbody rigidbody))
