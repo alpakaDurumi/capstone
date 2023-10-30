@@ -125,5 +125,6 @@ public class Enemy: MonoBehaviour
 
     public void Die() {
         //manager.DecreaseRemainEnemy();
+        Debug.Log("Die");
     }
 }
