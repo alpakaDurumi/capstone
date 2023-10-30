@@ -1,10 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Button = UnityEngine.UI.Button;
-using Unity.VisualScripting;
 
 public class UIManager : MonoSingleton<UIManager>
 {
@@ -50,6 +45,7 @@ public class UIManager : MonoSingleton<UIManager>
     private void AddButtonAction(Canvas canvas)
     {
         Button button = canvas.GetComponentInChildren<Button>();
+        GameManager.Instance.IncreaseStage();
         button.onClick.AddListener(() => sceneTransition.GoToSceneAsync(GameManager.Instance.Stage));
         button.onClick.AddListener(() => button.enabled = false);
     }
