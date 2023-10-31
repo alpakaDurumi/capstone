@@ -11,70 +11,63 @@ public class Stage : MonoBehaviour
     }
 
     public Group[] groups;
-    private Group currentGroup;
+    private int groupIdx;
     private Transform lastEnemy;
-    private readonly Queue<Group> groupQueue = new();
 
     private void Start()
     {
         GameManager.Instance.EndRound();
-        foreach (Group group in groups)
-        {
-            groupQueue.Enqueue(group);
-        }
+        GameManager.Instance.UpdateStageInfo(groups);
+        groupIdx = 0;
+     
     }
 
     private void FixedUpdate()
     {
+        Debug.Log(GameManager.Instance.RemainGroupsOnStage);
+        Debug.Log(GameManager.Instance.RemainEnemiesInGroup);
+        Debug.Log(GameManager.Instance.IsStartRound);
         if (!GameManager.Instance.IsStartRound) return;
-        
+
+        // 마지막 그룹일때의 마지막 적은 버튼의 위치 지정을 위해서 있어야함
+        if(GameManager.Instance.RemainGroupsOnStage <= 0
+            && GameManager.Instance.RemainEnemiesInGroup == 1)
+        {
+            UpdateLastEnemyPos();
+            return;
+        }
+
         // 현재 그룹에서 소환된 적들이 남아있을 때
-        if(currentGroup != null && GetRemainEnemies().Length > 0)
+        if (GameManager.Instance.RemainEnemiesInGroup > 0) return;
+
+        // 남은 그룹이 있고, 소환된 적이 0인 경우
+        if (GameManager.Instance.RemainGroupsOnStage > 0)
         {
-            Enemy[] enemies = GetRemainEnemies();
-            lastEnemy = enemies[enemies.Length - 1].transform;
-         
+            Debug.Log("여기져ㅓ;");
+            SpawnEnemies();
+            return;
         }
-        // 현재 그룹에서 소환된 적들이 다 죽었을 때
-        else
-        {
-            if (TryGetNextEnemyGroup()) SpawnEnemies();
-            else
-            {
-                UIManager.Instance.CreateNextStageButton(lastEnemy);
-                GameManager.Instance.EndRound();
-            }
-        }
+        // 남은 그룹도 없고 , 소환된 적도 없는 경우 
+        UIManager.Instance.CreateNextStageButton(lastEnemy);
+        GameManager.Instance.EndRound();
     }
 
-    private Enemy[] GetRemainEnemies()
+    private void UpdateLastEnemyPos()
     {
-        Enemy[] enemies = currentGroup.enemies;
-        List<Enemy> remain = new();
-
+        Enemy[] enemies = groups[groupIdx].enemies;
         foreach (Enemy enemy in enemies)
         {
             if (enemy.gameObject.activeSelf)
             {
-                remain.Add(enemy);
+                lastEnemy = enemy.transform;
             }
         }
-
-        return remain.ToArray();
-    }
-
-    // 다음 EnemyGroup이 없을 시 false 을 반환한다. 
-    public bool TryGetNextEnemyGroup()
-    {
-        if (groupQueue.Count <= 0) return false;
-
-        currentGroup = groupQueue.Dequeue();
-        return true;
     }
 
     public Enemy[] SpawnEnemies()
     {
-        Enemy[] enemies = currentGroup.enemies;
+        GameManager.Instance.UpdateStageInfo(groups);
+        Enemy[] enemies = groups[groupIdx++].enemies;
 
         foreach (Enemy enemy in enemies)
         {

@@ -15,8 +15,8 @@ public class UIManager : MonoSingleton<UIManager>
             sceneTransition = gameObject.AddComponent<SceneTransition>();
         }
     }
-    public void CreateNextStageButton(Transform target)
-    {
+    public void CreateNextStageButton(Transform target) {
+        if (target == null) return;
         Canvas button = InstantiateButton();
         SetButtonLocation(button,target);
         AddButtonAction(button);
