@@ -19,8 +19,6 @@ public class Enemy: MonoBehaviour
     protected float attack_timer = 0.0f;            // 공격 타이머
     protected float attack_waitingTime = 2.0f;      // 공격 간격
 
-    public GameManager manager;
-
     private void Awake() {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
@@ -123,8 +121,8 @@ public class Enemy: MonoBehaviour
         callback(false);
     }
 
+    // Enemy 사망 시 GamaManager의 적 수 감소
     public void Die() {
-        //manager.DecreaseRemainEnemy();
-        Debug.Log("Die");
+        GameManager.Instance.DecreaseEnemyCountOnStage();
     }
 }

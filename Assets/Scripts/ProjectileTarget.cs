@@ -30,6 +30,7 @@ public class ProjectileTarget : MonoBehaviour, IProjectileHittable
 
         // 적 사망 함수 호출
         enemy.Die();
+        Destroy(gameObject);
     }
 
     public void Hit(Transform hitTransform, Projectile projectile) {
@@ -46,6 +47,7 @@ public class ProjectileTarget : MonoBehaviour, IProjectileHittable
 
         // 적 사망 함수 호출
         enemy.Die();
+        Destroy(gameObject);
     }
 
     private void GenerateRagdoll(Projectile projectile, string hitPart) {
