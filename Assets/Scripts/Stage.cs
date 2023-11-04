@@ -24,9 +24,6 @@ public class Stage : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log(GameManager.Instance.RemainGroupsOnStage);
-        Debug.Log(GameManager.Instance.RemainEnemiesInGroup);
-        Debug.Log(GameManager.Instance.IsStartRound);
         if (!GameManager.Instance.IsStartRound) return;
 
         // 마지막 그룹일때의 마지막 적은 버튼의 위치 지정을 위해서 있어야함
