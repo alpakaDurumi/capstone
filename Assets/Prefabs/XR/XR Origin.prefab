@@ -547,7 +547,7 @@ GameObject:
   - component: {fileID: 1823653802577078511}
   - component: {fileID: 8212925416159125209}
   m_Layer: 0
-  m_Name: RightHand (Teleport Locomotion)
+  m_Name: RightHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -817,7 +817,7 @@ GameObject:
   - component: {fileID: 6619828207342266897}
   - component: {fileID: 2753565274404419928}
   m_Layer: 0
-  m_Name: LeftHand (Smooth locomotion)
+  m_Name: LeftHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2156,6 +2156,7 @@ GameObject:
   - component: {fileID: 710634416749224900}
   - component: {fileID: 2549684467309784377}
   - component: {fileID: 5698560005064937220}
+  - component: {fileID: 8293116141251598898}
   m_Layer: 2
   m_Name: XR Origin
   m_TagString: Untagged
@@ -2334,3 +2335,21 @@ MonoBehaviour:
   m_LocomotionProvider: {fileID: 710634416749224900}
   m_MinHeight: 0
   m_MaxHeight: Infinity
+--- !u!114 &8293116141251598898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8290422908531382773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2be7bf5fd233c84ab190606c665badc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionManager: {fileID: 0}
+  Weapons:
+  - {fileID: 5337339558217932050, guid: e9b3b0d536bc4194da2abdb73a60a71a, type: 3}
+  - {fileID: 3350017209714285497, guid: c080be0cd84ce6842b70a6247d82c615, type: 3}
+  - {fileID: 6368150862880438908, guid: fcb0ef5b68cacd24e96343a219bfaaa7, type: 3}
+  - {fileID: 2122628583947998718, guid: 631c26ee29acf22458d3660fb64185cc, type: 3}
