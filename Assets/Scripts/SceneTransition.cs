@@ -7,7 +7,6 @@ public class SceneTransition : MonoBehaviour
 {
     public void GoToSceneAsync(int sceneIndex)
     {
-        GameManager.Instance.IncreaseStage();
         StartCoroutine(GoToSceneAsyncRoutine(sceneIndex));
     }
 
