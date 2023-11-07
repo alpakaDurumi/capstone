@@ -14,12 +14,15 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Awake()
     {
-        Stage = 0;
         IsStartRound = false;
-        RemainGroupsOnStage = 0;
         DontDestroyOnLoad(this.gameObject);
     }
 
+    public void ResetGameStageInfo()
+    {
+        Stage = 0;
+        RemainGroupsOnStage = 0;
+    }
     public void IncreaseStage()
     {
         Stage++;
@@ -46,7 +49,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         // 초기화인 경우 (스테이지 처음 들어갔을 경우)
         if(RemainGroupsOnStage <= 0)
-        {   // 전체 그룹의 수를 받아ㅈ
+        {   // 전체 그룹의 수를 받아
             RemainGroupsOnStage = groups.Length;
         }
         else
