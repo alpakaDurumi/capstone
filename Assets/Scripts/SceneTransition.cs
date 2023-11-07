@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneTransition : MonoBehaviour
+public class SceneTransition : MonoSingleton<SceneTransition>
 {
     public void GoToSceneAsync(int sceneIndex)
     {
