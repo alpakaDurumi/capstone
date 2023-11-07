@@ -1065,7 +1065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manageVisibility: 1
+  manageVisibility: 0
 --- !u!1 &5454725054475841059
 GameObject:
   m_ObjectHideFlags: 0
@@ -9928,7 +9928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manageVisibility: 1
+  manageVisibility: 0
 --- !u!1 &6962301368878000630
 GameObject:
   m_ObjectHideFlags: 0
@@ -11309,7 +11309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manageVisibility: 1
+  manageVisibility: 0
 --- !u!1 &6962301368916073389
 GameObject:
   m_ObjectHideFlags: 0
@@ -23130,7 +23130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manageVisibility: 1
+  manageVisibility: 0
 --- !u!1 &6962301370413228385
 GameObject:
   m_ObjectHideFlags: 0
@@ -24142,7 +24142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manageVisibility: 1
+  manageVisibility: 0
 --- !u!1 &6962301370620247175
 GameObject:
   m_ObjectHideFlags: 0
@@ -25154,7 +25154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manageVisibility: 1
+  manageVisibility: 0
 --- !u!1 &7355266488078241828
 GameObject:
   m_ObjectHideFlags: 0
@@ -45456,7 +45456,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2428
+  m_VersionIndex: 2431
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -45569,4 +45569,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manageVisibility: 1
+  manageVisibility: 0

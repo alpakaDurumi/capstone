@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -426,7 +426,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-92700
+  m_Name: pb_Mesh-431462
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -948,7 +948,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-92714
+  m_Name: pb_Mesh-431476
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1885,6 +1885,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 584828627788266347, guid: a3b4d10fa9d2f47dd9c967898e8041cb,
+        type: 3}
+      propertyPath: manageVisibility
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1285203966948754011, guid: a3b4d10fa9d2f47dd9c967898e8041cb,
         type: 3}
       propertyPath: groups.Array.size
