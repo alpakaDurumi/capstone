@@ -30,11 +30,18 @@ public class GameManager : MonoSingleton<GameManager>
         IsStartRound = true;
     }
 
+    public void PlayerDie()
+    {
+        Transform screenParent = FindObjectOfType<Camera>().transform;
+        FadeScreen screen = screenParent.Find("Fader Screen").GetComponent<FadeScreen>();
+        screen.SetColor(Color.red);
+        SceneTransition.Instance.GoToSceneAsync(Stage);
+    }
+
     public void EndRound()
     {
         IsStartRound = false;
     }
-
     public void UpdateStageInfo(Stage.Group[] groups)
     {
         // 초기화인 경우 (스테이지 처음 들어갔을 경우)

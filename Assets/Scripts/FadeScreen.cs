@@ -13,6 +13,7 @@ public class FadeScreen : MonoBehaviour
     {
         gameObject.SetActive(true);
         rend = GetComponent<Renderer>();
+        fadeDuration = 3f;
         FadeIn();
     }
     // 페이드 인이 끝나고 해당 오브젝트가 비활성화되면 IsStartRound = true 상태로
@@ -33,7 +34,13 @@ public class FadeScreen : MonoBehaviour
         Fade(0, 1);
     }
 
-    #region 기능 세부사항 
+    public void SetColor(Color color)
+    {
+        fadeColor = color;
+        fadeDuration = 0.5f;
+    }
+    #region 기능 세부사항
+    
     private void Fade(float alphaIn, float alphaOut)
     {
         StartCoroutine(FadeRoutine(alphaIn, alphaOut));
