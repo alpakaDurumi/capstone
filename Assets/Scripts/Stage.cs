@@ -40,7 +40,6 @@ public class Stage : MonoBehaviour
         // 남은 그룹이 있고, 소환된 적이 0인 경우
         if (GameManager.Instance.RemainGroupsOnStage > 0)
         {
-            Debug.Log("여기져ㅓ;");
             SpawnEnemies();
             return;
         }
