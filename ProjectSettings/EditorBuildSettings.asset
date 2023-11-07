@@ -4,37 +4,7 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/InitialScene.unity
-    guid: d295b75935ea0d84eab07fd4b11479ec
-  - enabled: 1
-    path: Assets/Scenes/StartScene.unity
-    guid: 7b2c0c6d852c84d268c001899fb942db
-  - enabled: 1
-    path: Assets/Scenes/StageScenes/Stage1/Stage1.unity
-    guid: 6565dd02c52f2446bab4609a23411f42
-  - enabled: 1
-    path: Assets/Scenes/StageScenes/Stage2/Stage2.unity
-    guid: 939993a9a154d4fc9a1b964db389a216
-  - enabled: 1
-    path: Assets/Scenes/StageScenes/Stage3/Stage3.unity
-    guid: 3b8edce3e168344e9b9363c65e0a7363
-  - enabled: 1
-    path: Assets/Scenes/StageScenes/Stage4/Stage4.unity
-    guid: 06cd2d595caab4df299e1101c9b1f5d5
-  - enabled: 1
-    path: Assets/Scenes/StageScenes/Stage5/Stage5.unity
-    guid: fa5c65caeb5ce4e4ba9204a91c489511
-  - enabled: 1
-    path: Assets/Scenes/StageScenes/Stage6/Stage6.unity
-    guid: d71d870f5d52d4932b57d783063fd28f
-  - enabled: 1
-    path: Assets/Scenes/StageScenes/Stage7/Stage7.unity
-    guid: a8b78d5c066aa40c8ba1c0a61bd64934
-  - enabled: 1
-    path: Assets/Scenes/StageScenes/Stage8/Stage8.unity
-    guid: e53737a0d5bbd40b9bd6e7ed2450aad9
+  m_Scenes: []
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 3119b892878c4fb49ba1701991b95736,
       type: 2}

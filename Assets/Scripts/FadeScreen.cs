@@ -7,6 +7,8 @@ public class FadeScreen : MonoBehaviour
     public Color fadeColor;
     private Renderer rend;
 
+    public WeaponChanger weaponChanger;
+
     private void Start()
     {
         gameObject.SetActive(true);
@@ -17,6 +19,7 @@ public class FadeScreen : MonoBehaviour
     private void OnDisable()
     {
         GameManager.Instance.StartRound();
+        weaponChanger.ChangeToRandomWeapon();
     }
 
     public void FadeIn()
