@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 365692320989794413}
   - component: {fileID: 8013760615856133269}
   - component: {fileID: 581485502712386530}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Quiver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &365692320989794413
 Transform:
   m_ObjectHideFlags: 0

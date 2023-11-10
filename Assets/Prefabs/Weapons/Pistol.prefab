@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 3350017209714285499}
   - component: {fileID: 3350017209714285472}
   - component: {fileID: 9130244401547604538}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,7 +335,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 3350017209714285479}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
