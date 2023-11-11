@@ -56,9 +56,9 @@ public class GameManager : MonoSingleton<GameManager>
         {
             // 그렇지 않은 경우 남은 그룹의 수를 감소시키고
             // 다음 그룹의 수로 갱신 
-            RemainGroupsOnStage--;
             int next= groups.Length - RemainGroupsOnStage;
             RemainEnemiesInGroup = groups[next].enemies.Length;
+            RemainGroupsOnStage--;
         }
     }
 
