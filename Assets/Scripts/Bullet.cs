@@ -10,10 +10,22 @@ public class Bullet : MonoBehaviour
     Rigidbody bulletRigidbody;
     CapsuleCollider bulletCollider;
 
+    GameObject bulletModel;
+    GameObject slicer;
+    BoxCollider slicerCollider;
+
+    float trailTime;
+
     void Start()
     {
         bulletRigidbody = GetComponent<Rigidbody>();
         bulletCollider = GetComponent<CapsuleCollider>();
+
+        bulletModel = transform.GetChild(0).gameObject;
+        slicer = transform.GetChild(1).gameObject;
+        slicerCollider = slicer.gameObject.GetComponent<BoxCollider>();
+
+        trailTime = GetComponentInChildren<TrailRenderer>().time;
     }
 
     private void OnCollisionEnter(Collision collision) {
@@ -25,19 +37,28 @@ public class Bullet : MonoBehaviour
 
             firework.GetComponent<ParticleSystem>().Emit(1);
 
-            // 총알 정지 후 게임오브젝트 제거
-            bulletRigidbody.velocity = Vector3.zero;
-            bulletRigidbody.angularVelocity = Vector3.zero;
+            DisableBullet();
 
             Destroy(gameObject);
         }else if(collision.gameObject.tag == "Enemy") {
-            // 총알 정지 후 게임오브젝트 제거
-            bulletCollider.enabled = false;
-            bulletRigidbody.velocity = Vector3.zero;
-            bulletRigidbody.angularVelocity = Vector3.zero;
+            // slicer 활성화 및 모델 비활성화
+            slicer.SetActive(true);
+            bulletModel.SetActive(false);
 
-            Destroy(gameObject, 0.1f);
+            DisableBullet();
+
+            // 트레일이 사라질 때까지 기다린 후 게임오브젝트 제거
+            Destroy(gameObject, trailTime);
         }
     }
 
+    private void DisableBullet() {
+        // 콜라이더 비활성화
+        bulletCollider.enabled = false;
+        slicerCollider.enabled = false;
+
+        // 총알 정지
+        bulletRigidbody.velocity = Vector3.zero;
+        bulletRigidbody.angularVelocity = Vector3.zero;
+    }
 }

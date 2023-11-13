@@ -24,7 +24,7 @@ public class WeaponChanger : MonoBehaviour
         leftHand = GameObject.Find("LeftHand").GetComponentInChildren<XRDirectInteractor>();
         rightHand = GameObject.Find("RightHand").GetComponentInChildren<XRDirectInteractor>();
 
-        quiver = transform.Find("Quiver").gameObject;
+        quiver = transform.GetChild(1).gameObject;
     }
 
     // 무기 변경 함수
