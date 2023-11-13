@@ -11,7 +11,6 @@ public class Bullet : MonoBehaviour
     CapsuleCollider bulletCollider;
 
     GameObject bulletModel;
-    GameObject slicer;
     BoxCollider slicerCollider;
 
     float trailTime;
@@ -22,8 +21,7 @@ public class Bullet : MonoBehaviour
         bulletCollider = GetComponent<CapsuleCollider>();
 
         bulletModel = transform.GetChild(0).gameObject;
-        slicer = transform.GetChild(1).gameObject;
-        slicerCollider = slicer.gameObject.GetComponent<BoxCollider>();
+        slicerCollider = transform.GetChild(1).GetComponent<BoxCollider>();
 
         trailTime = GetComponentInChildren<TrailRenderer>().time;
     }
@@ -41,8 +39,7 @@ public class Bullet : MonoBehaviour
 
             Destroy(gameObject);
         }else if(collision.gameObject.tag == "Enemy") {
-            // slicer 활성화 및 모델 비활성화
-            slicer.SetActive(true);
+            // 모델 비활성화
             bulletModel.SetActive(false);
 
             DisableBullet();
@@ -58,7 +55,6 @@ public class Bullet : MonoBehaviour
         slicerCollider.enabled = false;
 
         // 총알 정지
-        bulletRigidbody.velocity = Vector3.zero;
-        bulletRigidbody.angularVelocity = Vector3.zero;
+        bulletRigidbody.isKinematic = true;
     }
 }
