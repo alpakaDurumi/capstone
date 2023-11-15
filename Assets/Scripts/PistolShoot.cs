@@ -10,7 +10,7 @@ public class PistolShoot : MonoBehaviour
     public Transform barrelLocation;
 
     private float destroyTime = 0.2f;
-    private float bulletForce = 10f;
+    private float bulletForce = 20f;
 
     void Start()
     {

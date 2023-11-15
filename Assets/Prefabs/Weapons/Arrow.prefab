@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 8560496418063265630}
   - component: {fileID: 441794492980476487}
   - component: {fileID: 2554008709252389338}
-  m_Layer: 2
+  m_Layer: 7
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 441794492980476487}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -222,7 +223,7 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
-  speed: 2000
+  speed: 15
 --- !u!114 &8560496418063265630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,9 +251,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.016
-  m_Height: 0.7765065
+  m_Height: 0.3057016
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0.08646324}
+  m_Center: {x: 0, y: 0, z: -0.14893919}
 --- !u!114 &2554008709252389338
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5337339558217932055}
   - component: {fileID: 1658678750}
   - component: {fileID: 1658678751}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_Colliders:
+  - {fileID: 5337339558217932048}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295

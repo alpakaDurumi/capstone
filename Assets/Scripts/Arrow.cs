@@ -5,7 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Arrow : Projectile
 {
-    [SerializeField] private float speed = 2000.0f;
+    [SerializeField] private float speed = 15.0f;
 
     private ArrowCaster caster;
 
@@ -35,7 +35,7 @@ public class Arrow : Projectile
     }
 
     private void ApplyForce(PullMeasurer pullMeasurer) {
-        rigidbody.AddForce(transform.forward * (pullMeasurer.PullAmount * speed));
+        rigidbody.AddForce(pullMeasurer.PullAmount * speed * transform.forward, ForceMode.VelocityChange);
     }
 
     private IEnumerator LaunchRoutine() {
