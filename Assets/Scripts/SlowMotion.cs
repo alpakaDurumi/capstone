@@ -12,40 +12,26 @@ public class SlowMotion : MonoBehaviour
      * Update 문에 바로 위에 조건문을 ~VRDevice 함수로 바꾸면 됨 
      */
 
-
+   
     [SerializeField] const float SMOOTH_OFFSET = 0.02f;
-    [SerializeField] const float MOVE_DETECT_SPEED = 0.1f;
+    [SerializeField] const float MOVE_DETECT_SPEED = 0.2f;
+    [SerializeField] const float MOVE_DETECT_THREDHOLD = 0.2f;
     [SerializeField] const float NORMAL_SPEED = 1f;
     [SerializeField] const float SLOWMOTION_SPEED = 0.05f;
 
-
-    private List<XRNodeState> hands;
-    private XRNodeState grip;
+    public InputDevice rightController;
+    public InputDevice leftController;
+    public InputDevice hmd;
 
     private void Start()
     {
-        InitVRDevice();
-    }
-
-
-    private void InitVRDevice()
-    {
-        XRNodeState leftHand = new();
-        XRNodeState rightHand = new();
-
-        leftHand.nodeType = XRNode.LeftHand;
-        rightHand.nodeType = XRNode.RightHand;
-
-        new List<XRNodeState>()
-        {
-            leftHand,
-            rightHand,
-        };
+        InitDevice();
     }
 
     private void Update()
     {
-        if (InputXRSimulator() || !GameManager.Instance.IsStartRound)
+        // 해당 앞쪽 부분을 InputVRDevice와 InputXRSimulator 함수로 바꿔가면서 쓰면
+        if (InputVRDevice()|| !GameManager.Instance.IsStartRound)
         {
             // 정상 속도 
             Time.timeScale = NORMAL_SPEED;
@@ -53,11 +39,13 @@ public class SlowMotion : MonoBehaviour
         else 
         {
             // 슬로우 모션 
-            Time.timeScale = SLOWMOTION_SPEED ;
+            Time.timeScale = SLOWMOTION_SPEED;
             Time.fixedDeltaTime = Time.timeScale * SMOOTH_OFFSET;
         }
     }
-
+/*
+ * 시뮬레이터 전용 함/
+ */
     
     private bool InputXRSimulator()
     {
@@ -92,32 +80,62 @@ public class SlowMotion : MonoBehaviour
         
     }
 
+
+/*
+* 오큘러스 2 전용 세팅 관련 함수
+* 
+*/
+
+    private void InitDevice()
+    {
+        if (!rightController.isValid)
+        {
+            InitializeInputDevice(InputDeviceCharacteristics.Controller | InputDeviceCharacteristics.Right, ref rightController);
+        }
+        if (!leftController.isValid)
+        {
+            InitializeInputDevice(InputDeviceCharacteristics.Controller | InputDeviceCharacteristics.Left, ref leftController);
+        }
+        if (!hmd.isValid)
+        {
+            InitializeInputDevice(InputDeviceCharacteristics.HeadMounted, ref hmd);
+        }
+    }
+
+    private void InitializeInputDevice(InputDeviceCharacteristics inputCharacteristics, ref InputDevice inputDevice)
+    {
+        List<InputDevice> devices = new();
+        InputDevices.GetDevicesWithCharacteristics(inputCharacteristics, devices);
+
+        if (devices.Count > 0)
+        {
+            inputDevice = devices[0];
+        }
+    }
+
     // VR 기기 연결했을 때의 입력 구분
     private bool InputVRDevice()
     {
-        return (DetectHandsMoveByDevice() || DetectButtonActionByDevice());
+        return DetectHandsMoveByDevice();
     }
 
     // 손 움직임을 감지
     private bool DetectHandsMoveByDevice()
     {
-        foreach (XRNodeState hand in hands)
-        {
-            Vector3 velocity = new();
+        float leftSpeed = 0f;
+        float rightSpeed = 0f;
 
-            if (hand.TryGetVelocity(out velocity))
-            {
-                if (velocity.magnitude > MOVE_DETECT_SPEED) return true;
-            }
+        if (leftController.TryGetFeatureValue(CommonUsages.deviceVelocity, out Vector3 leftVelocity))
+        {
+            leftSpeed = leftVelocity.magnitude;
+        }
+        if (rightController.TryGetFeatureValue(CommonUsages.deviceVelocity, out Vector3 rightVeleocity))
+        {
+            rightSpeed = rightVeleocity.magnitude;
         }
 
-        return false;
-    }
+        return (leftSpeed >= MOVE_DETECT_THREDHOLD
+            || rightSpeed > MOVE_DETECT_THREDHOLD); 
 
-    // 그립 버튼과 트리거 버튼 감지 
-    private bool DetectButtonActionByDevice()
-    {
-        return CommonUsages.gripButton.Equals(true) ||
-            CommonUsages.triggerButton.Equals(true) ;
     }
 }
