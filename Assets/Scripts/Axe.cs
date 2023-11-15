@@ -7,11 +7,31 @@ public class Axe : Projectile
 {
     private IXRSelectInteractor thrownInteractor;   // 도끼를 던진 손에 해당하는 Direct Interactor
 
+    //private SlowMotion slowMotion;
+
+    //private float handSpeedAmount;
+
+    protected override void OnSelectEntered(SelectEnterEventArgs args) {
+        base.OnSelectEntered(args);
+        //slowMotion = args.interactorObject.transform.GetComponentInParent<SlowMotion>();
+    }
+
     protected override void OnSelectExited(SelectExitEventArgs args) {
         base.OnSelectExited(args);
         EnablePhysics();    // 손을 떠나면 다시 물리 활성화
         launched = true;
         thrownInteractor = args.interactorObject;   // 던진 interactor를 기억
+
+        //handSpeedAmount = slowMotion.GetRightHandSpeed();
+        //rigidbody.AddForce(handSpeedAmount * thrownInteractor.transform.forward, ForceMode.VelocityChange); 
+        rigidbody.AddForce(10 * thrownInteractor.transform.forward, ForceMode.VelocityChange);
+    }
+
+    private void FixedUpdate() {
+        // 날아가는 동안에 회전
+        if (launched) {
+            RotateAxe();
+        }
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -37,5 +57,10 @@ public class Axe : Projectile
     private IEnumerator ReturnRoutine() {
         yield return new WaitForSeconds(1.0f);
         interactionManager.SelectEnter(thrownInteractor, this);
+    }
+
+    // 도끼 회전 함수
+    private void RotateAxe() {
+        transform.Rotate(3, 0, 0);
     }
 }
