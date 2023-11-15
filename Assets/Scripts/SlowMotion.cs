@@ -23,6 +23,9 @@ public class SlowMotion : MonoBehaviour
     public InputDevice hmd;
 
     private bool isSimulate;
+
+    private float rightHandSpeed;
+
     private void Start()
     {
         InitDevice();
@@ -83,6 +86,8 @@ public class SlowMotion : MonoBehaviour
 
         Vector2 mouseVector = (Vector2)obj;
         float mouseSpeed = mouseVector.magnitude;
+
+        rightHandSpeed = mouseSpeed;
 
         return (leftHandHold || rightHandHold) && mouseSpeed >= MOVE_DETECT_THREDHOLD;
 
@@ -151,10 +156,16 @@ public class SlowMotion : MonoBehaviour
         if (rightController.TryGetFeatureValue(CommonUsages.deviceVelocity, out Vector3 rightVeleocity))
         {
             rightSpeed = rightVeleocity.magnitude;
+
+            rightHandSpeed = rightSpeed;
         }
 
         return (leftSpeed >= MOVE_DETECT_THREDHOLD
             || rightSpeed > MOVE_DETECT_THREDHOLD); 
 
+    }
+
+    public float GetRightHandSpeed() {
+        return rightHandSpeed;
     }
 }
