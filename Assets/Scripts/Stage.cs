@@ -50,7 +50,8 @@ public class Stage : MonoBehaviour
 
     private void UpdateLastEnemyPos()
     {
-        Enemy[] enemies = groups[groupIdx].enemies;
+        int lastGroup = (groupIdx <= 0) ? 0 : groupIdx - 1;
+        Enemy[] enemies = groups[lastGroup].enemies;
         foreach (Enemy enemy in enemies)
         {
             if (enemy.gameObject.activeSelf)
