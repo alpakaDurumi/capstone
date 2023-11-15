@@ -14,7 +14,6 @@ public class SlowMotion : MonoBehaviour
 
    
     [SerializeField] const float SMOOTH_OFFSET = 0.02f;
-    [SerializeField] const float MOVE_DETECT_SPEED = 0.2f;
     [SerializeField] const float MOVE_DETECT_THREDHOLD = 0.2f;
     [SerializeField] const float NORMAL_SPEED = 1f;
     [SerializeField] const float SLOWMOTION_SPEED = 0.05f;
@@ -23,6 +22,7 @@ public class SlowMotion : MonoBehaviour
     public InputDevice leftController;
     public InputDevice hmd;
 
+    private bool isSimulate;
     private void Start()
     {
         InitDevice();
@@ -30,8 +30,8 @@ public class SlowMotion : MonoBehaviour
 
     private void Update()
     {
-        // 해당 앞쪽 부분을 InputVRDevice와 InputXRSimulator 함수로 바꿔가면서 쓰면
-        if (InputVRDevice()|| !GameManager.Instance.IsStartRound)
+   
+        if (InputDevice(isSimulate) || !GameManager.Instance.IsStartRound)
         {
             // 정상 속도 
             Time.timeScale = NORMAL_SPEED;
@@ -42,6 +42,25 @@ public class SlowMotion : MonoBehaviour
             Time.timeScale = SLOWMOTION_SPEED;
             Time.fixedDeltaTime = Time.timeScale * SMOOTH_OFFSET;
         }
+    }
+    private void InitDevice()
+    {
+        if(FindObjectOfType<XRDeviceSimulator>() == null)
+        {
+            InitVRDevice();
+            isSimulate = false;
+        }
+        else
+        {
+            isSimulate = true;
+        }
+    }
+    private bool InputDevice(bool isSimulate)
+    {
+        if (isSimulate)
+            return InputXRSimulator();
+        else
+            return InputVRDevice();
     }
 /*
  * 시뮬레이터 전용 함/
@@ -65,7 +84,7 @@ public class SlowMotion : MonoBehaviour
         Vector2 mouseVector = (Vector2)obj;
         float mouseSpeed = mouseVector.magnitude;
 
-        return (leftHandHold || rightHandHold) && mouseSpeed >= MOVE_DETECT_SPEED;
+        return (leftHandHold || rightHandHold) && mouseSpeed >= MOVE_DETECT_THREDHOLD;
 
         
     }
@@ -86,7 +105,7 @@ public class SlowMotion : MonoBehaviour
 * 
 */
 
-    private void InitDevice()
+    private void InitVRDevice()
     {
         if (!rightController.isValid)
         {
