@@ -10,6 +10,13 @@ public class Enemy_rifle : Enemy
     private int attack_cnt = 0;
     private int magazine = 4;
 
+    private BulletShooter shooter;
+
+    protected override void Awake() {
+        base.Awake();
+        shooter = GetComponentInChildren<BulletShooter>();
+    }
+
     protected override void Update()
     {
         base.Update();
@@ -32,6 +39,7 @@ public class Enemy_rifle : Enemy
     protected override void Attack() {
         base.Attack();
         attack_cnt++;
+        shooter.Shoot();
     }
 
     // 재장전 함수

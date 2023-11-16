@@ -21,7 +21,7 @@ public class Enemy: MonoBehaviour
 
     WeaponChanger weaponChanger;
 
-    private void Awake() {
+    protected virtual void Awake() {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
 

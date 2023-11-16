@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PistolShoot : MonoBehaviour
+public class BulletShooter : MonoBehaviour
 {
 
     public GameObject bulletPrefab;
@@ -12,16 +12,6 @@ public class PistolShoot : MonoBehaviour
     private float destroyTime = 0.2f;
     private float bulletForce = 20f;
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-       
-    }
-
     public void Shoot() {
         // 머즐 플래시 효과
         GameObject flash = Instantiate(muzzleFlashPrefab, barrelLocation.position, barrelLocation.rotation);
@@ -29,6 +19,13 @@ public class PistolShoot : MonoBehaviour
 
         // 총알 발사
         GameObject bullet = Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation);
+        // 권총에서 발사한 경우, 플레이어가 발사한 것
+        if(gameObject.name == "Pistol") {
+            bullet.GetComponent<Bullet>().shotByPlayer = true;
+        }
+        else {
+            bullet.GetComponent<Bullet>().shotByPlayer = false;
+        }
         Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
         bulletRigidbody.AddForce(bulletForce * transform.forward, ForceMode.VelocityChange);
 
