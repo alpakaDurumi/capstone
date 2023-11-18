@@ -157,6 +157,13 @@ namespace NobleMuffins.LimbHacker.Guts
 				jobSpecification.Hackable.handleSlice(results, jobState.Yield.PlaneInWorldSpace, jobState.Yield.FocalPointInWorldSpace);
 
 				if(backIsNew) {
+                    if(jobSpecification.Subject.TryGetComponent(out Enemy enemy)) {
+                        enemy.Die();
+                    }
+                    else {
+                        Debug.Log("Sliced GameObject is not Enemy");
+                    }
+
                     Destroy(jobSpecification.Subject);
 				}
             }

@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c093a181c248740f7b4c58ebdf9e58c9, type: 2}
+  - {fileID: 2100000, guid: d6816ab48b4314e59b88b1f100f9cbc7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,6 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a7b87fbb3e048ac91da6ace726f02a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeOnStart: 1
   fadeDuration: 2
   fadeColor: {r: 1, g: 1, b: 1, a: 0}
+  weaponChanger: {fileID: 0}

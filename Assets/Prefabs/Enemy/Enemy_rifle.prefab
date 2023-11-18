@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8804654735371390513}
   - component: {fileID: 948866217}
   - component: {fileID: 78854500}
+  - component: {fileID: 9041350778008725006}
   m_Layer: 0
   m_Name: Enemy_rifle
   m_TagString: Untagged
@@ -147,6 +148,21 @@ MonoBehaviour:
   - {fileID: 1805600747415900516}
   - {fileID: 823895650746206201}
   - {fileID: 3905378572440779107}
+--- !u!114 &9041350778008725006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8804654735371390540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d54aaf7cfc41fe94f836f2b486521a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceAmount: 1
+  targetRagdollPrefab: {fileID: 6380727735148248081, guid: 60522b10600cbc8488445208b8691074,
+    type: 3}
 --- !u!1001 &8804654735570712505
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -154,6 +170,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8804654735371390541}
     m_Modifications:
+    - target: {fileID: -9070493210130169274, guid: 020b389eccf56d746a2e17963ae06131,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 020b389eccf56d746a2e17963ae06131,
         type: 3}
       propertyPath: m_RootOrder
@@ -209,10 +230,60 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6170625038081293824, guid: 020b389eccf56d746a2e17963ae06131,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: -4332706925441422008, guid: 020b389eccf56d746a2e17963ae06131,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: -3086436065929644917, guid: 020b389eccf56d746a2e17963ae06131,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: -1781356600409242780, guid: 020b389eccf56d746a2e17963ae06131,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: -290750445479886849, guid: 020b389eccf56d746a2e17963ae06131,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: -203856693384778745, guid: 020b389eccf56d746a2e17963ae06131,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 020b389eccf56d746a2e17963ae06131,
         type: 3}
       propertyPath: m_Name
       value: Y Bot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082271958561512970, guid: 020b389eccf56d746a2e17963ae06131,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3135921509060577837, guid: 020b389eccf56d746a2e17963ae06131,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3948933247560734027, guid: 020b389eccf56d746a2e17963ae06131,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8817898888258712963, guid: 020b389eccf56d746a2e17963ae06131,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5866666021909216657, guid: 020b389eccf56d746a2e17963ae06131, type: 3}

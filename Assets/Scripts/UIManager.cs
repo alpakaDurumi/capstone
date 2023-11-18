@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.EventSystems;
 using Button = UnityEngine.UI.Button;
-using Unity.VisualScripting;
+
 
 public class UIManager : MonoSingleton<UIManager>
 {
@@ -20,14 +17,27 @@ public class UIManager : MonoSingleton<UIManager>
             sceneTransition = gameObject.AddComponent<SceneTransition>();
         }
     }
-    public void CreateNextStageButton(Transform target)
-    {
+    public void CreateNextStageButton(Transform target) {
+        if (target == null) return;
         Canvas button = InstantiateButton();
-        SetButtonLocation(button,target);
-        AddButtonAction(button);
+        SetNextStageButtonLocation(button,target);
+        AddNextStageButtonAction(button);
 
     }
+    public void OnClickStartButton()
+    {
+        GameManager.Instance.ResetGameStageInfo();
+        GameManager.Instance.IncreaseStage();
+        sceneTransition.GoToSceneAsync(GameManager.Instance.Stage);
 
+        // 누른 스타트 오브젝트를 찾아서 button을 비활성화
+        // 중복 누름 방지 
+        EventSystem.current.currentSelectedGameObject
+            .GetComponent<Button>().enabled = false;
+        
+    }
+
+#region 구현 세부사항
     private Canvas InstantiateButton()
     {
         Canvas button = Instantiate(Resources.Load<Canvas>("Prefabs/NextStageButton"));
@@ -35,7 +45,7 @@ public class UIManager : MonoSingleton<UIManager>
         return button;
     }
 
-    private void SetButtonLocation(Canvas canvas,Transform target)
+    private void SetNextStageButtonLocation(Canvas canvas,Transform target)
     {
         Vector3 position = target.position;
         Vector3 rotation = target.rotation.eulerAngles;
@@ -47,10 +57,12 @@ public class UIManager : MonoSingleton<UIManager>
         canvas.gameObject.transform.rotation = Quaternion.Euler(rotation);
 
     }
-    private void AddButtonAction(Canvas canvas)
+    private void AddNextStageButtonAction(Canvas canvas)
     {
         Button button = canvas.GetComponentInChildren<Button>();
+        GameManager.Instance.IncreaseStage();
         button.onClick.AddListener(() => sceneTransition.GoToSceneAsync(GameManager.Instance.Stage));
         button.onClick.AddListener(() => button.enabled = false);
     }
+    #endregion
 }

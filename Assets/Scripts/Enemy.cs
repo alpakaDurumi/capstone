@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,12 +14,22 @@ public class Enemy: MonoBehaviour
     Vector2 smoothDeltaPosition = Vector2.zero;
     Vector2 velocity = Vector2.zero;
 
-    // 참조는 awake()로 옮길 것.
-    void Start()
-    {
+    protected bool attacking = false;
+
+    protected float attack_timer = 0.0f;            // 공격 타이머
+    protected float attack_waitingTime = 2.0f;      // 공격 간격
+
+    WeaponChanger weaponChanger;
+
+    private void Awake() {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
 
+        weaponChanger = target.GetComponent<WeaponChanger>();
+    }
+
+    void Start()
+    {
         // agent와 transform의 position 동기화를 수동으로 처리하도록 함
         // 아래의 OnAnimatorMove에서 처리하였음
         agent.updatePosition = false;
@@ -45,13 +57,27 @@ public class Enemy: MonoBehaviour
         // 애니메이션 여부를 결정
         bool shouldMove = velocity.magnitude > 0.5f && agent.remainingDistance > agent.radius;
 
-
         // 애니메이터 파라미터 설정
         animator.SetBool("move", shouldMove);
         animator.SetFloat("velx", velocity.x);
         animator.SetFloat("vely", velocity.y);
 
         //FaceTarget(target.position);
+
+        // 공격 중이 아닌 경우 타이머를 증가
+        if (!attacking) {
+            attack_timer += Time.deltaTime;
+        }
+
+        if (!agent.isStopped) {
+            StopMoveAgent();
+        }
+
+        if (CanAttack()) {
+            Attack();
+            attack_timer = 0.0f;
+            StartCoroutine(WaitAttackEnd((b) => { attacking = b; }));
+        }
     }
 
     protected void OnAnimatorMove() {
@@ -70,5 +96,38 @@ public class Enemy: MonoBehaviour
         lookpos.y = 0f;
         Quaternion rotation = Quaternion.LookRotation(lookpos);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.1f);
+    }
+
+    // target 도달 여부에 따라 agent를 중지시키는 함수
+    private void StopMoveAgent() {
+        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance) {
+            agent.isStopped = true;
+        }
+    }
+
+    // 공격 가능 여부
+    protected virtual bool CanAttack() {
+        if (agent.isStopped && !attacking && attack_timer >= attack_waitingTime) {
+            return true;
+        }
+        return false;
+    }
+
+    // 공격 함수
+    protected virtual void Attack() {
+        attacking = true;
+        animator.SetTrigger("attack");
+    }
+
+    // 공격이 끝나면 attacking을 false로 update하는 코루틴
+    protected virtual IEnumerator WaitAttackEnd(System.Action<bool> callback) {
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
+        callback(false);
+    }
+
+    // Enemy 사망 시 GamaManager의 적 수 감소
+    public void Die() {
+        GameManager.Instance.DecreaseEnemyCountOnStage();
+        weaponChanger.IncreaseKillCount();
     }
 }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6407103120160966998}
   - component: {fileID: 967296434}
   - component: {fileID: 967296435}
+  - component: {fileID: 3485586010297896279}
   m_Layer: 0
   m_Name: Enemy_melee
   m_TagString: Untagged
@@ -147,6 +148,21 @@ MonoBehaviour:
   - {fileID: 4311133218527918860}
   - {fileID: 3005554860632190353}
   - {fileID: 1506526216538592011}
+--- !u!114 &3485586010297896279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6407103120160966995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d54aaf7cfc41fe94f836f2b486521a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceAmount: 10
+  targetRagdollPrefab: {fileID: 6954930145665291279, guid: 446b2b795d1c1be419632f51372d6e2e,
+    type: 3}
 --- !u!1001 &6407103119112445393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -154,6 +170,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6407103120160966999}
     m_Modifications:
+    - target: {fileID: -9070493210130169274, guid: ecbda428dcc94ed42b7536151dee6a36,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ecbda428dcc94ed42b7536151dee6a36,
         type: 3}
       propertyPath: m_RootOrder
@@ -209,16 +230,66 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6170625038081293824, guid: ecbda428dcc94ed42b7536151dee6a36,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: -4332706925441422008, guid: ecbda428dcc94ed42b7536151dee6a36,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: -3086436065929644917, guid: ecbda428dcc94ed42b7536151dee6a36,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: -1781356600409242780, guid: ecbda428dcc94ed42b7536151dee6a36,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: -290750445479886849, guid: ecbda428dcc94ed42b7536151dee6a36,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: -203856693384778745, guid: ecbda428dcc94ed42b7536151dee6a36,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ecbda428dcc94ed42b7536151dee6a36,
         type: 3}
       propertyPath: m_Name
       value: X Bot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1082271958561512970, guid: ecbda428dcc94ed42b7536151dee6a36,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3135921509060577837, guid: ecbda428dcc94ed42b7536151dee6a36,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3948933247560734027, guid: ecbda428dcc94ed42b7536151dee6a36,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: ecbda428dcc94ed42b7536151dee6a36,
         type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 3e4f856a19664c54c96f5cfb3496e9d6, type: 2}
+    - target: {fileID: 8817898888258712963, guid: ecbda428dcc94ed42b7536151dee6a36,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5866666021909216657, guid: ecbda428dcc94ed42b7536151dee6a36, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ecbda428dcc94ed42b7536151dee6a36, type: 3}
