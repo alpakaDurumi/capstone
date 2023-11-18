@@ -1902,7 +1902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manageVisibility: 1
+  manageVisibility: 0
 --- !u!1 &228442043910641203
 GameObject:
   m_ObjectHideFlags: 0
@@ -2260,7 +2260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manageVisibility: 1
+  manageVisibility: 0
 --- !u!1 &228442044012415941
 GameObject:
   m_ObjectHideFlags: 0
@@ -2738,7 +2738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manageVisibility: 1
+  manageVisibility: 0
 --- !u!1 &228442044345131869
 GameObject:
   m_ObjectHideFlags: 0
@@ -3676,7 +3676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manageVisibility: 1
+  manageVisibility: 0
 --- !u!1 &228442044540336475
 GameObject:
   m_ObjectHideFlags: 0
@@ -10334,7 +10334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manageVisibility: 1
+  manageVisibility: 0
 --- !u!1 &228442044848631837
 GameObject:
   m_ObjectHideFlags: 0
@@ -13672,7 +13672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manageVisibility: 1
+  manageVisibility: 0
 --- !u!1 &228442045131516271
 GameObject:
   m_ObjectHideFlags: 0
@@ -14319,7 +14319,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3580
+  m_VersionIndex: 3584
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -14372,7 +14372,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 3637b758ff163493f8bb8b6d7e96d7ae, type: 2}
-  - {fileID: 2100000, guid: 3c90f41c7ad75cd4db41faa565660d18, type: 2}
+  - {fileID: 2100000, guid: 70334ba9e4b22f34a89ba512e057958c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14428,7 +14428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manageVisibility: 1
+  manageVisibility: 0
 --- !u!1 &228442045165442056
 GameObject:
   m_ObjectHideFlags: 0
@@ -16370,4 +16370,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manageVisibility: 1
+  manageVisibility: 0
