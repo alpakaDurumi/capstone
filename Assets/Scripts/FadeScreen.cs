@@ -16,12 +16,6 @@ public class FadeScreen : MonoBehaviour
         fadeDuration = 3f;
         FadeIn();
     }
-    // 페이드 인이 끝나고 해당 오브젝트가 비활성화되면 IsStartRound = true 상태로
-    private void OnDisable()
-    {
-        GameManager.Instance.StartRound();
-        weaponChanger.ChangeToRandomWeapon();
-    }
 
     public void FadeIn()
     {
@@ -43,7 +37,16 @@ public class FadeScreen : MonoBehaviour
     
     private void Fade(float alphaIn, float alphaOut)
     {
-        StartCoroutine(FadeRoutine(alphaIn, alphaOut));
+        StartCoroutine(GameStartAfterFade(alphaIn,alphaOut));
+    }
+    // FadeRoutine 코루틴 함수가 끝나면 IsStartRound = true 상태로
+    private IEnumerator GameStartAfterFade(float alphaIn, float alphaOut)
+    {
+        yield return StartCoroutine(FadeRoutine(alphaIn, alphaOut));
+
+        GameManager.Instance.StartRound();
+        weaponChanger.ChangeToRandomWeapon();
+        //gameObject.SetActive(false);
     }
 
     private IEnumerator FadeRoutine(float alphaIn, float alphaOut)
@@ -59,11 +62,6 @@ public class FadeScreen : MonoBehaviour
 
             timer += Time.deltaTime;
             yield return null;
-        }
-
-        if(alphaIn > alphaOut)
-        {
-            gameObject.SetActive(false);
         }
     }
     #endregion
