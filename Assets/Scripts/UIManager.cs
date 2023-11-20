@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEditor.UI;
 using Button = UnityEngine.UI.Button;
 
 
@@ -35,6 +36,19 @@ public class UIManager : MonoSingleton<UIManager>
         EventSystem.current.currentSelectedGameObject
             .GetComponent<Button>().enabled = false;
         
+    }
+    public void OnClickHowToPlayButton()
+    {
+        Debug.Log("onClickHow");
+        GameObject canvas = GameObject.Find("Canvas");
+        canvas.transform.Find("Video Panel").gameObject.SetActive(true);
+    }
+
+    public void OnClickCloseButton()
+    {
+        Debug.Log("onClickClose");
+        GameObject clickedButton = EventSystem.current.currentSelectedGameObject;
+        clickedButton.GetComponentInParent<Nova.UIBlock2D>().gameObject.SetActive(false);
     }
 
 #region 구현 세부사항
