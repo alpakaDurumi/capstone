@@ -21,6 +21,8 @@ public class Enemy: MonoBehaviour
 
     WeaponChanger weaponChanger;
 
+    protected int attackLayerIndex;                 // 공격 애니메이션이 위치한 애니메이션 레이어
+
     protected virtual void Awake() {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
@@ -28,7 +30,7 @@ public class Enemy: MonoBehaviour
         weaponChanger = target.GetComponent<WeaponChanger>();
     }
 
-    void Start()
+    protected virtual void Start()
     {
         // agent와 transform의 position 동기화를 수동으로 처리하도록 함
         // 아래의 OnAnimatorMove에서 처리하였음
@@ -62,8 +64,6 @@ public class Enemy: MonoBehaviour
         animator.SetFloat("velx", velocity.x);
         animator.SetFloat("vely", velocity.y);
 
-        //FaceTarget(target.position);
-
         // 공격 중이 아닌 경우 타이머를 증가
         if (!attacking) {
             attack_timer += Time.deltaTime;
@@ -91,12 +91,12 @@ public class Enemy: MonoBehaviour
 
     // target 바라보기 기능
     // 보간 정도를 점검할 것
-    private void FaceTarget(Vector3 dest) {
-        Vector3 lookpos = dest - transform.position;
-        lookpos.y = 0f;
-        Quaternion rotation = Quaternion.LookRotation(lookpos);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.1f);
-    }
+    //private void FaceTarget(Vector3 dest) {
+    //    Vector3 lookpos = dest - transform.position;
+    //    lookpos.y = 0f;
+    //    Quaternion rotation = Quaternion.LookRotation(lookpos);
+    //    transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.1f);
+    //}
 
     // target 도달 여부에 따라 agent를 중지시키는 함수
     private void StopMoveAgent() {
@@ -121,7 +121,7 @@ public class Enemy: MonoBehaviour
 
     // 공격이 끝나면 attacking을 false로 update하는 코루틴
     protected virtual IEnumerator WaitAttackEnd(System.Action<bool> callback) {
-        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(attackLayerIndex).IsTag("Attack") && animator.GetCurrentAnimatorStateInfo(attackLayerIndex).normalizedTime >= 1.0f);
         callback(false);
     }
 
