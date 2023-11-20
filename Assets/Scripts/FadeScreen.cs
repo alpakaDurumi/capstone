@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class FadeScreen : MonoBehaviour
 {
     public float fadeDuration = 3;
@@ -45,8 +45,11 @@ public class FadeScreen : MonoBehaviour
         yield return StartCoroutine(FadeRoutine(alphaIn, alphaOut));
 
         GameManager.Instance.StartRound();
-        weaponChanger.ChangeToRandomWeapon();
-        //gameObject.SetActive(false);
+
+        if(!SceneManager.GetActiveScene().name.Equals("StartScene"))
+        {
+            weaponChanger.ChangeToRandomWeapon();
+        }
     }
 
     private IEnumerator FadeRoutine(float alphaIn, float alphaOut)
