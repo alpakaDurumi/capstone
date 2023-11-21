@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4629048240071876749}
   - component: {fileID: 7367887519797720939}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 518804500080518374}
   - component: {fileID: 4601955937760566469}
   - component: {fileID: 7283356686823076122}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bullet_Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,6 +295,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: uploads_files_2888820_9mm+Luger
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fceb362449a029a4a84403a7220a456c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fceb362449a029a4a84403a7220a456c, type: 3}

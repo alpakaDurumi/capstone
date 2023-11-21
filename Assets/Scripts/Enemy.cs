@@ -14,6 +14,9 @@ public class Enemy: MonoBehaviour
     Vector2 smoothDeltaPosition = Vector2.zero;
     Vector2 velocity = Vector2.zero;
 
+    [SerializeField] protected float attackDistance;    // 공격 사정거리
+    protected float currentDistance;                    // 현재 target과의 거리
+
     protected bool attacking = false;
 
     protected float attack_timer = 0.0f;            // 공격 타이머
@@ -69,9 +72,7 @@ public class Enemy: MonoBehaviour
             attack_timer += Time.deltaTime;
         }
 
-        if (!agent.isStopped) {
-            StopMoveAgent();
-        }
+        currentDistance = Vector3.Distance(transform.position, target.position);
 
         if (CanAttack()) {
             Attack();
@@ -98,17 +99,17 @@ public class Enemy: MonoBehaviour
     //    transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.1f);
     //}
 
-    // target 도달 여부에 따라 agent를 중지시키는 함수
-    private void StopMoveAgent() {
-        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance) {
-            agent.isStopped = true;
-        }
-    }
-
     // 공격 가능 여부
     protected virtual bool CanAttack() {
-        if (agent.isStopped && !attacking && attack_timer >= attack_waitingTime) {
-            return true;
+        if (currentDistance <= attackDistance) {
+            // 사정거리 안이라면 정지하고 target 방향으로 몸 회전하기
+            // ...
+            //agent.isStopped = true;
+            //FaceTarget(target.position);
+            if (!attacking && attack_timer >= attack_waitingTime) {
+                return true;
+            }
+            return false;
         }
         return false;
     }

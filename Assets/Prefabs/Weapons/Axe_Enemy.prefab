@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3859355894445890941}
   - component: {fileID: 6252607835571044891}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Blade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 8782448616199289608}
   - component: {fileID: 8657670696271659639}
   - component: {fileID: 1543383659991839870}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Axe_Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,6 +204,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tomahawk_lp
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a64b8456526f8c6499cf5e2b332d8526,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a64b8456526f8c6499cf5e2b332d8526, type: 3}
