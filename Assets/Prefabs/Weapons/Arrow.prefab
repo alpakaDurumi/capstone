@@ -239,7 +239,7 @@ MonoBehaviour:
   tip: {fileID: 9019573400619713304}
   layerMask:
     serializedVersion: 2
-    m_Bits: 1075
+    m_Bits: 1331
 --- !u!136 &441794492980476487
 CapsuleCollider:
   m_ObjectHideFlags: 0
