@@ -7,13 +7,15 @@ public class Axe : Projectile
 {
     private IXRSelectInteractor thrownInteractor;   // 도끼를 던진 손에 해당하는 Direct Interactor
 
-    //private SlowMotion slowMotion;
+    private SlowMotion slowMotion;
 
-    //private float handSpeedAmount;
+    private float throwPower;
+    private float spinPower;
 
     protected override void OnSelectEntered(SelectEnterEventArgs args) {
         base.OnSelectEntered(args);
-        //slowMotion = args.interactorObject.transform.GetComponentInParent<SlowMotion>();
+        // 도끼를 select한 XR Origin의 slowMotion 컴포넌트 접근
+        slowMotion = args.interactorObject.transform.GetComponentInParent<SlowMotion>();
     }
 
     protected override void OnSelectExited(SelectExitEventArgs args) {
@@ -22,15 +24,14 @@ public class Axe : Projectile
         launched = true;
         thrownInteractor = args.interactorObject;   // 던진 interactor를 기억
 
-        //handSpeedAmount = slowMotion.GetRightHandSpeed();
-        //rigidbody.AddForce(handSpeedAmount * thrownInteractor.transform.forward, ForceMode.VelocityChange); 
-        rigidbody.AddForce(10 * thrownInteractor.transform.forward, ForceMode.VelocityChange);
+        CalculatePowers(slowMotion.GetRightHandSpeed());
+        rigidbody.AddForce(throwPower * thrownInteractor.transform.forward, ForceMode.Impulse);
     }
 
     private void FixedUpdate() {
         // 날아가는 동안에 회전
         if (launched) {
-            RotateAxe();
+            SpinAxe();
         }
     }
 
@@ -59,8 +60,14 @@ public class Axe : Projectile
         interactionManager.SelectEnter(thrownInteractor, this);
     }
 
+    // 도끼가 날아가는 힘과 회전하는 힘 계산
+    private void CalculatePowers(float amount) {
+        throwPower = Mathf.Clamp(amount, 0.0f, 2.0f);
+        spinPower = Mathf.Clamp(amount / 10, 0.0f, 1.0f);
+    }
+
     // 도끼 회전 함수
-    private void RotateAxe() {
-        transform.Rotate(3, 0, 0);
+    private void SpinAxe() {
+        transform.Rotate(spinPower, 0, 0);
     }
 }
