@@ -14,6 +14,9 @@ public class Enemy: MonoBehaviour
     Vector2 smoothDeltaPosition = Vector2.zero;
     Vector2 velocity = Vector2.zero;
 
+    [SerializeField] protected float attackDistance;    // 공격 사정거리
+    protected float currentDistance;                    // 현재 target과의 거리
+
     protected bool attacking = false;
 
     protected float attack_timer = 0.0f;            // 공격 타이머
@@ -21,14 +24,16 @@ public class Enemy: MonoBehaviour
 
     WeaponChanger weaponChanger;
 
-    private void Awake() {
+    protected int attackLayerIndex;                 // 공격 애니메이션이 위치한 애니메이션 레이어
+
+    protected virtual void Awake() {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
 
         weaponChanger = target.GetComponent<WeaponChanger>();
     }
 
-    void Start()
+    protected virtual void Start()
     {
         // agent와 transform의 position 동기화를 수동으로 처리하도록 함
         // 아래의 OnAnimatorMove에서 처리하였음
@@ -62,16 +67,12 @@ public class Enemy: MonoBehaviour
         animator.SetFloat("velx", velocity.x);
         animator.SetFloat("vely", velocity.y);
 
-        //FaceTarget(target.position);
-
         // 공격 중이 아닌 경우 타이머를 증가
         if (!attacking) {
             attack_timer += Time.deltaTime;
         }
 
-        if (!agent.isStopped) {
-            StopMoveAgent();
-        }
+        currentDistance = Vector3.Distance(transform.position, target.position);
 
         if (CanAttack()) {
             Attack();
@@ -91,24 +92,24 @@ public class Enemy: MonoBehaviour
 
     // target 바라보기 기능
     // 보간 정도를 점검할 것
-    private void FaceTarget(Vector3 dest) {
-        Vector3 lookpos = dest - transform.position;
-        lookpos.y = 0f;
-        Quaternion rotation = Quaternion.LookRotation(lookpos);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.1f);
-    }
-
-    // target 도달 여부에 따라 agent를 중지시키는 함수
-    private void StopMoveAgent() {
-        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance) {
-            agent.isStopped = true;
-        }
-    }
+    //private void FaceTarget(Vector3 dest) {
+    //    Vector3 lookpos = dest - transform.position;
+    //    lookpos.y = 0f;
+    //    Quaternion rotation = Quaternion.LookRotation(lookpos);
+    //    transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.1f);
+    //}
 
     // 공격 가능 여부
     protected virtual bool CanAttack() {
-        if (agent.isStopped && !attacking && attack_timer >= attack_waitingTime) {
-            return true;
+        if (currentDistance <= attackDistance) {
+            // 사정거리 안이라면 정지하고 target 방향으로 몸 회전하기
+            // ...
+            //agent.isStopped = true;
+            //FaceTarget(target.position);
+            if (!attacking && attack_timer >= attack_waitingTime) {
+                return true;
+            }
+            return false;
         }
         return false;
     }
@@ -121,7 +122,7 @@ public class Enemy: MonoBehaviour
 
     // 공격이 끝나면 attacking을 false로 update하는 코루틴
     protected virtual IEnumerator WaitAttackEnd(System.Action<bool> callback) {
-        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(attackLayerIndex).IsTag("Attack") && animator.GetCurrentAnimatorStateInfo(attackLayerIndex).normalizedTime >= 1.0f);
         callback(false);
     }
 

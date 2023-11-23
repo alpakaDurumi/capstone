@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PistolShoot : MonoBehaviour
+public class BulletShooter : MonoBehaviour
 {
 
     public GameObject bulletPrefab;
@@ -12,26 +12,14 @@ public class PistolShoot : MonoBehaviour
     private float destroyTime = 0.2f;
     private float bulletForce = 20f;
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-       
-    }
-
     public void Shoot() {
-        // ¸ÓÁñ ÇÃ·¡½Ã È¿°ú
+        // ë¨¸ì¦ í”Œë˜ì‹œ íš¨ê³¼
         GameObject flash = Instantiate(muzzleFlashPrefab, barrelLocation.position, barrelLocation.rotation);
         Destroy(flash, destroyTime);
 
-        // ÃÑ¾Ë ¹ß»ç
+        // ì´ì•Œ ë°œì‚¬
         GameObject bullet = Instantiate(bulletPrefab, barrelLocation.position, barrelLocation.rotation);
         Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
         bulletRigidbody.AddForce(bulletForce * transform.forward, ForceMode.VelocityChange);
-
-        // »ç¹°¿¡ ºÎµúÈ÷°Å³ª Àû¿¡°Ô ÀûÁßÇÑ °æ¿ì ÃÑ¾ËÀ» Á¦°ÅÇØ¾ß ÇÔ.
     }
 }
