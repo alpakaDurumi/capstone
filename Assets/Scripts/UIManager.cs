@@ -38,18 +38,21 @@ public class UIManager : MonoSingleton<UIManager>
     }
     public void OnClickHowToPlayButton()
     {
-        Debug.Log("onClickHow");
         GameObject canvas = GameObject.Find("Canvas");
         canvas.transform.Find("Video Panel").gameObject.SetActive(true);
     }
 
     public void OnClickCloseButton()
     {
-        Debug.Log("onClickClose");
         GameObject clickedButton = EventSystem.current.currentSelectedGameObject;
         clickedButton.GetComponentInParent<Nova.UIBlock2D>().gameObject.SetActive(false);
     }
-
+    public void OnClickReturnButton()
+    {
+        EventSystem.current.currentSelectedGameObject.GetComponent<Button>().enabled = false;
+        GameManager.Instance.ResetGame();
+        sceneTransition.GoToSceneAsync(GameManager.Instance.Stage);
+    }
 #region 구현 세부사항
     private Canvas InstantiateButton()
     {

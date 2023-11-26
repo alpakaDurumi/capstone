@@ -18,7 +18,13 @@ public class GameManager : MonoSingleton<GameManager>
         IsStartRound = false;
         DontDestroyOnLoad(this.gameObject);
     }
+    public void ResetGame()
+    {
+        Stage = 0;
+        RemainEnemiesInGroup = 0;
+        RemainGroupsOnStage = 0;
 
+    }
     public void ResetStageInfo()
     {
         RemainEnemiesInGroup = 0;

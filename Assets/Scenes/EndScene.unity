@@ -2046,12 +2046,17 @@ PrefabInstance:
     - target: {fileID: 6386538823098689773, guid: c54afbb06d3e04fc3aef1e41d0b1de46,
         type: 3}
       propertyPath: m_text
-      value: Replay
+      value: return
       objectReference: {fileID: 0}
     - target: {fileID: 6386538823098689773, guid: c54afbb06d3e04fc3aef1e41d0b1de46,
         type: 3}
       propertyPath: m_fontSize
       value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386538823098689773, guid: c54afbb06d3e04fc3aef1e41d0b1de46,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6386538823098689773, guid: c54afbb06d3e04fc3aef1e41d0b1de46,
         type: 3}
@@ -2098,6 +2103,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1821218441}
+    - target: {fileID: 8138799402669881780, guid: c54afbb06d3e04fc3aef1e41d0b1de46,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClickReturnButton
+      objectReference: {fileID: 0}
     - target: {fileID: 8138799402669881781, guid: c54afbb06d3e04fc3aef1e41d0b1de46,
         type: 3}
       propertyPath: m_Pivot.x
