@@ -13,13 +13,15 @@ public class Stage : MonoBehaviour
     public Group[] groups;
     private int groupIdx;
     private Transform lastEnemy;
-
-    private void Start()
+    private void Awake()
     {
         GameManager.Instance.EndRound();
-        GameManager.Instance.UpdateStageInfo(groups);
+        GameManager.Instance.ResetStage();
+    }
+    private void Start()
+    {
         groupIdx = 0;
-     
+        GameManager.Instance.UpdateStageInfo(groups);
     }
 
     private void FixedUpdate()

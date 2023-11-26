@@ -44,11 +44,10 @@ public class FadeScreen : MonoBehaviour
     {
         yield return StartCoroutine(FadeRoutine(alphaIn, alphaOut));
 
-        GameManager.Instance.StartRound();
-
         if(!SceneManager.GetActiveScene().name.Equals("StartScene"))
         {
             weaponChanger.ChangeToRandomWeapon();
+            GameManager.Instance.StartRound();
         }
     }
 

@@ -27,7 +27,6 @@ public class UIManager : MonoSingleton<UIManager>
     }
     public void OnClickStartButton()
     {
-        GameManager.Instance.ResetGameStageInfo();
         GameManager.Instance.IncreaseStage();
         sceneTransition.GoToSceneAsync(GameManager.Instance.Stage);
 

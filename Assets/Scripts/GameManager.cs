@@ -14,14 +14,20 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Awake()
     {
+        Stage = 0;
         IsStartRound = false;
         DontDestroyOnLoad(this.gameObject);
     }
 
-    public void ResetGameStageInfo()
+    public void ResetStageInfo()
     {
-        Stage = 0;
+        RemainEnemiesInGroup = 0;
         RemainGroupsOnStage = 0;
+    }
+    public void ResetStage()
+    {
+        RemainGroupsOnStage = 0;
+        RemainEnemiesInGroup = 0;
     }
     public void IncreaseStage()
     {
