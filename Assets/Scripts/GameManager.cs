@@ -24,11 +24,6 @@ public class GameManager : MonoSingleton<GameManager>
         RemainEnemiesInGroup = 0;
         RemainGroupsOnStage = 0;
     }
-    public void ResetStage()
-    {
-        RemainGroupsOnStage = 0;
-        RemainEnemiesInGroup = 0;
-    }
     public void IncreaseStage()
     {
         Stage++;

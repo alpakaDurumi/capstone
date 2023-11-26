@@ -16,7 +16,7 @@ public class Stage : MonoBehaviour
     private void Awake()
     {
         GameManager.Instance.EndRound();
-        GameManager.Instance.ResetStage();
+        GameManager.Instance.ResetStageInfo();
     }
     private void Start()
     {
