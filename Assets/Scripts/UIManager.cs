@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEditor.UI;
+using UnityEngine.SceneManagement;
 using Button = UnityEngine.UI.Button;
 
 
@@ -16,6 +17,11 @@ public class UIManager : MonoSingleton<UIManager>
         if(sceneTransition == null)
         {
             sceneTransition = gameObject.AddComponent<SceneTransition>();
+        }
+
+        if (SceneManager.GetActiveScene().name.Equals("EndScene"))
+        {
+            PrintTotalPlayTimeText();
         }
     }
     public void CreateNextStageButton(Transform target) {
@@ -53,6 +59,7 @@ public class UIManager : MonoSingleton<UIManager>
         GameManager.Instance.ResetGame();
         sceneTransition.GoToSceneAsync(GameManager.Instance.Stage);
     }
+
 #region 구현 세부사항
     private Canvas InstantiateButton()
     {
@@ -79,6 +86,12 @@ public class UIManager : MonoSingleton<UIManager>
         GameManager.Instance.IncreaseStage();
         button.onClick.AddListener(() => sceneTransition.GoToSceneAsync(GameManager.Instance.Stage));
         button.onClick.AddListener(() => button.enabled = false);
+    }
+    private void PrintTotalPlayTimeText()
+    {
+        string time = GameManager.Instance.GetTotalPlayTime();
+        Nova.TextBlock text = GameObject.Find("ScoreText").GetComponent<Nova.TextBlock>();
+        text.Text = time;
     }
     #endregion
 }
