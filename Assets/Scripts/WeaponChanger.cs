@@ -59,7 +59,9 @@ public class WeaponChanger : MonoBehaviour
 
         // 이전 무기 제거
         if (currentWeapon != null) {
-            Destroy(currentWeapon);
+            if(!currentWeapon.TryGetComponent<Axe>(out Axe axe)) {
+                Destroy(currentWeapon);
+            }
         }
 
         // 무기 생성 후 지정된 손에 select
