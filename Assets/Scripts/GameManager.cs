@@ -6,24 +6,25 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoSingleton<GameManager>
 {
 
-    public int Stage { get; private set; }
+    public int Stage { get; private set; } = 0;
     public int RemainGroupsOnStage { get; private set; } // 해당 스테이지에 남은 그룹
     public int RemainEnemiesInGroup { get; private set; } // 해당 그룹에 남은 적의 수 
     public bool IsStartRound { get; private set; }
 
+    private GameTimer timer = null;
 
     private void Awake()
     {
-        Stage = 0;
         IsStartRound = false;
-        DontDestroyOnLoad(this.gameObject);
+        if(timer == null) 
+            timer = gameObject.AddComponent<GameTimer>();
     }
     public void ResetGame()
     {
         Stage = 0;
         RemainEnemiesInGroup = 0;
         RemainGroupsOnStage = 0;
-
+        timer.ResetTimer();
     }
     public void ResetStageInfo()
     {
@@ -73,5 +74,9 @@ public class GameManager : MonoSingleton<GameManager>
     public void DecreaseEnemyCountOnStage()
     {
         RemainEnemiesInGroup--;
+    }
+    public string GetTotalPlayTime()
+    {
+        return timer.GetFormattedPlayTime();
     }
 }
