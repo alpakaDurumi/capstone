@@ -2115,6 +2115,7 @@ MonoBehaviour:
   - {fileID: 3350017209714285497, guid: c080be0cd84ce6842b70a6247d82c615, type: 3}
   - {fileID: 6368150862880438908, guid: fcb0ef5b68cacd24e96343a219bfaaa7, type: 3}
   - {fileID: 2122628583947998718, guid: 631c26ee29acf22458d3660fb64185cc, type: 3}
+  inputActionManager: {fileID: 0}
 --- !u!114 &2520292176006233318
 MonoBehaviour:
   m_ObjectHideFlags: 0

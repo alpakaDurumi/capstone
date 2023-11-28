@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Inputs;
 
 public class WeaponChanger : MonoBehaviour
 {
-    public XRInteractionManager interactionManager;
+    [SerializeField] private XRInteractionManager interactionManager;
 
-    public GameObject[] Weapons;
+    [SerializeField] private GameObject[] Weapons;
     private GameObject currentWeapon = null;
 
     private int currentWeaponIdx = -1;
@@ -20,11 +22,22 @@ public class WeaponChanger : MonoBehaviour
     private int killCnt = 0;
     private int cntToChange = 1;    // 무기 변경을 위해 필요한 처치 수
 
+    [SerializeField] private InputActionManager inputActionManager;   // 왼손과 오른손의 select를 제한하기 위하여 접근
+
+    private InputAction leftHandSelect;
+    private InputAction rightHandSelect;
+
     private void Awake() {
         leftHand = GameObject.Find("LeftHand").GetComponentInChildren<XRDirectInteractor>();
         rightHand = GameObject.Find("RightHand").GetComponentInChildren<XRDirectInteractor>();
 
-        quiver = transform.GetChild(1).gameObject;
+        quiver = transform.GetChild(2).gameObject;  // 인덱스 수정
+    }
+
+    private void Start() {
+        // 왼손과 오른손의 select action을 각각 할당
+        leftHandSelect = inputActionManager.actionAssets[0].FindAction("XRI LeftHand Interaction/Select");
+        rightHandSelect = inputActionManager.actionAssets[0].FindAction("XRI RightHand Interaction/Select");
     }
 
     // 무기 변경 함수
@@ -63,16 +76,21 @@ public class WeaponChanger : MonoBehaviour
             targetInteractor = leftHand;
             SetQuiverStatus(true);     // 활의 경우, Quiver 활성화
             SetRightToPrimary(false);
+
+            SetSelectInput(false, true);
         }
         else {
             if (Weapons[weaponIdx].name.Equals("Sword")) {
                 targetInteractor = rightHand;
+                SetSelectInput(true, false);
             }
             else if (Weapons[weaponIdx].name.Equals("Pistol")) {
                 targetInteractor = rightHand;
+                SetSelectInput(true, false);
             }
             else if (Weapons[weaponIdx].name.Equals("Axe")) {
                 targetInteractor = rightHand;
+                SetSelectInput(true, true);     // 도끼는 투척을 해야하므로 두 손 모두 true
             }
             SetQuiverStatus(false);
             SetRightToPrimary(true);
@@ -107,6 +125,23 @@ public class WeaponChanger : MonoBehaviour
         if(killCnt == cntToChange) {
             ChangeToRandomWeapon();
             killCnt = 0;
+        }
+    }
+
+    // 왼손과 오른손의 select input 활성화 여부를 세팅하는 함수
+    private void SetSelectInput(bool leftHandValue, bool rightHandValue) {
+        if (leftHandValue) {
+            leftHandSelect.Enable();
+        }
+        else {
+            leftHandSelect.Disable();
+        }
+
+        if (rightHandValue) {
+            rightHandSelect.Enable();
+        }
+        else {
+            rightHandSelect.Disable();
         }
     }
 }
