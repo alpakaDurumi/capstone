@@ -130,5 +130,14 @@ public class Enemy: MonoBehaviour
     public void Die() {
         GameManager.Instance.DecreaseEnemyCountOnStage();
         weaponChanger.IncreaseKillCount();
+
+        // 이 Enemy가 해당 스테이지의 마지막 그룹 && 마지막 적일 때
+        if(GameManager.Instance.RemainGroupsOnStage == 0
+            && GameManager.Instance.RemainEnemiesInGroup == 0)
+        {
+            // 이 Enemy의 위치를 통해 버튼 생
+            UIManager.Instance.CreateNextStageButton(transform);
+            GameManager.Instance.EndRound();
+        }
     }
 }
