@@ -7,7 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit.Inputs;
 
 public class WeaponChanger : MonoBehaviour
 {
-    [SerializeField] private XRInteractionManager interactionManager;
+    private XRInteractionManager interactionManager;
 
     [SerializeField] private GameObject[] Weapons;
     private GameObject currentWeapon = null;
@@ -22,12 +22,15 @@ public class WeaponChanger : MonoBehaviour
     private int killCnt = 0;
     private int cntToChange = 1;    // 무기 변경을 위해 필요한 처치 수
 
-    [SerializeField] private InputActionManager inputActionManager;   // 왼손과 오른손의 select를 제한하기 위하여 접근
+    private InputActionManager inputActionManager;   // 왼손과 오른손의 select를 제한하기 위하여 접근
 
     private InputAction leftHandSelect;
     private InputAction rightHandSelect;
 
     private void Awake() {
+        interactionManager = GetComponent<XRInteractionManager>();
+        inputActionManager = GetComponent<InputActionManager>();
+
         leftHand = GameObject.Find("LeftHand").GetComponentInChildren<XRDirectInteractor>();
         rightHand = GameObject.Find("RightHand").GetComponentInChildren<XRDirectInteractor>();
 
@@ -59,7 +62,7 @@ public class WeaponChanger : MonoBehaviour
 
         // 이전 무기 제거
         if (currentWeapon != null) {
-            if(!currentWeapon.TryGetComponent<Axe>(out Axe axe)) {
+            if (!currentWeapon.TryGetComponent<Axe>(out _)) {
                 Destroy(currentWeapon);
             }
         }
