@@ -9,8 +9,21 @@ public class Axe : Projectile
 
     private SlowMotion slowMotion;
 
+    private Transform axeModel;                     // 투척 시 회전할 도끼 모델
+
     private float throwPower;
     private float spinPower;
+
+    private Vector3 initialRotation;                // 투척 이전 초기 회전값
+
+    protected override void Awake() {
+        base.Awake();
+        axeModel = transform.GetChild(0);
+    }
+
+    private void Start() {
+        initialRotation = axeModel.localEulerAngles;
+    }
 
     protected override void OnSelectEntered(SelectEnterEventArgs args) {
         base.OnSelectEntered(args);
@@ -25,7 +38,7 @@ public class Axe : Projectile
         thrownInteractor = args.interactorObject;   // 던진 interactor를 기억
 
         CalculatePowers(slowMotion.GetRightHandSpeed());
-        rigidbody.AddForce(throwPower * thrownInteractor.transform.forward, ForceMode.Impulse);
+        rigidbody.AddForce(throwPower * transform.forward, ForceMode.Impulse);
     }
 
     private void FixedUpdate() {
@@ -37,7 +50,7 @@ public class Axe : Projectile
 
     private void OnTriggerEnter(Collider other) {
         // 투척된 상태에서 충돌했다면 충돌 오브젝트가 ProjectileTarget 컴포넌트를 가지는지 검사
-        if (launched && other.gameObject.layer != LayerMask.NameToLayer("Ignore Raycast")) {
+        if (launched) {
             launched = false;   // 중복 충돌을 방지하기 위함
             DisablePhysics();   // 물리 비활성화(꽂혀있는 효과)
             
@@ -58,16 +71,19 @@ public class Axe : Projectile
     private IEnumerator ReturnRoutine() {
         yield return new WaitForSeconds(1.0f);
         interactionManager.SelectEnter(thrownInteractor, this);
+        axeModel.localEulerAngles = initialRotation;                // spinAxe()로 회전된 모델에 다시 초기 rotation 적용
     }
 
     // 도끼가 날아가는 힘과 회전하는 힘 계산
     private void CalculatePowers(float amount) {
-        throwPower = Mathf.Clamp(amount, 0.0f, 2.0f);
-        spinPower = Mathf.Clamp(amount / 10, 0.0f, 1.0f);
+        throwPower = Mathf.Clamp(amount * 2, 0.0f, 5.0f);
+        spinPower = Mathf.Lerp(0, 1.0f, throwPower / 5.0f);     // throwPower의 강도에 따라 spinPower 조절
     }
 
     // 도끼 회전 함수
     private void SpinAxe() {
-        transform.Rotate(spinPower, 0, 0);
+        axeModel.Rotate(0, -spinPower, 0);
     }
 }
+
+// update 내에 select 입력 시 돌아오는 함수? select하고 있지 않을 때에만 수행
