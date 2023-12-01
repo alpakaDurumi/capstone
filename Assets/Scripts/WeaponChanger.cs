@@ -34,7 +34,8 @@ public class WeaponChanger : MonoBehaviour
         leftHand = GameObject.Find("LeftHand").GetComponentInChildren<XRDirectInteractor>();
         rightHand = GameObject.Find("RightHand").GetComponentInChildren<XRDirectInteractor>();
 
-        quiver = transform.GetChild(2).gameObject;  // 인덱스 수정
+        // 기본적으로 inactive 상태인 Quiver를 탐색하기 위해 includeInactive를 true로 설정
+        quiver = GetComponentInChildren<Quiver>(true).gameObject;
     }
 
     private void Start() {
