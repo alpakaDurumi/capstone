@@ -1920,6 +1920,7 @@ GameObject:
   - component: {fileID: 2520292176006233318}
   - component: {fileID: -1219496411163048832}
   - component: {fileID: 5497417633193873369}
+  - component: {fileID: 979970321}
   m_Layer: 6
   m_Name: XR Origin
   m_TagString: Player
@@ -2077,13 +2078,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.6
-  m_Radius: 0.1
+  m_Height: 1.7
+  m_Radius: 0.25
   m_SlopeLimit: 45
   m_StepOffset: 0.5
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.76072, z: 0}
+  m_Center: {x: 0, y: 0.85, z: 0}
 --- !u!114 &5698560005064937220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2156,6 +2157,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ActionAssets:
   - {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+--- !u!114 &979970321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8290422908531382773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36224756c51aa7a46a89f74dc191f151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1521154962880922906
 PrefabInstance:
   m_ObjectHideFlags: 0
