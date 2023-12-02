@@ -38,12 +38,14 @@ public class SlowMotion : MonoBehaviour
         {
             // 정상 속도 
             Time.timeScale = NORMAL_SPEED;
+            SoundManager.Instance.RestoreMusicNormalSpeed();
         }
         else 
         {
             // 슬로우 모션 
             Time.timeScale = SLOWMOTION_SPEED;
             Time.fixedDeltaTime = Time.timeScale * SMOOTH_OFFSET;
+            SoundManager.Instance.ReduceMusicSpeed();
         }
     }
     private void InitDevice()
