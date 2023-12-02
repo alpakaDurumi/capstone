@@ -28,6 +28,7 @@ public class UIManager : MonoSingleton<UIManager>
         Canvas button = InstantiateButton();
         SetNextStageButtonLocation(button,target);
         AddNextStageButtonAction(button);
+        SoundManager.Instance.AddButtonSound(button.GetComponent<Button>());
 
     }
     public void OnClickStartButton()
