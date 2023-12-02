@@ -9,7 +9,34 @@ public class SoundManager : MonoSingleton<SoundManager>
 {
     [SerializeField] private AudioClip btnClickSound;
     [SerializeField] private AudioClip btnHoverSound;
-    [SerializeField] AudioSource source;
+    [SerializeField] private AudioClip battleMusic;
+    [SerializeField] private AudioClip fadeOutSound;
+    [SerializeField] private AudioClip fadeInSound;
+    [SerializeField] private AudioClip battleOffMusic;
+
+    [SerializeField] AudioSource effectAudioSource;
+    [SerializeField] AudioSource musicAudioSource;
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (SceneManager.GetActiveScene().name.Equals("StartScene")
+            || SceneManager.GetActiveScene().name.Equals("EndScene"))
+        {
+            InitButtonSound();
+        }
+        musicAudioSource.clip = battleMusic;
+        musicAudioSource.Play();
+    }
 
     public void AddButtonSound(Button button)
     {
@@ -18,17 +45,16 @@ public class SoundManager : MonoSingleton<SoundManager>
         AddEventTrigger(eventTrigger, EventTriggerType.PointerClick, OnButtonClickSound);
         AddEventTrigger(eventTrigger, EventTriggerType.PointerEnter, OnButtonEnterSound);
     }
+    public void ReduceMusicSpeed()
+    {
+        musicAudioSource.pitch = 0.35f;
+    }
+    public void RestoreMusicNormalSpeed()
+    {
+        musicAudioSource.pitch = 1f;
+    }
 
     #region 세부 구현 사항
-    private void Awake()
-    {
-        if(SceneManager.GetActiveScene().name.Equals("StartScene")
-            || SceneManager.GetActiveScene().name.Equals("EndScene"))
-        {
-            InitButtonSound();
-        }
-
-    }
     private void InitButtonSound()
     {
         Button[] buttons = FindObjectsOfType<Button>();
@@ -50,15 +76,11 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     private void OnButtonClickSound(BaseEventData data)
     {
-        // 여기에 버튼 클릭 시 수행할 작업을 작성하세요.
-        Debug.Log("Button Clicked");
-        source.PlayOneShot(btnClickSound);
+        effectAudioSource.PlayOneShot(btnClickSound);
     }
     private void OnButtonEnterSound(BaseEventData data)
     {
-        Debug.Log("Button Entered!!");
-        source.PlayOneShot(btnHoverSound);
-        // 여기에 버튼 클릭 시 수행할 작업을 작성하세요.
+        effectAudioSource.PlayOneShot(btnHoverSound);
     }
     #endregion
 }
