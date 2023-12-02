@@ -22,4 +22,20 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
             return _instance;
         }
     }
+    private void Awake()
+    {
+        T sameScript = FindObjectOfType<T>();
+
+        if (_instance != null && sameScript != null)
+        {
+            Destroy(sameScript.gameObject);
+        }
+        else if(_instance == null && sameScript != null)
+        {
+            _instance = sameScript;
+            DontDestroyOnLoad(sameScript.gameObject);
+        }
+    }
+
+
 }
