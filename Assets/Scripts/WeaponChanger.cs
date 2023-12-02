@@ -19,9 +19,6 @@ public class WeaponChanger : MonoBehaviour
 
     private GameObject quiver;
 
-    private int killCnt = 0;
-    private int cntToChange = 1;    // 무기 변경을 위해 필요한 처치 수
-
     private InputActionManager inputActionManager;   // 왼손과 오른손의 select를 제한하기 위하여 접근
 
     private InputAction leftHandSelect;
@@ -121,16 +118,6 @@ public class WeaponChanger : MonoBehaviour
         else {
             leftHand.selectActionTrigger = XRBaseControllerInteractor.InputTriggerType.Sticky;
             rightHand.selectActionTrigger = XRBaseControllerInteractor.InputTriggerType.StateChange;
-        }
-    }
-
-    // 킬 카운트를 증가시키는 함수
-    public void IncreaseKillCount() {
-        killCnt++;
-        // 목표 카운트에 도달하면 무기 변경
-        if(killCnt == cntToChange) {
-            ChangeToRandomWeapon();
-            killCnt = 0;
         }
     }
 

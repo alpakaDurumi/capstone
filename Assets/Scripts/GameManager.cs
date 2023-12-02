@@ -13,11 +13,18 @@ public class GameManager : MonoSingleton<GameManager>
 
     private GameTimer timer = null;
 
+    private WeaponChanger weaponChanger;
+
+    public int killCount { get; private set; }
+    private int killCountToChangeWeapon = 1;
+
     private void Awake()
     {
         IsStartRound = false;
         if(timer == null) 
             timer = gameObject.AddComponent<GameTimer>();
+
+        weaponChanger = GameObject.Find("XR Origin").GetComponent<WeaponChanger>();
     }
     public void ResetGame()
     {
@@ -78,5 +85,15 @@ public class GameManager : MonoSingleton<GameManager>
     public string GetTotalPlayTime()
     {
         return timer.GetFormattedPlayTime();
+    }
+
+    // 킬 카운트를 증가시키는 함수
+    public void IncreaseKillCountOnStage() {
+        killCount++;
+        // 목표 카운트에 도달하면 무기 변경
+        if (killCount == killCountToChangeWeapon) {
+            weaponChanger.ChangeToRandomWeapon();
+            killCount = 0;
+        }
     }
 }

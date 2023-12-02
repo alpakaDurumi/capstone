@@ -13,6 +13,9 @@ public class Stage : MonoBehaviour
     public Group[] groups;
     private int groupIdx;
     private Transform lastEnemy;
+
+    [SerializeField] private Transform targetForNav;
+
     private void Awake()
     {
         GameManager.Instance.EndRound();
@@ -22,6 +25,8 @@ public class Stage : MonoBehaviour
     {
         groupIdx = 0;
         GameManager.Instance.UpdateStageInfo(groups);
+
+        targetForNav = GameObject.Find("CameraOffset").transform;
     }
 
     private void FixedUpdate()
@@ -71,6 +76,7 @@ public class Stage : MonoBehaviour
         foreach (Enemy enemy in enemies)
         {
             enemy.gameObject.SetActive(true);
+            enemy.target = targetForNav;        // 모든 enemy들에 대하여 target 설정
         }
         return enemies;
     }

@@ -12,11 +12,9 @@ public class Enemy_rifle : Enemy
 
     private BulletShooter shooter;
 
-    [SerializeField] private Transform from;                // target과의 각도를 계산하기 위한 기준점
+    private Transform AimStart;                             // target과의 각도를 계산하기 위한 기준점
 
     [SerializeField] private LayerMask layerMask_canSee;    // 시야 레이어마스크 : 기본적으로 Player와 Stage 선택
-
-    private Transform targetForAim;
 
     protected override void Awake() {
         base.Awake();
@@ -26,7 +24,7 @@ public class Enemy_rifle : Enemy
     protected override void Start() {
         base.Start();
         attackLayerIndex = 2;
-        targetForAim = target.GetChild(1);                  // XR Origin의 첫 번째 자식인 TarGetForAim
+        AimStart = transform.GetChild(1);
     }
 
     protected override void Update()
@@ -45,8 +43,8 @@ public class Enemy_rifle : Enemy
 
     // target을 포착 가능한지 여부
     private bool CanSee() {
-        Physics.Raycast(from.position, targetForAim.position - from.position, out RaycastHit hitInfo, attackDistance, layerMask_canSee);
-        //Debug.DrawRay(from.position, (targetForAim.position - from.position).normalized * attackDistance, Color.red);
+        Physics.Raycast(AimStart.position, target.position - AimStart.position, out RaycastHit hitInfo, attackDistance, layerMask_canSee);
+        //Debug.DrawRay(AimStart.position, (target.position - AimStart.position).normalized * attackDistance, Color.red);
 
         if (hitInfo.transform.tag == "Player") {
             return true;
@@ -95,7 +93,7 @@ public class Enemy_rifle : Enemy
 
     // target 방향으로 조준하기 위한 함수
     private void AimTarget() {
-        Vector3 dir = from.InverseTransformPoint(targetForAim.position).normalized;
+        Vector3 dir = AimStart.InverseTransformPoint(target.position).normalized;
 
         // dir : -1 ~ 1 구간. -90도부터 90도까지 나타냄.
         // 애니메이션으로 표현 가능한 각도

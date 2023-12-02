@@ -2374,7 +2374,7 @@ GameObject:
   m_Component:
   - component: {fileID: 391316878431335743}
   m_Layer: 8
-  m_Name: From
+  m_Name: AimStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
