@@ -11,7 +11,15 @@ public class SoundManager : MonoSingleton<SoundManager>
     [SerializeField] private AudioClip btnHoverSound;
     [SerializeField] AudioSource source;
 
+    public void AddButtonSound(Button button)
+    {
+        EventTrigger eventTrigger = button.GetComponent<EventTrigger>();
+        if (eventTrigger == null) return;
+        AddEventTrigger(eventTrigger, EventTriggerType.PointerClick, OnButtonClickSound);
+        AddEventTrigger(eventTrigger, EventTriggerType.PointerEnter, OnButtonEnterSound);
+    }
 
+    #region 세부 구현 사항
     private void Awake()
     {
         if(SceneManager.GetActiveScene().name.Equals("StartScene")
@@ -25,10 +33,7 @@ public class SoundManager : MonoSingleton<SoundManager>
     {
         Button[] buttons = FindObjectsOfType<Button>();
         foreach(Button button in buttons){
-            EventTrigger eventTrigger = button.GetComponent<EventTrigger>();
-            if (eventTrigger == null) continue;
-            AddEventTrigger(eventTrigger,EventTriggerType.PointerClick, OnButtonClickSound);
-            AddEventTrigger(eventTrigger,EventTriggerType.PointerEnter, OnButtonEnterSound);
+            AddButtonSound(button);
         }
     }
 
@@ -55,4 +60,5 @@ public class SoundManager : MonoSingleton<SoundManager>
         source.PlayOneShot(btnHoverSound);
         // 여기에 버튼 클릭 시 수행할 작업을 작성하세요.
     }
+    #endregion
 }
