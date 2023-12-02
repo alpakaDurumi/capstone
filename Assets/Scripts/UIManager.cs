@@ -44,7 +44,9 @@ public class UIManager : MonoSingleton<UIManager>
     public void OnClickHowToPlayButton()
     {
         GameObject canvas = GameObject.Find("Canvas");
-        canvas.transform.Find("Video Panel").gameObject.SetActive(true);
+        GameObject videoPanel = canvas.transform.Find("Video Panel").gameObject;
+        videoPanel.SetActive(true);
+        SoundManager.Instance.AddButtonSound(videoPanel.GetComponentInChildren<Button>());      
     }
 
     public void OnClickCloseButton()
@@ -52,6 +54,7 @@ public class UIManager : MonoSingleton<UIManager>
         GameObject clickedButton = EventSystem.current.currentSelectedGameObject;
         clickedButton.GetComponentInParent<Nova.UIBlock2D>().gameObject.SetActive(false);
     }
+
     public void OnClickReturnButton()
     {
         EventSystem.current.currentSelectedGameObject.GetComponent<Button>().enabled = false;
