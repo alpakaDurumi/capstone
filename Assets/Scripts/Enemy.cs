@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Enemy: MonoBehaviour
 {
-    public Transform target { get; set; }               // target을 프로퍼티로 설정
-
+    [SerializeField] public Transform target;       // target은 XR Origin으로 설정할 것
     protected NavMeshAgent agent;
     protected Animator animator;
 
@@ -18,14 +19,18 @@ public class Enemy: MonoBehaviour
 
     protected bool attacking = false;
 
-    protected float attack_timer = 0.0f;                // 공격 타이머
-    protected float attack_waitingTime = 2.0f;          // 공격 간격
+    protected float attack_timer = 0.0f;            // 공격 타이머
+    protected float attack_waitingTime = 2.0f;      // 공격 간격
 
-    protected int attackLayerIndex;                     // 공격 애니메이션이 위치한 애니메이션 레이어
+    WeaponChanger weaponChanger;
+
+    protected int attackLayerIndex;                 // 공격 애니메이션이 위치한 애니메이션 레이어
 
     protected virtual void Awake() {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+
+        weaponChanger = target.GetComponent<WeaponChanger>();
     }
 
     protected virtual void Start()
@@ -125,5 +130,14 @@ public class Enemy: MonoBehaviour
     public void Die() {
         GameManager.Instance.DecreaseEnemyCountOnStage();
         GameManager.Instance.IncreaseKillCountOnStage();
+
+        // 이 Enemy가 해당 스테이지의 마지막 그룹 && 마지막 적일 때
+        if(GameManager.Instance.RemainGroupsOnStage == 0
+            && GameManager.Instance.RemainEnemiesInGroup == 0)
+        {
+            // 이 Enemy의 위치를 통해 버튼 생
+            UIManager.Instance.CreateNextStageButton(transform);
+            GameManager.Instance.EndRound();
+        }
     }
 }
