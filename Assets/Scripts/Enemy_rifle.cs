@@ -43,12 +43,20 @@ public class Enemy_rifle : Enemy
 
     // target을 포착 가능한지 여부
     private bool CanSee() {
-        Physics.Raycast(AimStart.position, target.position - AimStart.position, out RaycastHit hitInfo, attackDistance, layerMask_canSee);
-        //Debug.DrawRay(AimStart.position, (target.position - AimStart.position).normalized * attackDistance, Color.red);
+        bool isHit = Physics.Raycast(AimStart.position, target.position - AimStart.position, out RaycastHit hitInfo, attackDistance, layerMask_canSee);
+        Debug.DrawRay(AimStart.position, (target.position - AimStart.position).normalized * attackDistance, Color.red);
 
-        if (hitInfo.transform.tag == "Player") {
-            return true;
+        // 광선이 콜라이더를 만난 경우
+        if(isHit) {
+            // 플레이어를 볼 수 있다면
+            if (hitInfo.transform.tag == "Player") {
+                return true;
+            }
+            else {
+                return false;
+            }
         }
+        // 광선이 아무 콜라이더도 만나지 못한 경우
         else {
             return false;
         }
