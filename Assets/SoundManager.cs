@@ -47,11 +47,11 @@ public class SoundManager : MonoSingleton<SoundManager>
     }
     public void ReduceMusicSpeed()
     {
-        musicAudioSource.pitch = 0.35f;
+        musicAudioSource.pitch = Mathf.Lerp(musicAudioSource.pitch, 0.35f, 0.08f);
     }
     public void RestoreMusicNormalSpeed()
     {
-        musicAudioSource.pitch = 1f;
+        musicAudioSource.pitch = Mathf.Lerp(musicAudioSource.pitch, 0.99f, 0.08f);
     }
 
     #region 세부 구현 사항
