@@ -75,7 +75,6 @@ public class Stage : MonoBehaviour
         {
             enemy.gameObject.SetActive(true);
             enemy.target = targetForNav;        // 모든 enemy들에 대하여 target 설정
-            Debug.Log(targetForNav + "    " + enemy.target);
         }
         return enemies;
     }

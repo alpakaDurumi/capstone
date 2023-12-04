@@ -2650,9 +2650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a51d626bbf315240b204da27c6024d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   attackDistance: 30
-  from: {fileID: 391316878431335743}
   layerMask_canSee:
     serializedVersion: 2
     m_Bits: 576
