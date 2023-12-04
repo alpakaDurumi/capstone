@@ -13,6 +13,7 @@ public class SoundManager : MonoSingleton<SoundManager>
     [SerializeField] private AudioClip fadeOutSound;
     [SerializeField] private AudioClip fadeInSound;
     [SerializeField] private AudioClip battleOffMusic;
+    [SerializeField] private AudioClip deadSound;
 
     [SerializeField] AudioSource effectAudioSource;
     [SerializeField] AudioSource musicAudioSource;
@@ -25,6 +26,8 @@ public class SoundManager : MonoSingleton<SoundManager>
     void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        musicAudioSource.pitch = 1f;
+        musicAudioSource.volume = 0.1f;
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -52,6 +55,15 @@ public class SoundManager : MonoSingleton<SoundManager>
     public void RestoreMusicNormalSpeed()
     {
         musicAudioSource.pitch = Mathf.Lerp(musicAudioSource.pitch, 0.99f, 0.08f);
+    }
+
+    public void AddPlayerDieSound()
+    {
+        musicAudioSource.Stop();
+        musicAudioSource.clip = deadSound;
+        musicAudioSource.Play();
+        musicAudioSource.pitch = 1.1f;
+        musicAudioSource.volume = 0.5f;
     }
 
     #region 세부 구현 사항
