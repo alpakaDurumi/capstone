@@ -40,6 +40,7 @@ public class UIManager : MonoSingleton<UIManager>
         // 중복 누름 방지 
         EventSystem.current.currentSelectedGameObject
             .GetComponent<Button>().enabled = false;
+        SoundManager.Instance.AddFadeOutSound();
         
     }
     public void OnClickHowToPlayButton()
@@ -89,6 +90,7 @@ public class UIManager : MonoSingleton<UIManager>
         GameManager.Instance.IncreaseStage();
         button.onClick.AddListener(() => sceneTransition.GoToSceneAsync(GameManager.Instance.Stage));
         button.onClick.AddListener(() => button.enabled = false);
+        button.onClick.AddListener(() => SoundManager.Instance.AddFadeOutSound());
     }
     private void PrintTotalPlayTimeText()
     {

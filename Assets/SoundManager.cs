@@ -32,6 +32,7 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        musicAudioSource.PlayOneShot(fadeInSound);
         if (SceneManager.GetActiveScene().name.Equals("StartScene")
             || SceneManager.GetActiveScene().name.Equals("EndScene"))
         {
@@ -64,6 +65,10 @@ public class SoundManager : MonoSingleton<SoundManager>
         musicAudioSource.Play();
         musicAudioSource.pitch = 1.1f;
         musicAudioSource.volume = 0.5f;
+    }
+    public void AddFadeOutSound()
+    {
+        musicAudioSource.PlayOneShot(fadeOutSound);
     }
 
     #region 세부 구현 사항
