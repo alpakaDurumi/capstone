@@ -28,7 +28,7 @@ public class Enemy_rifle : Enemy
 
     protected override void Start() {
         base.Start();
-        attackLayerIndex = 2;
+        attackLayerIndex = 3;
         aimStart = transform.GetChild(1);
     }
 
@@ -75,10 +75,6 @@ public class Enemy_rifle : Enemy
         // target을 볼 수 있다면 나머지 조건 판단
         if (CanSee()) {
             if (currentDistance <= attackDistance) {
-                // 사정거리 안이라면 정지하고 target 방향으로 몸 회전하기
-                // ...
-                //agent.isStopped = true;
-                //FaceTarget(target.position);
                 if (!attacking && attack_timer >= attack_waitingTime && !reloading) {
                     return true;
                 }
