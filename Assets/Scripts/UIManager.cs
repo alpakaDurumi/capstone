@@ -6,11 +6,13 @@ using Button = UnityEngine.UI.Button;
 
 public class UIManager : MonoSingleton<UIManager>
 {
+    [SerializeField] private GameObject videoPanel;
+    [SerializeField] private Button startButton;
+    [SerializeField] private Button returnButton;
     private const float HEIGHT_OFFSET = 1f;
     private const float AXIS_Y_ROTATION_OFFSET = 180;
 
     private SceneTransition sceneTransition;
-
     private void OnEnable()
     {
         if(sceneTransition == null)
@@ -21,6 +23,7 @@ public class UIManager : MonoSingleton<UIManager>
         if (SceneManager.GetActiveScene().name.Equals("EndScene"))
         {
             PrintTotalPlayTimeText();
+            returnButton = GameObject.Find("ReplayButton").GetComponent<Button>();
         }
     }
     public void CreateNextStageButton(Transform target) {
@@ -35,26 +38,22 @@ public class UIManager : MonoSingleton<UIManager>
         GameManager.Instance.IncreaseStage();
         sceneTransition.GoToSceneAsync(GameManager.Instance.Stage);
 
-        // 누른 스타트 오브젝트를 찾아서 button을 비활성화
         // 중복 누름 방지 
-        EventSystem.current.currentSelectedGameObject
-            .GetComponent<Button>().enabled = false;
+        startButton.enabled = false;
         
     }
     public void OnClickHowToPlayButton()
     {
-        GameObject canvas = GameObject.Find("Canvas");
-        canvas.transform.Find("Video Panel").gameObject.SetActive(true);
+        videoPanel.SetActive(true);
     }
 
     public void OnClickCloseButton()
     {
-        GameObject clickedButton = EventSystem.current.currentSelectedGameObject;
-        clickedButton.GetComponentInParent<Nova.UIBlock2D>().gameObject.SetActive(false);
+        videoPanel.SetActive(false);
     }
     public void OnClickReturnButton()
     {
-        EventSystem.current.currentSelectedGameObject.GetComponent<Button>().enabled = false;
+        returnButton.enabled = false;
         GameManager.Instance.ResetGame();
         sceneTransition.GoToSceneAsync(GameManager.Instance.Stage);
     }
