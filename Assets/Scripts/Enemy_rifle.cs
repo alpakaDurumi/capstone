@@ -21,6 +21,10 @@ public class Enemy_rifle : Enemy
 
     private bool turning = false;
 
+    public GameObject grenadePrefab;
+    public GameObject rightHand;
+    public bool haveGrenade = false;
+
     protected override void Awake() {
         base.Awake();
         shooter = GetComponentInChildren<BulletShooter>();
@@ -86,9 +90,15 @@ public class Enemy_rifle : Enemy
     }
 
     protected override void Attack() {
-        base.Attack();
-        attack_cnt++;
-        shooter.Shoot();
+        if (haveGrenade) {
+            TossGrenade();
+            haveGrenade = false;
+        }
+        else {
+            base.Attack();
+            attack_cnt++;
+            shooter.Shoot();
+        }
     }
 
     // 재장전 함수
@@ -205,5 +215,11 @@ public class Enemy_rifle : Enemy
             animator.SetInteger("turn", 0);
             turning = false;
         }
+    }
+
+    private void TossGrenade() {
+        Debug.Log("Toss Grenade");
+        animator.SetTrigger("grenade");
+        Instantiate(grenadePrefab, rightHand.transform.position, rightHand.transform.rotation);
     }
 }

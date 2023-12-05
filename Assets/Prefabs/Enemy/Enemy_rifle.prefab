@@ -2654,6 +2654,10 @@ MonoBehaviour:
   layerMask_canSee:
     serializedVersion: 2
     m_Bits: 576
+  grenadePrefab: {fileID: 1373268203160630109, guid: 358ec677f4a91c54792622a4257fd681,
+    type: 3}
+  rightHand: {fileID: 6890449795573422776}
+  haveGrenade: 0
 --- !u!114 &948866217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2806,6 +2810,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2990984471462684760, guid: 67497e01ef6afb54f813bd497741c10f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2990984471462684839, guid: 67497e01ef6afb54f813bd497741c10f,
         type: 3}
