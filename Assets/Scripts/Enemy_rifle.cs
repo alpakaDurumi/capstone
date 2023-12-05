@@ -42,11 +42,6 @@ public class Enemy_rifle : Enemy
         }
         // target 방향으로 aim
         AimTarget();
-
-        // 회전이 필요한 동안에만 회전
-        if (turning) {
-            TurnBody();
-        }
     }
 
     // target을 포착 가능한지 여부
@@ -75,6 +70,11 @@ public class Enemy_rifle : Enemy
         // target을 볼 수 있다면 나머지 조건 판단
         if (CanSee()) {
             if (currentDistance <= attackDistance) {
+                // 공격 가능한 범위 내에 target이 있으며, 에이밍 가능 범위를 벗어난 경우에만 회전
+                if (turning) {
+                    TurnBody();
+                }
+
                 if (!attacking && attack_timer >= attack_waitingTime && !reloading) {
                     return true;
                 }
