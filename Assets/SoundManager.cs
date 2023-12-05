@@ -26,20 +26,17 @@ public class SoundManager : MonoSingleton<SoundManager>
     void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
-        musicAudioSource.pitch = 1f;
-        musicAudioSource.volume = 0.1f;
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        musicAudioSource.PlayOneShot(fadeInSound);
+        PlayFadeInSound();
         if (SceneManager.GetActiveScene().name.Equals("StartScene")
             || SceneManager.GetActiveScene().name.Equals("EndScene"))
         {
             InitButtonSound();
         }
-        musicAudioSource.clip = battleMusic;
-        musicAudioSource.Play();
+        PlayOnBattleMusic();
     }
 
     public void AddButtonSound(Button button)
@@ -51,23 +48,29 @@ public class SoundManager : MonoSingleton<SoundManager>
     }
     public void ReduceMusicSpeed()
     {
-        musicAudioSource.pitch = Mathf.Lerp(musicAudioSource.pitch, 0.35f, 0.08f);
+        if (battleMusic == null) return;
+        musicAudioSource.pitch = Mathf.Lerp(musicAudioSource.pitch, 0.4f, 0.2f);
     }
     public void RestoreMusicNormalSpeed()
     {
-        musicAudioSource.pitch = Mathf.Lerp(musicAudioSource.pitch, 0.99f, 0.08f);
+        if (battleMusic == null) return;
+        musicAudioSource.pitch = Mathf.Lerp(musicAudioSource.pitch, 0.99f, 0.2f);
     }
 
-    public void AddPlayerDieSound()
+    public void PlayPlayerDeadSound()
     {
+        if (deadSound == null) return;
         musicAudioSource.Stop();
         musicAudioSource.clip = deadSound;
         musicAudioSource.Play();
-        musicAudioSource.pitch = 1.1f;
-        musicAudioSource.volume = 0.5f;
+        musicAudioSource.pitch = 1.2f;
+        musicAudioSource.volume = 0.7f;
     }
-    public void AddFadeOutSound()
+    public void PlayFadeOutSound()
     {
+        musicAudioSource.Stop();
+        musicAudioSource.pitch = 1.3f;
+        musicAudioSource.volume = 0.7f;
         musicAudioSource.PlayOneShot(fadeOutSound);
     }
 
@@ -97,7 +100,21 @@ public class SoundManager : MonoSingleton<SoundManager>
     }
     private void OnButtonEnterSound(BaseEventData data)
     {
+        
         effectAudioSource.PlayOneShot(btnHoverSound);
+    }
+    private void PlayFadeInSound()
+    {
+        musicAudioSource.pitch = 1.0f;
+        musicAudioSource.volume = 0.7f;
+        musicAudioSource.PlayOneShot(fadeInSound);
+    }
+    private void PlayOnBattleMusic()
+    {
+        musicAudioSource.clip = battleMusic;
+        musicAudioSource.volume = 0.1f;
+        musicAudioSource.pitch = 1.0f;
+        musicAudioSource.PlayDelayed(4.0f);
     }
     #endregion
 }

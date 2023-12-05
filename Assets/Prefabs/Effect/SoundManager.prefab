@@ -49,9 +49,10 @@ MonoBehaviour:
   btnClickSound: {fileID: 8300000, guid: 75fc1aeda8dd04babbf5aee60c4a432f, type: 3}
   btnHoverSound: {fileID: 8300000, guid: df8c60a6b0ca14ebca2fd1422eadfad5, type: 3}
   battleMusic: {fileID: 8300000, guid: 633f44df3249b485491588a1da26b8a6, type: 3}
-  fadeOutSound: {fileID: 0}
-  fadeInSound: {fileID: 0}
+  fadeOutSound: {fileID: 8300000, guid: 339f67760af1e402d98922b6d4e7a42a, type: 3}
+  fadeInSound: {fileID: 8300000, guid: 4a69aadbdd8eb4cb193d8c0a17625a18, type: 3}
   battleOffMusic: {fileID: 0}
+  deadSound: {fileID: 8300000, guid: 9bc9e7f6c13b34a2f8a865d1936d81f8, type: 3}
   effectAudioSource: {fileID: 5198361345404362218}
   musicAudioSource: {fileID: 5198361345404362213}
 --- !u!82 &5198361345404362218

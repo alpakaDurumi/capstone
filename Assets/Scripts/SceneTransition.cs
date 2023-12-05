@@ -7,6 +7,17 @@ public class SceneTransition : MonoSingleton<SceneTransition>
 {
     public void GoToSceneAsync(int sceneIndex)
     {
+        // 해당 씬의 재실행일때 (죽을때) 
+        if(SceneManager.GetActiveScene().buildIndex == sceneIndex)
+        {
+            SoundManager.Instance.PlayPlayerDeadSound();
+        }
+        // 다음 스테이지일 때 
+        else
+        {
+            SoundManager.Instance.PlayFadeOutSound();
+        }
+
         StartCoroutine(GoToSceneAsyncRoutine(sceneIndex));
     }
 

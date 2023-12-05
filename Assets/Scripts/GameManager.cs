@@ -54,7 +54,6 @@ public class GameManager : MonoSingleton<GameManager>
         FadeScreen screen = screenParent.Find("Fader Screen").GetComponent<FadeScreen>();
         screen.SetColor(Color.red);
         SceneTransition.Instance.GoToSceneAsync(Stage);
-        SoundManager.Instance.AddPlayerDieSound();
     }
 
     public void EndRound()

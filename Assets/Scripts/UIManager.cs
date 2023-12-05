@@ -51,6 +51,7 @@ public class UIManager : MonoSingleton<UIManager>
     {
         videoPanel.SetActive(false);
     }
+
     public void OnClickReturnButton()
     {
         returnButton.enabled = false;
