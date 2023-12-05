@@ -129,6 +129,15 @@ public class Enemy: MonoBehaviour
     // Enemy 사망 시 GamaManager의 적 수 감소
     public void Die() {
         GameManager.Instance.DecreaseEnemyCountOnStage();
-        weaponChanger.IncreaseKillCount();
+        GameManager.Instance.IncreaseKillCountOnStage();
+
+        // 이 Enemy가 해당 스테이지의 마지막 그룹 && 마지막 적일 때
+        if(GameManager.Instance.RemainGroupsOnStage == 0
+            && GameManager.Instance.RemainEnemiesInGroup == 0)
+        {
+            // 이 Enemy의 위치를 통해 버튼 생
+            UIManager.Instance.CreateNextStageButton(transform);
+            GameManager.Instance.EndRound();
+        }
     }
 }

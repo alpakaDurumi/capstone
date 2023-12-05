@@ -6,11 +6,13 @@ using Button = UnityEngine.UI.Button;
 
 public class UIManager : MonoSingleton<UIManager>
 {
+    [SerializeField] private GameObject videoPanel;
+    [SerializeField] private Button startButton;
+    [SerializeField] private Button returnButton;
     private const float HEIGHT_OFFSET = 1f;
     private const float AXIS_Y_ROTATION_OFFSET = 180;
 
     private SceneTransition sceneTransition;
-
     private void OnEnable()
     {
         if(sceneTransition == null)
@@ -21,6 +23,7 @@ public class UIManager : MonoSingleton<UIManager>
         if (SceneManager.GetActiveScene().name.Equals("EndScene"))
         {
             PrintTotalPlayTimeText();
+            returnButton = GameObject.Find("ReplayButton").GetComponent<Button>();
         }
     }
     public void CreateNextStageButton(Transform target) {
@@ -28,7 +31,6 @@ public class UIManager : MonoSingleton<UIManager>
         Canvas button = InstantiateButton();
         SetNextStageButtonLocation(button,target);
         AddNextStageButtonAction(button);
-        SoundManager.Instance.AddButtonSound(button.GetComponent<Button>());
 
     }
     public void OnClickStartButton()
@@ -36,30 +38,22 @@ public class UIManager : MonoSingleton<UIManager>
         GameManager.Instance.IncreaseStage();
         sceneTransition.GoToSceneAsync(GameManager.Instance.Stage);
 
-        // 누른 스타트 오브젝트를 찾아서 button을 비활성화
         // 중복 누름 방지 
-        EventSystem.current.currentSelectedGameObject
-            .GetComponent<Button>().enabled = false;
-        SoundManager.Instance.AddFadeOutSound();
+        startButton.enabled = false;
         
     }
     public void OnClickHowToPlayButton()
     {
-        GameObject canvas = GameObject.Find("Canvas");
-        GameObject videoPanel = canvas.transform.Find("Video Panel").gameObject;
         videoPanel.SetActive(true);
-        SoundManager.Instance.AddButtonSound(videoPanel.GetComponentInChildren<Button>());      
     }
 
     public void OnClickCloseButton()
     {
-        GameObject clickedButton = EventSystem.current.currentSelectedGameObject;
-        clickedButton.GetComponentInParent<Nova.UIBlock2D>().gameObject.SetActive(false);
+        videoPanel.SetActive(false);
     }
-
     public void OnClickReturnButton()
     {
-        EventSystem.current.currentSelectedGameObject.GetComponent<Button>().enabled = false;
+        returnButton.enabled = false;
         GameManager.Instance.ResetGame();
         sceneTransition.GoToSceneAsync(GameManager.Instance.Stage);
     }
@@ -90,7 +84,6 @@ public class UIManager : MonoSingleton<UIManager>
         GameManager.Instance.IncreaseStage();
         button.onClick.AddListener(() => sceneTransition.GoToSceneAsync(GameManager.Instance.Stage));
         button.onClick.AddListener(() => button.enabled = false);
-        button.onClick.AddListener(() => SoundManager.Instance.AddFadeOutSound());
     }
     private void PrintTotalPlayTimeText()
     {
