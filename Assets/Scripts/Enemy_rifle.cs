@@ -23,7 +23,11 @@ public class Enemy_rifle : Enemy
 
     public GameObject grenadePrefab;
     public GameObject rightHand;
+
     public bool haveGrenade = false;
+    private int grenadeLayerIndex = 5;
+
+    private float animationPercentToRelease = 0.57f;
 
     protected override void Awake() {
         base.Awake();
@@ -91,7 +95,7 @@ public class Enemy_rifle : Enemy
 
     protected override void Attack() {
         if (haveGrenade) {
-            TossGrenade();
+            SwingGrenade();
             haveGrenade = false;
         }
         else {
@@ -217,9 +221,29 @@ public class Enemy_rifle : Enemy
         }
     }
 
-    private void TossGrenade() {
-        Debug.Log("Toss Grenade");
+    // 수류탄 던지기 함수
+    private void SwingGrenade() {
+        // 애니메이션 재생
         animator.SetTrigger("grenade");
-        Instantiate(grenadePrefab, rightHand.transform.position, rightHand.transform.rotation);
+        // 수류탄 오브젝트 생성 후 손 위치에 부착
+        GameObject grenade = Instantiate(grenadePrefab, rightHand.transform.position, rightHand.transform.rotation);
+        grenade.transform.SetParent(rightHand.transform);
+        
+        StartCoroutine(WaitGrenadeRelease(grenade));
+    }
+
+    // 애니메이션 중 손에서 수류탄이 나가는 순간을 구하기 위한 코루틴
+    private IEnumerator WaitGrenadeRelease(GameObject grenade) {
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(grenadeLayerIndex).IsName("Grenade") && animator.GetCurrentAnimatorStateInfo(grenadeLayerIndex).normalizedTime >= animationPercentToRelease);
+        ReleaseGrenade(grenade);
+    }
+
+    private void ReleaseGrenade(GameObject grenade) {        
+        // 손에서 분리
+        rightHand.transform.DetachChildren();
+        grenade.transform.position = rightHand.transform.position;
+        // 목표 지정 & release
+        grenade.GetComponent<Grenade>().targetPosition = target.transform.position;
+        grenade.GetComponent<Grenade>().Release();
     }
 }

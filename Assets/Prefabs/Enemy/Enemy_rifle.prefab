@@ -587,6 +587,37 @@ Transform:
   m_Father: {fileID: 4341006809430637551}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2081631206938592921
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6147128559486174022}
+  m_Layer: 8
+  m_Name: GrenadePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6147128559486174022
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081631206938592921}
+  m_LocalRotation: {x: 0.66443986, y: -0.74541414, z: 0.03569386, w: 0.04004422}
+  m_LocalPosition: {x: 0.0048, y: 0.1096, z: 0.0452}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7171355820029692017}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 6.109, y: -179.293, z: -83.388}
 --- !u!1 &2123222138455880925
 GameObject:
   m_ObjectHideFlags: 0
@@ -2105,6 +2136,7 @@ Transform:
   - {fileID: 341178905360076981}
   - {fileID: 1083814866687959879}
   - {fileID: 131743912632025021}
+  - {fileID: 6147128559486174022}
   m_Father: {fileID: 6459063724132483601}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2656,7 +2688,7 @@ MonoBehaviour:
     m_Bits: 576
   grenadePrefab: {fileID: 1373268203160630109, guid: 358ec677f4a91c54792622a4257fd681,
     type: 3}
-  rightHand: {fileID: 6890449795573422776}
+  rightHand: {fileID: 2081631206938592921}
   haveGrenade: 0
 --- !u!114 &948866217
 MonoBehaviour:
