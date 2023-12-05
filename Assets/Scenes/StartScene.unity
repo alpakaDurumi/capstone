@@ -241,7 +241,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 289542638}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 1333edf3c9dc8471ab30261e382d656c, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 886f81762c55443caa306687b158bdf8, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -254,14 +254,12 @@ VideoPlayer:
   m_DataSource: 0
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 0
-  m_TargetAudioSources:
-  - {fileID: 0}
-  m_DirectAudioVolumes:
-  - 0
+  m_TargetAudioSources: []
+  m_DirectAudioVolumes: []
   m_Url: 
-  m_EnabledAudioTracks: 01
-  m_DirectAudioMutes: 01
-  m_ControlledAudioTrackCount: 1
+  m_EnabledAudioTracks: 
+  m_DirectAudioMutes: 
+  m_ControlledAudioTrackCount: 0
   m_PlayOnAwake: 1
   m_SkipOnDrop: 1
   m_Looping: 1
@@ -698,7 +696,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-513238
+  m_Name: pb_Mesh-906544
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1739,10 +1737,10 @@ MonoBehaviour:
         Type: 0
     Position:
       X:
-        Raw: 1.9
+        Raw: 0.09
         Type: 0
       Y:
-        Raw: -6.89
+        Raw: -7.5
         Type: 0
       Z:
         Raw: -2.03
@@ -1966,8 +1964,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 145464471455817795}
-  m_LocalRotation: {x: 0, y: 0.08715578, z: 0, w: 0.9961947}
-  m_LocalPosition: {x: 1.9, y: -6.89, z: -2.03}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.09, y: -7.5, z: -2.03}
   m_LocalScale: {x: 0.0061725117, y: 0.0061725117, z: 0.0061725117}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1977,7 +1975,7 @@ Transform:
   - {fileID: 1166954360}
   m_Father: {fileID: 1374062749}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 10, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &145464471455817795
 GameObject:
   m_ObjectHideFlags: 0
@@ -1997,7 +1995,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &145464471455817807
 MonoBehaviour:
   m_ObjectHideFlags: 0

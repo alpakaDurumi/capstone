@@ -33,7 +33,6 @@ public class SlowMotion : MonoBehaviour
 
     private void Update()
     {
-   
         if (InputDevice(isSimulate) || !GameManager.Instance.IsStartRound)
         {
             // 정상 속도 
