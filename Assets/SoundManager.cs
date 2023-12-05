@@ -31,12 +31,12 @@ public class SoundManager : MonoSingleton<SoundManager>
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         PlayFadeInSound();
+        Invoke("PlayOnBattleMusic", 3.0f);
         if (SceneManager.GetActiveScene().name.Equals("StartScene")
             || SceneManager.GetActiveScene().name.Equals("EndScene"))
         {
             InitButtonSound();
         }
-        PlayOnBattleMusic();
     }
 
     public void AddButtonSound(Button button)
@@ -59,12 +59,13 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     public void PlayPlayerDeadSound()
     {
-        if (deadSound == null) return;
+        if (deadSound == null || musicAudioSource.clip.Equals(deadSound)) return;
+
         musicAudioSource.Stop();
         musicAudioSource.clip = deadSound;
         musicAudioSource.Play();
         musicAudioSource.pitch = 1.2f;
-        musicAudioSource.volume = 0.7f;
+        musicAudioSource.volume = 0.8f;
     }
     public void PlayFadeOutSound()
     {
@@ -114,7 +115,7 @@ public class SoundManager : MonoSingleton<SoundManager>
         musicAudioSource.clip = battleMusic;
         musicAudioSource.volume = 0.1f;
         musicAudioSource.pitch = 1.0f;
-        musicAudioSource.PlayDelayed(4.0f);
+        musicAudioSource.Play();
     }
     #endregion
 }
