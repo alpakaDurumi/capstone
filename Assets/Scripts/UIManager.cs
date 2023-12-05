@@ -86,6 +86,7 @@ public class UIManager : MonoSingleton<UIManager>
         GameManager.Instance.IncreaseStage();
         button.onClick.AddListener(() => sceneTransition.GoToSceneAsync(GameManager.Instance.Stage));
         button.onClick.AddListener(() => button.enabled = false);
+        button.onClick.AddListener(() => SoundManager.Instance.AddButtonSound(button));
     }
     private void PrintTotalPlayTimeText()
     {
