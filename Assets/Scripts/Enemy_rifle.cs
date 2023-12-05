@@ -12,9 +12,14 @@ public class Enemy_rifle : Enemy
 
     private BulletShooter shooter;
 
-    private Transform AimStart;                             // target과의 각도를 계산하기 위한 기준점
+    private Transform aimStart;                             // target과의 각도를 계산하기 위한 기준점
 
     [SerializeField] private LayerMask layerMask_canSee;    // 시야 레이어마스크 : 기본적으로 Player와 Stage 선택
+
+    private float angle_horizontal;
+    private float angle_vertical;
+
+    private bool turning = false;
 
     protected override void Awake() {
         base.Awake();
@@ -24,7 +29,7 @@ public class Enemy_rifle : Enemy
     protected override void Start() {
         base.Start();
         attackLayerIndex = 2;
-        AimStart = transform.GetChild(1);
+        aimStart = transform.GetChild(1);
     }
 
     protected override void Update()
@@ -37,15 +42,20 @@ public class Enemy_rifle : Enemy
         }
         // target 방향으로 aim
         AimTarget();
+
+        // 회전이 필요한 동안에만 회전
+        if (turning) {
+            TurnBody();
+        }
     }
 
     // target을 포착 가능한지 여부
     private bool CanSee() {
-        bool isHit = Physics.Raycast(AimStart.position, target.position - AimStart.position, out RaycastHit hitInfo, attackDistance, layerMask_canSee);
-        //Debug.DrawRay(AimStart.position, (target.position - AimStart.position).normalized * attackDistance, Color.red);
+        bool isHit = Physics.Raycast(aimStart.position, target.position - aimStart.position, out RaycastHit hitInfo, attackDistance, layerMask_canSee);
+        //Debug.DrawRay(aimStart.position, (target.position - aimStart.position).normalized * attackDistance, Color.red);
 
         // 광선이 콜라이더를 만난 경우
-        if(isHit) {
+        if (isHit) {
             // 플레이어를 볼 수 있다면
             if (hitInfo.transform.tag == "Player") {
                 return true;
@@ -100,9 +110,9 @@ public class Enemy_rifle : Enemy
     // target 방향으로 조준하기 위한 함수
     private void AimTarget() {
         // target 방향으로의 가로 각도와 세로 각도를 계산
-        Vector3 dir = AimStart.InverseTransformPoint(target.position);
-        var angle_horizontal = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
-        var angle_vertical = Mathf.Atan2(dir.y, dir.z) * Mathf.Rad2Deg;
+        Vector3 dir = aimStart.InverseTransformPoint(target.position);
+        angle_horizontal = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
+        angle_vertical = Mathf.Atan2(dir.y, dir.z) * Mathf.Rad2Deg;
 
         float[] horizontal_limit = new float[2];
         float[] vertical_limit = new float[2];
@@ -135,12 +145,12 @@ public class Enemy_rifle : Enemy
 
         // 몸을 회전하지 않고 조준이 가능한 각도라면
         if (horizontal_limit[0] <= angle_horizontal & angle_horizontal <= horizontal_limit[1]) {
-            // 좌측
+            // 왼쪽
             if (angle_horizontal < 0) {
                 var t = Scale(horizontal_limit[0], 0, -1, 0, angle_horizontal);
                 animator.SetFloat("body_horizontal", t);
             }
-            // 우측
+            // 오른쪽
             else {
                 var t = Scale(0, horizontal_limit[1], 0, 1, angle_horizontal);
                 animator.SetFloat("body_horizontal", t);
@@ -148,8 +158,9 @@ public class Enemy_rifle : Enemy
         }
         // 회전이 필요한 경우
         else {
-            transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
+            turning = true;          
         }
+
 
         // 조준이 가능한 각도라면
         if (vertical_limit[0] <= angle_vertical && angle_vertical <= vertical_limit[1]) {
@@ -177,5 +188,26 @@ public class Enemy_rifle : Enemy
         float NewValue = (((OldValue - OldMin) * NewRange) / OldRange) + NewMin;
 
         return (NewValue);
+    }
+
+    // 몸 회전 함수
+    private void TurnBody() {
+        Quaternion targetRotation = Quaternion.LookRotation(new Vector3(target.position.x - aimStart.position.x, 0, target.position.z - aimStart.position.z));
+        transform.rotation = Quaternion.RotateTowards(aimStart.rotation, targetRotation, 120f * Time.deltaTime);
+
+        // 왼쪽 회전
+        if (angle_horizontal < 0) {
+            animator.SetInteger("turn", 1);
+        }
+        // 오른쪽 회전
+        else {
+            animator.SetInteger("turn", 2);
+        }
+
+        // 목표 방향에 도달했다면
+        if (-1.0f < angle_horizontal && angle_horizontal < 1.0f) {
+            animator.SetInteger("turn", 0);
+            turning = false;
+        }
     }
 }
