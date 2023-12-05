@@ -31,11 +31,15 @@ public class SoundManager : MonoSingleton<SoundManager>
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         PlayFadeInSound();
-        Invoke("PlayOnBattleMusic", 3.0f);
         if (SceneManager.GetActiveScene().name.Equals("StartScene")
             || SceneManager.GetActiveScene().name.Equals("EndScene"))
         {
             InitButtonSound();
+            Invoke("PlayOffBattleMusic", 3.0f);
+        }
+        else
+        {
+            Invoke("PlayOnBattleMusic", 3.0f);
         }
     }
 
@@ -74,6 +78,13 @@ public class SoundManager : MonoSingleton<SoundManager>
         musicAudioSource.volume = 0.7f;
         musicAudioSource.PlayOneShot(fadeOutSound);
     }
+    public void PlayOffBattleMusic()
+    {
+        musicAudioSource.clip = battleOffMusic;
+        musicAudioSource.pitch = 1f;
+        musicAudioSource.volume = 0.1f;
+        musicAudioSource.Play();
+    }
 
     #region 세부 구현 사항
     private void InitButtonSound()
@@ -107,13 +118,13 @@ public class SoundManager : MonoSingleton<SoundManager>
     private void PlayFadeInSound()
     {
         musicAudioSource.pitch = 1.0f;
-        musicAudioSource.volume = 0.7f;
+        musicAudioSource.volume = 0.6f;
         musicAudioSource.PlayOneShot(fadeInSound);
     }
     private void PlayOnBattleMusic()
     {
         musicAudioSource.clip = battleMusic;
-        musicAudioSource.volume = 0.1f;
+        musicAudioSource.volume = 0.6f;
         musicAudioSource.pitch = 1.0f;
         musicAudioSource.Play();
     }

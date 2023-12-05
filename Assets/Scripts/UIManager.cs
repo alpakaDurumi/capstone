@@ -31,6 +31,7 @@ public class UIManager : MonoSingleton<UIManager>
         Canvas button = InstantiateButton();
         SetNextStageButtonLocation(button,target);
         AddNextStageButtonAction(button);
+        SoundManager.Instance.PlayOffBattleMusic();
 
     }
     public void OnClickStartButton()
