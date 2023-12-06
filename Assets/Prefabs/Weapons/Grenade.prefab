@@ -187,8 +187,8 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
-  initialVelocity: 5
-  angle: 45
+  targetPosition: {x: 0, y: 0, z: 0}
+  ExplosionEffect: {fileID: 0}
 --- !u!136 &3457058996116381396
 CapsuleCollider:
   m_ObjectHideFlags: 0

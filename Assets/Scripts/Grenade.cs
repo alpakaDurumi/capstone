@@ -19,18 +19,25 @@ public class Grenade : Projectile
 
     public Vector3 targetPosition;
 
+    [SerializeField] private GameObject ExplosionEffect;    // 폭발 파티클 이펙트
+
+    private bool exploded = false;
+
     private void Start() {
         DisablePhysics();
     }
 
     private void Update() {
-        // 던져졌다면 타이머 동작
-        if (released) {
-            timer += Time.deltaTime;
-        }
+        // 폭발하지 않았고
+        if (!exploded) {
+            // 던져졌다면 타이머 동작
+            if (released) {
+                timer += Time.deltaTime;
+            }
 
-        if(timer >= timeToExplode) {
-            Explode();
+            if(timer >= timeToExplode) {
+                Explode();
+            }
         }
     }
 
@@ -69,8 +76,13 @@ public class Grenade : Projectile
     }
 
     private void Explode() {
-        timer = 0.0f;
         Debug.Log("Explode");
+        exploded = true;
+
+        GameObject explosion = Instantiate(ExplosionEffect, transform.position, Quaternion.identity);
+        explosion.GetComponent<ParticleSystem>().Emit(1);
+
+        // 폭발 후에는 오브젝트 삭제가 필요
     }
 
     // 근의 공식
