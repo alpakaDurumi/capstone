@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -1625996660425836035}
   - component: {fileID: 8591355394418309843}
   - component: {fileID: 3457058996116381396}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Grenade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6630416675980148275}
   - component: {fileID: 7095919445789673405}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

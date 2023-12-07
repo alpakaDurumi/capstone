@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro.Examples;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class Grenade : Projectile
@@ -18,6 +16,8 @@ public class Grenade : Projectile
     private float timeToExplode = 3.0f;
 
     public Vector3 targetPosition;
+
+    private bool collidedWithStage = false;
 
     [SerializeField] private GameObject ExplosionEffect;    // 폭발 파티클 이펙트
 
@@ -38,6 +38,12 @@ public class Grenade : Projectile
             if(timer >= timeToExplode) {
                 Explode();
             }
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision) {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Stage")) {
+            collidedWithStage = true;
         }
     }
 
@@ -63,13 +69,15 @@ public class Grenade : Projectile
         Vector3 targetPos = new Vector3(groundDirection.magnitude, direction.y, 0);
 
         targetPosition.z = 0;
-        float height = targetPosition.y + targetPosition.magnitude / 4f;    // 필요에 따라 조정하기
+        float height = targetPosition.y + targetPosition.magnitude / 2f;    // 필요에 따라 조정하기
         height = Mathf.Max(0.01f, height);
         float angle;
         float v0;
         float time;
         CalculatePathWithHeight(targetPos, height, out v0, out angle, out time);
-        
+
+        EnablePhysics();        // 물리 재활성화
+
         // 놓아진 지점으로부터 투척
         Vector3 releasedPosition = transform.position;
         StartCoroutine(Movement(groundDirection.normalized, v0, angle, time, releasedPosition));
@@ -126,7 +134,8 @@ public class Grenade : Projectile
     // 이동 코루틴
     private IEnumerator Movement(Vector3 direction, float v0, float angle, float time, Vector3 startPosition) {
         float t = 0;
-        while(t < time * 0.95f) {
+        // Stage 레이어와 충돌하기 전까지 움직이기
+        while(t < time && !collidedWithStage) {
             float x = v0 * t * Mathf.Cos(angle);
             float y = v0 * t * Mathf.Sin(angle) - (1f / 2f) * -Physics.gravity.y * Mathf.Pow(t, 2);
             transform.position = startPosition + direction * x + Vector3.up * y;
@@ -134,6 +143,5 @@ public class Grenade : Projectile
             t += Time.deltaTime;
             yield return null;
         }
-        EnablePhysics();
     }
 }
