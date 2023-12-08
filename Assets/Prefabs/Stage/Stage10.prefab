@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 7413217331060103425}
   - component: {fileID: 7413217331060103426}
   - component: {fileID: 7413217331060103424}
-  - component: {fileID: 285606635}
   m_Layer: 0
   m_Name: Stage10
   m_TagString: Untagged
@@ -12494,7 +12493,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 4548
+  m_VersionIndex: 4551
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -12599,16 +12598,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &285606635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7413217331060103431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20af395620c714152bd67efbeb2a5dba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groups: []
