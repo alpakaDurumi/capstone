@@ -15,8 +15,10 @@ public class GameManager : MonoSingleton<GameManager>
 
     private WeaponChanger weaponChanger;
 
-    public int killCount { get; private set; }
+    public int killCount { get; private set; } = 0;
     private int killCountToChangeWeapon = 1;
+
+    public bool isPrimaryHandRight { get; set; }
 
     private void Awake()
     {

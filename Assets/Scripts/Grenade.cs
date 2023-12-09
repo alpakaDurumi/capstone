@@ -5,6 +5,10 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Grenade : Projectile
 {
+    [SerializeField] private Transform attachPoint;
+    [SerializeField] private Transform attachPoint_left;
+    [SerializeField] private Transform attachPoint_right;
+
     private SlowMotion slowMotion;
 
     private float throwPower;
@@ -38,6 +42,16 @@ public class Grenade : Projectile
             if(timer >= timeToExplode) {
                 Explode();
             }
+        }
+
+        // 주 손에 따라 각각에 맞는 attachPoint 조정
+        if (GameManager.Instance.isPrimaryHandRight) {
+            attachPoint.transform.position = attachPoint_left.position;
+            attachPoint.transform.rotation = attachPoint_left.rotation;
+        }
+        else {
+            attachPoint.transform.position = attachPoint_right.position;
+            attachPoint.transform.rotation = attachPoint_right.rotation;
         }
     }
 

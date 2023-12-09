@@ -616,7 +616,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50f503399ccb5ea42852ba28588d67d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightHandPose: {fileID: 261164120377734949}
+  leftHandPose: {fileID: 261164120377734949}
+  rightHandPose: {fileID: 0}
 --- !u!1 &6368150863570436592
 GameObject:
   m_ObjectHideFlags: 0

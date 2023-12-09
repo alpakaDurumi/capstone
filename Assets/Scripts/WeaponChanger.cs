@@ -119,6 +119,7 @@ public class WeaponChanger : MonoBehaviour
             leftHand.selectActionTrigger = XRBaseControllerInteractor.InputTriggerType.Sticky;
             rightHand.selectActionTrigger = XRBaseControllerInteractor.InputTriggerType.StateChange;
         }
+        GameManager.Instance.isPrimaryHandRight = value;
     }
 
     // 왼손과 오른손의 select input 활성화 여부를 세팅하는 함수

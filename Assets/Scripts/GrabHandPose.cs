@@ -6,6 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 // 무기를 그랩했을 때 손가락의 포즈를 지정하기 위한 스크립트
 public class GrabHandPose : MonoBehaviour
 {
+    public HandData leftHandPose;
     public HandData rightHandPose;
 
     private Quaternion[] startingFingerRotations;
@@ -21,7 +22,12 @@ public class GrabHandPose : MonoBehaviour
     void Start()
     {
         // Grab 시의 손 모양을 나타내는 오브젝트는 보이지 않게 해둠
-        rightHandPose.gameObject.SetActive(false);
+        if(leftHandPose != null) {
+            leftHandPose.gameObject.SetActive(false);
+        }
+        if(rightHandPose != null) {
+            rightHandPose.gameObject.SetActive(false);
+        }        
     }
 
     public void SetupPose(BaseInteractionEventArgs arg) {
@@ -32,8 +38,16 @@ public class GrabHandPose : MonoBehaviour
             // select했을 때 애니메이터도 비활성화 
             handData.animator.enabled = false;
 
-            // 현재 오른손의 데이터와 무기를 잡은 손모양의 HandData를 각각 받아온다.
-            GetFingerData(handData, rightHandPose);
+            // 왼손이라면
+            if(handData.handType == HandData.HandModelType.Left) {
+                // 현재 왼손의 데이터와 무기를 잡은 손모양의 HandData를 각각 받아온다.
+                GetFingerData(handData, leftHandPose);
+            }
+            // 오른손이라면
+            else {
+                // 현재 오른손의 데이터와 무기를 잡은 손모양의 HandData를 각각 받아온다.
+                GetFingerData(handData, rightHandPose);
+            }
             // 값 설정하기
             SetFingerData(handData, finalFingerRotations);
         }
