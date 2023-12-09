@@ -87,8 +87,8 @@ public class Grenade : Projectile
         Debug.Log("Explode");
         exploded = true;
 
-        GameObject explosion = Instantiate(ExplosionEffect, transform.position, Quaternion.identity);
-        explosion.GetComponent<ParticleSystem>().Emit(1);
+        GameObject explosion = Instantiate(ExplosionEffect, transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
+        gameObject.SetActive(false);
 
         // 폭발 후에는 오브젝트 삭제가 필요
     }
