@@ -2603,7 +2603,8 @@ GameObject:
   - component: {fileID: 948866217}
   - component: {fileID: 78854500}
   - component: {fileID: 9041350778008725006}
-  m_Layer: 8
+  - component: {fileID: 2096396845463632791}
+  m_Layer: 10
   m_Name: Enemy_rifle
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2683,6 +2684,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDistance: 30
+  ragdollPrefab: {fileID: 6380727735148248081, guid: 60522b10600cbc8488445208b8691074,
+    type: 3}
   layerMask_canSee:
     serializedVersion: 2
     m_Bits: 576
@@ -2759,6 +2762,20 @@ MonoBehaviour:
   forceAmount: 1
   targetRagdollPrefab: {fileID: 6380727735148248081, guid: 60522b10600cbc8488445208b8691074,
     type: 3}
+--- !u!136 &2096396845463632791
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8804654735371390540}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.4
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &9191661532665913241
 GameObject:
   m_ObjectHideFlags: 0

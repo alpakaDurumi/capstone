@@ -84,7 +84,6 @@ public class Grenade : Projectile
     }
 
     private void Explode() {
-        Debug.Log("Explode");
         exploded = true;
 
         GameObject explosion = Instantiate(ExplosionEffect, transform.position, Quaternion.Euler(new Vector3(-90, 0, 0)));
