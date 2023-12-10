@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,6 +14,7 @@ public class Enemy_rifle : Enemy
     private BulletShooter shooter;
 
     private Transform aimStart;                             // target과의 각도를 계산하기 위한 기준점
+    private Transform aimEnd;
 
     [SerializeField] private LayerMask layerMask_canSee;    // 시야 레이어마스크 : 기본적으로 Player와 Stage 선택
 
@@ -38,6 +40,7 @@ public class Enemy_rifle : Enemy
         base.Start();
         attackLayerIndex = 3;
         aimStart = transform.GetChild(1);
+        aimEnd = target.GetComponent<XROrigin>().Camera.transform;
     }
 
     protected override void Update()
@@ -54,8 +57,8 @@ public class Enemy_rifle : Enemy
 
     // target을 포착 가능한지 여부
     private bool CanSee() {
-        bool isHit = Physics.Raycast(aimStart.position, target.position - aimStart.position, out RaycastHit hitInfo, attackDistance, layerMask_canSee);
-        //Debug.DrawRay(aimStart.position, (target.position - aimStart.position).normalized * attackDistance, Color.red);
+        bool isHit = Physics.Raycast(aimStart.position, aimEnd.position - aimStart.position, out RaycastHit hitInfo, attackDistance, layerMask_canSee);
+        //Debug.DrawRay(aimStart.position, (aimEnd.position - aimStart.position).normalized * attackDistance, Color.red);
 
         // 광선이 콜라이더를 만난 경우
         if (isHit) {
@@ -120,7 +123,7 @@ public class Enemy_rifle : Enemy
     // target 방향으로 조준하기 위한 함수
     private void AimTarget() {
         // target 방향으로의 가로 각도와 세로 각도를 계산
-        Vector3 dir = aimStart.InverseTransformPoint(target.position);
+        Vector3 dir = aimStart.InverseTransformPoint(aimEnd.position);
         angle_horizontal = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
         angle_vertical = Mathf.Atan2(dir.y, dir.z) * Mathf.Rad2Deg;
 
@@ -243,7 +246,7 @@ public class Enemy_rifle : Enemy
         rightHand.transform.DetachChildren();
         grenade.transform.position = rightHand.transform.position;
         // 목표 지정 & release
-        grenade.GetComponent<Grenade>().targetPosition = target.transform.position;
+        grenade.GetComponent<Grenade>().targetPosition = aimEnd.transform.position;
         grenade.GetComponent<Grenade>().Release();
     }
 }

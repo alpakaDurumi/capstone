@@ -17,7 +17,7 @@ public class Grenade : Projectile
     private bool released = false;
 
     private float timer = 0.0f;
-    private float timeToExplode = 3.0f;
+    private float timeToExplode = 6.0f;
 
     public Vector3 targetPosition;
 
@@ -83,7 +83,7 @@ public class Grenade : Projectile
         Vector3 targetPos = new Vector3(groundDirection.magnitude, direction.y, 0);
 
         targetPosition.z = 0;
-        float height = targetPosition.y + targetPosition.magnitude / 2f;    // 필요에 따라 조정하기
+        float height = targetPosition.y + targetPosition.magnitude / 4f;    // 필요에 따라 조정하기
         height = Mathf.Max(0.01f, height);
         float angle;
         float v0;
