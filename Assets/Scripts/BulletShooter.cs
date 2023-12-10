@@ -13,6 +13,7 @@ public class BulletShooter : MonoBehaviour
     private float bulletForce = 20f;
 
     public void Shoot() {
+        SoundManager.Instance.PlayGunFireSound();
         // 머즐 플래시 효과
         GameObject flash = Instantiate(muzzleFlashPrefab, barrelLocation.position, barrelLocation.rotation);
         Destroy(flash, destroyTime);
