@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5454725053312576994}
   - component: {fileID: 4311082722406722151}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stage7
-  m_TagString: Untagged
+  m_TagString: Stage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -80,8 +80,7 @@ GameObject:
   - component: {fileID: 5454725053600107358}
   - component: {fileID: 5454725053600107353}
   - component: {fileID: 5454725053600107352}
-  - component: {fileID: 5454725053600107357}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -965,7 +964,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2261
+  m_VersionIndex: 2264
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1065,19 +1064,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &5454725053600107357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5454725053600107349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manageVisibility: 0
 --- !u!1 &5454725054475841059
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,8 +1078,7 @@ GameObject:
   - component: {fileID: 5454725054475841060}
   - component: {fileID: 5454725054475841063}
   - component: {fileID: 5454725054475841062}
-  - component: {fileID: 5454725054475841067}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9824,7 +9809,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 7845
+  m_VersionIndex: 7848
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -9928,19 +9913,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &5454725054475841067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5454725054475841059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manageVisibility: 0
 --- !u!1 &6962301368878000630
 GameObject:
   m_ObjectHideFlags: 0
@@ -9955,8 +9927,7 @@ GameObject:
   - component: {fileID: 6962301368878000625}
   - component: {fileID: 6962301368878000624}
   - component: {fileID: 6962301368878000631}
-  - component: {fileID: 6962301368878000637}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11208,7 +11179,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2290
+  m_VersionIndex: 2293
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -11309,19 +11280,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &6962301368878000637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6962301368878000630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manageVisibility: 0
 --- !u!1 &6962301368916073389
 GameObject:
   m_ObjectHideFlags: 0
@@ -11336,8 +11294,7 @@ GameObject:
   - component: {fileID: 6962301368916073385}
   - component: {fileID: 6962301368916073384}
   - component: {fileID: 6962301368916073391}
-  - component: {fileID: 6962301368916073394}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23026,7 +22983,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 7533
+  m_VersionIndex: 7536
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -23130,19 +23087,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &6962301368916073394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6962301368916073389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manageVisibility: 0
 --- !u!1 &6962301370413228385
 GameObject:
   m_ObjectHideFlags: 0
@@ -23157,8 +23101,7 @@ GameObject:
   - component: {fileID: 6962301370413228396}
   - component: {fileID: 6962301370413228387}
   - component: {fileID: 6962301370413228386}
-  - component: {fileID: 6962301370413228402}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24042,7 +23985,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2171
+  m_VersionIndex: 2174
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -24142,19 +24085,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &6962301370413228402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6962301370413228385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manageVisibility: 0
 --- !u!1 &6962301370620247175
 GameObject:
   m_ObjectHideFlags: 0
@@ -24169,8 +24099,7 @@ GameObject:
   - component: {fileID: 6962301370620247170}
   - component: {fileID: 6962301370620247169}
   - component: {fileID: 6962301370620247168}
-  - component: {fileID: 6962301370620247186}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25054,7 +24983,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2264
+  m_VersionIndex: 2267
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -25154,16 +25083,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &6962301370620247186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6962301370620247175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manageVisibility: 0

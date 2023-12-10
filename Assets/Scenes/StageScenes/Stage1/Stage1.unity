@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.7040447, g: 0.70374185, b: 0.7041321, a: 1}
+  m_IndirectSpecularColor: {r: 0.701264, g: 0.70100284, b: 0.70132554, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -323,7 +323,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh170568
+  m_Name: pb_Mesh-119908
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1356,14 +1356,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1927275681, guid: ad4247c12bf5e47aebee6492fda53d8c, type: 3}
-      propertyPath: groups.Array.data[0].enemies.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1927275681, guid: ad4247c12bf5e47aebee6492fda53d8c, type: 3}
-      propertyPath: groups.Array.data[1].enemies.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1927275681, guid: ad4247c12bf5e47aebee6492fda53d8c, type: 3}
       propertyPath: groups.Array.data[0].enemies.Array.data[0]
       value: 
       objectReference: {fileID: 915509275}
@@ -1380,22 +1372,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 860904944}
     - target: {fileID: 1927275681, guid: ad4247c12bf5e47aebee6492fda53d8c, type: 3}
-      propertyPath: groups.Array.data[0].enemies.Array.data[4]
-      value: 
-      objectReference: {fileID: 915509275}
-    - target: {fileID: 1927275681, guid: ad4247c12bf5e47aebee6492fda53d8c, type: 3}
-      propertyPath: groups.Array.data[0].enemies.Array.data[5]
-      value: 
-      objectReference: {fileID: 1934526862}
-    - target: {fileID: 1927275681, guid: ad4247c12bf5e47aebee6492fda53d8c, type: 3}
-      propertyPath: groups.Array.data[0].enemies.Array.data[6]
-      value: 
-      objectReference: {fileID: 1072590212}
-    - target: {fileID: 1927275681, guid: ad4247c12bf5e47aebee6492fda53d8c, type: 3}
-      propertyPath: groups.Array.data[0].enemies.Array.data[7]
-      value: 
-      objectReference: {fileID: 860904944}
-    - target: {fileID: 1927275681, guid: ad4247c12bf5e47aebee6492fda53d8c, type: 3}
       propertyPath: groups.Array.data[1].enemies.Array.data[0]
       value: 
       objectReference: {fileID: 163212402}
@@ -1409,22 +1385,6 @@ PrefabInstance:
       objectReference: {fileID: 149115236}
     - target: {fileID: 1927275681, guid: ad4247c12bf5e47aebee6492fda53d8c, type: 3}
       propertyPath: groups.Array.data[1].enemies.Array.data[3]
-      value: 
-      objectReference: {fileID: 1368075842}
-    - target: {fileID: 1927275681, guid: ad4247c12bf5e47aebee6492fda53d8c, type: 3}
-      propertyPath: groups.Array.data[1].enemies.Array.data[4]
-      value: 
-      objectReference: {fileID: 163212402}
-    - target: {fileID: 1927275681, guid: ad4247c12bf5e47aebee6492fda53d8c, type: 3}
-      propertyPath: groups.Array.data[1].enemies.Array.data[5]
-      value: 
-      objectReference: {fileID: 454641502}
-    - target: {fileID: 1927275681, guid: ad4247c12bf5e47aebee6492fda53d8c, type: 3}
-      propertyPath: groups.Array.data[1].enemies.Array.data[6]
-      value: 
-      objectReference: {fileID: 149115236}
-    - target: {fileID: 1927275681, guid: ad4247c12bf5e47aebee6492fda53d8c, type: 3}
-      propertyPath: groups.Array.data[1].enemies.Array.data[7]
       value: 
       objectReference: {fileID: 1368075842}
     - target: {fileID: 1956860888036035237, guid: ad4247c12bf5e47aebee6492fda53d8c,
@@ -1495,12 +1455,7 @@ PrefabInstance:
     - target: {fileID: 3306415353771211684, guid: ad4247c12bf5e47aebee6492fda53d8c,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 6078
-      objectReference: {fileID: 0}
-    - target: {fileID: 4935471584684802454, guid: ad4247c12bf5e47aebee6492fda53d8c,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 126
+      value: 6084
       objectReference: {fileID: 0}
     - target: {fileID: 5028147915980698639, guid: ad4247c12bf5e47aebee6492fda53d8c,
         type: 3}

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.7030597, g: 0.6998494, b: 0.7030922, a: 1}
+  m_IndirectSpecularColor: {r: 0.701264, g: 0.70100284, b: 0.70132554, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-259736
+  m_Name: pb_Mesh-129284
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -653,18 +653,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f03837d99a26d8c48a255568842eacf5, type: 3}
---- !u!114 &633296707 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8198387189150828863, guid: f03837d99a26d8c48a255568842eacf5,
-    type: 3}
-  m_PrefabInstance: {fileID: 633296706}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83e4e6cca11330d4088d729ab4fc9d9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &640616945
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -736,7 +724,7 @@ PrefabInstance:
         type: 3}
       propertyPath: interactionManager
       value: 
-      objectReference: {fileID: 633296707}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0b88deccd3dadc46a18f1584fee1864, type: 3}
 --- !u!4 &640616946 stripped
@@ -751,7 +739,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-259750
+  m_Name: pb_Mesh-129298
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -915,7 +903,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-259764
+  m_Name: pb_Mesh-129312
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1943,13 +1931,18 @@ PrefabInstance:
     - target: {fileID: 5637968385522857531, guid: a3b4d10fa9d2f47dd9c967898e8041cb,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 12824
+      value: 12827
       objectReference: {fileID: 0}
     - target: {fileID: 5637968385522857532, guid: a3b4d10fa9d2f47dd9c967898e8041cb,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 689327933}
+    - target: {fileID: 5637968385522857534, guid: a3b4d10fa9d2f47dd9c967898e8041cb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5637968385522857535, guid: a3b4d10fa9d2f47dd9c967898e8041cb,
         type: 3}
       propertyPath: m_Mesh
@@ -1965,6 +1958,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 104571731}
+    - target: {fileID: 5637968386447054835, guid: a3b4d10fa9d2f47dd9c967898e8041cb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5637968386447054844, guid: a3b4d10fa9d2f47dd9c967898e8041cb,
         type: 3}
       propertyPath: m_Mesh
@@ -1973,7 +1971,7 @@ PrefabInstance:
     - target: {fileID: 5637968386447054844, guid: a3b4d10fa9d2f47dd9c967898e8041cb,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 7487
+      value: 7490
       objectReference: {fileID: 0}
     - target: {fileID: 5637968386764097626, guid: a3b4d10fa9d2f47dd9c967898e8041cb,
         type: 3}
@@ -2035,6 +2033,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage4
       objectReference: {fileID: 0}
+    - target: {fileID: 5637968386764097629, guid: a3b4d10fa9d2f47dd9c967898e8041cb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5637968386764097629, guid: a3b4d10fa9d2f47dd9c967898e8041cb,
+        type: 3}
+      propertyPath: m_TagString
+      value: Stage
+      objectReference: {fileID: 0}
     - target: {fileID: 5637968387081917074, guid: a3b4d10fa9d2f47dd9c967898e8041cb,
         type: 3}
       propertyPath: m_Mesh
@@ -2053,7 +2061,7 @@ PrefabInstance:
     - target: {fileID: 5637968387081917086, guid: a3b4d10fa9d2f47dd9c967898e8041cb,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 13051
+      value: 13054
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3b4d10fa9d2f47dd9c967898e8041cb, type: 3}

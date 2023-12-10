@@ -14,12 +14,11 @@ GameObject:
   - component: {fileID: 4753469463186961707}
   - component: {fileID: 4753469463186961704}
   - component: {fileID: 4753469463186961705}
-  - component: {fileID: 4753469463186961718}
   - component: {fileID: 1098033590}
   - component: {fileID: 6243345653997075114}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stage8
-  m_TagString: Untagged
+  m_TagString: Stage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -3911,7 +3910,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 10767
+  m_VersionIndex: 10770
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -4012,19 +4011,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &4753469463186961718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4753469463186961719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manageVisibility: 0
 --- !u!114 &1098033590
 MonoBehaviour:
   m_ObjectHideFlags: 0

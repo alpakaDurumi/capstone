@@ -829,18 +829,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f03837d99a26d8c48a255568842eacf5, type: 3}
---- !u!114 &430617348 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8198387189150828863, guid: f03837d99a26d8c48a255568842eacf5,
-    type: 3}
-  m_PrefabInstance: {fileID: 430617347}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83e4e6cca11330d4088d729ab4fc9d9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &462135193
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -938,7 +926,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh77892
+  m_Name: pb_Mesh-175814
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1890,7 +1878,7 @@ PrefabInstance:
         type: 3}
       propertyPath: interactionManager
       value: 
-      objectReference: {fileID: 430617348}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0b88deccd3dadc46a18f1584fee1864, type: 3}
 --- !u!4 &2035764139 stripped
@@ -2035,7 +2023,7 @@ PrefabInstance:
     - target: {fileID: 4753469463186961709, guid: 3ff7534e9249a40cdb704d4c0784a054,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 10770
+      value: 10773
       objectReference: {fileID: 0}
     - target: {fileID: 4753469463186961719, guid: 3ff7534e9249a40cdb704d4c0784a054,
         type: 3}

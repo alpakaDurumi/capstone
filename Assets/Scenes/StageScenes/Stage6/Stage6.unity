@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.7040447, g: 0.70374185, b: 0.7041321, a: 1}
+  m_IndirectSpecularColor: {r: 0.701264, g: 0.70100284, b: 0.70132554, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -244,7 +244,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-46612
+  m_Name: pb_Mesh-151224
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -670,7 +670,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-46564
+  m_Name: pb_Mesh-151176
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -898,7 +898,7 @@ PrefabInstance:
     - target: {fileID: 1049100081094906512, guid: d9ee3f5686add4596a8ceba2ca97930e,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 3093
+      value: 3096
       objectReference: {fileID: 0}
     - target: {fileID: 1455823408819535637, guid: d9ee3f5686add4596a8ceba2ca97930e,
         type: 3}
@@ -908,7 +908,7 @@ PrefabInstance:
     - target: {fileID: 1455823408819535637, guid: d9ee3f5686add4596a8ceba2ca97930e,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 3114
+      value: 3117
       objectReference: {fileID: 0}
     - target: {fileID: 1937598124539159104, guid: d9ee3f5686add4596a8ceba2ca97930e,
         type: 3}
@@ -923,7 +923,7 @@ PrefabInstance:
     - target: {fileID: 2716572986707192829, guid: d9ee3f5686add4596a8ceba2ca97930e,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 6391
+      value: 6394
       objectReference: {fileID: 0}
     - target: {fileID: 2716942389036214364, guid: d9ee3f5686add4596a8ceba2ca97930e,
         type: 3}
@@ -1003,7 +1003,7 @@ PrefabInstance:
     - target: {fileID: 4523738213220354194, guid: d9ee3f5686add4596a8ceba2ca97930e,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 14652
+      value: 14655
       objectReference: {fileID: 0}
     - target: {fileID: 5146557168565721304, guid: d9ee3f5686add4596a8ceba2ca97930e,
         type: 3}
@@ -1013,7 +1013,7 @@ PrefabInstance:
     - target: {fileID: 5146557168565721304, guid: d9ee3f5686add4596a8ceba2ca97930e,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 13329
+      value: 13332
       objectReference: {fileID: 0}
     - target: {fileID: 5173919337109899657, guid: d9ee3f5686add4596a8ceba2ca97930e,
         type: 3}
@@ -1058,7 +1058,7 @@ PrefabInstance:
     - target: {fileID: 8385482601435016816, guid: d9ee3f5686add4596a8ceba2ca97930e,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 13323
+      value: 13326
       objectReference: {fileID: 0}
     - target: {fileID: 8627132600558895388, guid: d9ee3f5686add4596a8ceba2ca97930e,
         type: 3}
@@ -1073,7 +1073,7 @@ PrefabInstance:
     - target: {fileID: 8839255485560017637, guid: d9ee3f5686add4596a8ceba2ca97930e,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 4994
+      value: 4997
       objectReference: {fileID: 0}
     - target: {fileID: 8862020382602650813, guid: d9ee3f5686add4596a8ceba2ca97930e,
         type: 3}
@@ -1087,6 +1087,37 @@ PrefabInstance:
       objectReference: {fileID: 1675589060}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9ee3f5686add4596a8ceba2ca97930e, type: 3}
+--- !u!1 &1041868983
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1041868984}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1041868984
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1041868983}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 7.494048, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1054346428
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1185,6 +1216,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3050404215283073956, guid: f03837d99a26d8c48a255568842eacf5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8198387188502199451, guid: f03837d99a26d8c48a255568842eacf5,
         type: 3}
       propertyPath: m_RootOrder
@@ -1344,7 +1380,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-46644
+  m_Name: pb_Mesh-151256
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1508,7 +1544,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-46580
+  m_Name: pb_Mesh-151192
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1945,7 +1981,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-46596
+  m_Name: pb_Mesh-151208
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2109,7 +2145,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-46660
+  m_Name: pb_Mesh-151272
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2455,7 +2491,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-46628
+  m_Name: pb_Mesh-151240
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

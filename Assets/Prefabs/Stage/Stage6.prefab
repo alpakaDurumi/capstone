@@ -14,8 +14,7 @@ GameObject:
   - component: {fileID: 2228530109340498080}
   - component: {fileID: 5323419206791103605}
   - component: {fileID: 5634188249485272115}
-  - component: {fileID: 990276353389929935}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1680,7 +1679,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 4991
+  m_VersionIndex: 4994
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1777,19 +1776,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &990276353389929935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 990276353389929932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manageVisibility: 0
 --- !u!1 &1271272440705182843
 GameObject:
   m_ObjectHideFlags: 0
@@ -1804,8 +1790,7 @@ GameObject:
   - component: {fileID: 2656873341685862177}
   - component: {fileID: 8627132600558895388}
   - component: {fileID: 1937598124539159104}
-  - component: {fileID: 4667511436606665801}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stairs (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4712,7 +4697,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 13326
+  m_VersionIndex: 13329
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -4816,19 +4801,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &4667511436606665801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1271272440705182843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manageVisibility: 0
 --- !u!1 &4269158846233710281
 GameObject:
   m_ObjectHideFlags: 0
@@ -4843,8 +4815,7 @@ GameObject:
   - component: {fileID: 4466044856013743726}
   - component: {fileID: 7120220254486271655}
   - component: {fileID: 5173919337109899657}
-  - component: {fileID: 1455823408819535636}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube(Clone) (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5078,7 +5049,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3111
+  m_VersionIndex: 3114
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -5174,19 +5145,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &1455823408819535636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4269158846233710281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manageVisibility: 0
 --- !u!1 &6953675049726684275
 GameObject:
   m_ObjectHideFlags: 0
@@ -5201,8 +5159,7 @@ GameObject:
   - component: {fileID: 3893977537617889086}
   - component: {fileID: 2716942389036214364}
   - component: {fileID: 3705073171586539774}
-  - component: {fileID: 1428839027375426613}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5436,7 +5393,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 6388
+  m_VersionIndex: 6391
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -5532,19 +5489,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &1428839027375426613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6953675049726684275}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manageVisibility: 0
 --- !u!1 &7209625903654883958
 GameObject:
   m_ObjectHideFlags: 0
@@ -5559,8 +5503,7 @@ GameObject:
   - component: {fileID: 4353248712281782165}
   - component: {fileID: 6243365248650983378}
   - component: {fileID: 8921615969490849270}
-  - component: {fileID: 1169774560450058406}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5794,7 +5737,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 14649
+  m_VersionIndex: 14652
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -5890,19 +5833,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &1169774560450058406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7209625903654883958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manageVisibility: 0
 --- !u!1 &7212497451198375901
 GameObject:
   m_ObjectHideFlags: 0
@@ -5913,9 +5843,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3919461600485857102}
   - component: {fileID: 995331432}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stage6
-  m_TagString: Untagged
+  m_TagString: Stage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -5981,8 +5911,7 @@ GameObject:
   - component: {fileID: 2354181093741896304}
   - component: {fileID: 3678907484956577302}
   - component: {fileID: 6292595231134125117}
-  - component: {fileID: 2921212664366136329}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Stairs (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8889,7 +8818,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 13320
+  m_VersionIndex: 13323
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -8993,19 +8922,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &2921212664366136329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7960457346956348424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manageVisibility: 0
 --- !u!1 &8539825384092093850
 GameObject:
   m_ObjectHideFlags: 0
@@ -9020,8 +8936,7 @@ GameObject:
   - component: {fileID: 7041705651005502911}
   - component: {fileID: 8862020382602650813}
   - component: {fileID: 639193666955058584}
-  - component: {fileID: 1049100081094906515}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9255,7 +9170,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3090
+  m_VersionIndex: 3093
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -9351,16 +9266,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &1049100081094906515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8539825384092093850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manageVisibility: 0
