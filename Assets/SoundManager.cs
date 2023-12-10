@@ -14,6 +14,11 @@ public class SoundManager : MonoSingleton<SoundManager>
     [SerializeField] private AudioClip fadeInSound;
     [SerializeField] private AudioClip battleOffMusic;
     [SerializeField] private AudioClip deadSound;
+    [SerializeField] private AudioClip gunFireSound;
+    [SerializeField] private AudioClip throwingSound;
+    [SerializeField] private AudioClip bowShootSound;
+    [SerializeField] private AudioClip swordSliceSound;
+
 
     [SerializeField] AudioSource effectAudioSource;
     [SerializeField] AudioSource musicAudioSource;
@@ -84,6 +89,23 @@ public class SoundManager : MonoSingleton<SoundManager>
         musicAudioSource.pitch = 1f;
         musicAudioSource.volume = 0.1f;
         musicAudioSource.Play();
+    }
+    public void PlayGunFireSound()
+    {
+        effectAudioSource.PlayOneShot(gunFireSound);
+    }
+    public void PlayThrowingSound()
+    {
+        effectAudioSource.PlayOneShot(throwingSound);
+    }
+    public void PlayBowShootSound()
+    {
+        effectAudioSource.PlayOneShot(bowShootSound);
+    }
+    public void PlaySwordSliceSound()
+    {
+        if (effectAudioSource.isPlaying) return;
+        effectAudioSource.PlayOneShot(swordSliceSound);
     }
 
     #region 세부 구현 사항

@@ -11,13 +11,13 @@ public class Arrow : Projectile
 
     protected RaycastHit hit;
 
-    // ÃÊ±âÈ­
+    // ï¿½Ê±ï¿½È­
     protected override void Awake() {
         base.Awake();
         caster = GetComponent<ArrowCaster>();
     }
 
-    // notch(¼ÒÄÏ)¿¡ ³¢¿öÁ³´Ù¸é
+    // notch(ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù¸ï¿½
     protected override void OnSelectExited(SelectExitEventArgs args) {
         base.OnSelectExited(args);
         if(args.interactorObject is Notch notch) {
@@ -27,8 +27,9 @@ public class Arrow : Projectile
         }
     }
 
-    // È­»ì ¹ß»ç
+    // È­ï¿½ï¿½ ï¿½ß»ï¿½
     private void LaunchArrow(Notch notch) {
+        SoundManager.Instance.PlayBowShootSound();
         launched = true;
         ApplyForce(notch.PullMeasurer);
         StartCoroutine(LaunchRoutine());
@@ -39,12 +40,12 @@ public class Arrow : Projectile
     }
 
     private IEnumerator LaunchRoutine() {
-        // È­»ìÀÌ ¹«¾ð°¡¿Í Ãæµ¹ÇÒ ¶§±îÁö °è¼Ó È®ÀÎ
+        // È­ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ð°¡¿ï¿½ ï¿½æµ¹ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ È®ï¿½ï¿½
         while (!caster.CheckForCollision(out hit)) {
             SetDirection();
             yield return null;
         }
-        // Ãæµ¹ÇÑ´Ù¸é ¾Æ·¡ ÇÔ¼öµé ½ÇÇà
+        // ï¿½æµ¹ï¿½Ñ´Ù¸ï¿½ ï¿½Æ·ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         DisablePhysics();
         CheckForHittable(hit);
     }
@@ -57,19 +58,19 @@ public class Arrow : Projectile
     private void CheckForHittable(RaycastHit hit) {
         ProjectileTarget target = hit.transform.GetComponentInParent<ProjectileTarget>();
 
-        // ArrowTarget ÄÄÆ÷³ÍÆ®¸¦ Ã£Àº °æ¿ì¿¡¸¸
-        // ÃßÈÄ¿¡ ÅÂ±×¸¦ ÅëÇÑ ½Äº°·Î º¯°æÇÒ ¼ö ÀÖÀ½
+        // ArrowTarget ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ Ã£ï¿½ï¿½ ï¿½ï¿½ì¿¡ï¿½ï¿½
+        // ï¿½ï¿½ï¿½Ä¿ï¿½ ï¿½Â±×¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Äºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (target != null) {
             target.Hit(hit, this);
         }
-        // ArrowTargetÀÌ ¾Æ´Ñ °æ¿ì È­»ìÀÌ ¹ÚÈ÷´Â È¿°ú¸¸ ¹ß»ý
+        // ArrowTargetï¿½ï¿½ ï¿½Æ´ï¿½ ï¿½ï¿½ï¿½ È­ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¿ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
         else {;
-            // Åõ»çÃ¼¿¡ ¸ÂÀº ¿ÀºêÁ§Æ®¸¦ Åõ»çÃ¼ÀÇ ºÎ¸ð·Î ¼³Á¤ÇÏ¿© ²ÈÇô ÀÖ´Â È¿°ú ±¸Çö
+            // ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½Î¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ È¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             transform.SetParent(hit.transform);
         }
     }
 
-    // È­»ìÀÌ ¹ß»çµÇÁö ¾ÊÀº »óÅÂ¿¡¸¸ È­»ìÀ» selectÇÒ ¼ö ÀÖÀ½
+    // È­ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â¿ï¿½ï¿½ï¿½ È­ï¿½ï¿½ï¿½ï¿½ selectï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public override bool IsSelectableBy(IXRSelectInteractor interactor) {
         return base.IsSelectableBy(interactor) && !launched;
     }

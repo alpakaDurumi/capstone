@@ -5,16 +5,15 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Axe : Projectile
 {
-    private IXRSelectInteractor interactor;         // µµ³¢¸¦ selectÇÑ ¼Õ¿¡ ÇØ´çÇÏ´Â Direct Interactor
-
+    private IXRSelectInteractor interactor;         // ÂµÂµâ‰¥Â¢âˆÂ¶ selectÂ«â€” Âºâ€™Ã¸Â° Â«Ã¿Â¥ÃÂ«Å“Â¥Â¬ Direct Interactor
     private SlowMotion slowMotion;
 
-    private Transform axeModel;                     // ÅõÃ´ ½Ã È¸ÀüÇÒ µµ³¢ ¸ğµ¨
+    private Transform axeModel;                     // ï¿½ï¿½Ã´ ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 
     private float throwPower;
     private float spinPower;
 
-    private Vector3 initialRotation;                // ÅõÃ´ ÀÌÀü ÃÊ±â È¸Àü°ª
+    private Vector3 initialRotation;                // ï¿½ï¿½Ã´ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½ È¸ï¿½ï¿½ï¿½ï¿½
 
     protected override void Awake() {
         base.Awake();
@@ -28,13 +27,14 @@ public class Axe : Projectile
     protected override void OnSelectEntered(SelectEnterEventArgs args) {
         base.OnSelectEntered(args);
         interactor = args.interactorObject;
-        // µµ³¢¸¦ selectÇÑ XR OriginÀÇ slowMotion ÄÄÆ÷³ÍÆ® Á¢±Ù
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ selectï¿½ï¿½ XR Originï¿½ï¿½ slowMotion ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
         slowMotion = interactor.transform.GetComponentInParent<SlowMotion>();
     }
 
     protected override void OnSelectExited(SelectExitEventArgs args) {
         base.OnSelectExited(args);
-        EnablePhysics();    // ¼ÕÀ» ¶°³ª¸é ´Ù½Ã ¹°¸® È°¼ºÈ­
+        SoundManager.Instance.PlayThrowingSound();
+        EnablePhysics();    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ È°ï¿½ï¿½È­
         launched = true;
         CalculatePowers(slowMotion.GetRightHandSpeed());
         rigidbody.AddForce(throwPower * transform.forward, ForceMode.Impulse);
@@ -45,20 +45,20 @@ public class Axe : Projectile
     }
 
     private void FixedUpdate() {
-        // ³¯¾Æ°¡´Â µ¿¾È¿¡ È¸Àü
+        // ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½È¿ï¿½ È¸ï¿½ï¿½
         if (launched) {
             SpinAxe();
         }
     }
 
     private void OnTriggerEnter(Collider other) {
-        // ÅõÃ´µÈ »óÅÂ¿¡¼­ Ãæµ¹Çß´Ù¸é Ãæµ¹ ¿ÀºêÁ§Æ®°¡ ProjectileTarget ÄÄÆ÷³ÍÆ®¸¦ °¡Áö´ÂÁö °Ë»ç
+        // ï¿½ï¿½Ã´ï¿½ï¿½ ï¿½ï¿½ï¿½Â¿ï¿½ï¿½ï¿½ ï¿½æµ¹ï¿½ß´Ù¸ï¿½ ï¿½æµ¹ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ProjectileTarget ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½
         if (launched) {
-            launched = false;   // Áßº¹ Ãæµ¹À» ¹æÁöÇÏ±â À§ÇÔ
-            DisablePhysics();   // ¹°¸® ºñÈ°¼ºÈ­(²ÈÇôÀÖ´Â È¿°ú)
+            launched = false;   // ï¿½ßºï¿½ ï¿½æµ¹ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½
+            DisablePhysics();   // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­(ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ È¿ï¿½ï¿½)
             
             ProjectileTarget target = other.transform.GetComponentInParent<ProjectileTarget>();
-            // °¡Áö°í ÀÖ´Ù¸é
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ù¸ï¿½
             if(target != null) {
                 target.Hit(other.transform, this);
                 enabled = false;
@@ -69,23 +69,23 @@ public class Axe : Projectile
         }
     }
 
-    // µµ³¢°¡ ³¯¾Æ°¡´Â Èû°ú È¸ÀüÇÏ´Â Èû °è»ê
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
     private void CalculatePowers(float amount) {
         throwPower = Mathf.Clamp(amount * 2, 0.0f, 5.0f);
-        spinPower = Mathf.Lerp(0, 1.0f, throwPower / 5.0f);     // throwPowerÀÇ °­µµ¿¡ µû¶ó spinPower Á¶Àı
+        spinPower = Mathf.Lerp(0, 1.0f, throwPower / 5.0f);     // throwPowerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ spinPower ï¿½ï¿½ï¿½ï¿½
     }
 
-    // µµ³¢ È¸Àü ÇÔ¼ö
+    // ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ ï¿½Ô¼ï¿½
     private void SpinAxe() {
         axeModel.Rotate(0, -spinPower, 0);
     }
 
-    // ºø³ª°£ °æ¿ì ´øÁø ¼Õ¿¡ ´Ù½Ã µ¹¾Æ¿Àµµ·Ï ÇÏ´Â ÇÔ¼ö
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Õ¿ï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½Æ¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½
     private void ReturnToHand() {
-        if (!interactor.hasSelection && !launched) {                    // µµ³¢¸¦ Àâ°í ÀÖÁö ¾Ê´Â »óÅÂÀÎ µ¿½Ã¿¡ µµ³¢°¡ °øÁß¿¡ ÀÖÁö ¾ÊÀº °æ¿ì
-            if (interactor.isSelectActive) {                            // select¸¦ ÀÔ·ÂÇÏ¸é
+        if (!interactor.hasSelection && !launched) {                    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ã¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+            if (interactor.isSelectActive) {                            // selectï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¸ï¿½
                 interactionManager.SelectEnter(interactor, this);
-                axeModel.localEulerAngles = initialRotation;            // spinAxe()·Î È¸ÀüµÈ ¸ğµ¨¿¡ ´Ù½Ã ÃÊ±â rotation Àû¿ë
+                axeModel.localEulerAngles = initialRotation;            // spinAxe()ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ğµ¨¿ï¿½ ï¿½Ù½ï¿½ ï¿½Ê±ï¿½ rotation ï¿½ï¿½ï¿½ï¿½
             }
         }
     }
