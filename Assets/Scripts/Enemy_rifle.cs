@@ -26,7 +26,13 @@ public class Enemy_rifle : Enemy
     public GameObject grenadePrefab;
     public GameObject rightHand;
 
-    public bool haveGrenade = false;
+    // SerializeField와 보이는 동시에 property로 설정
+    [SerializeField] private bool haveGrenade = false;
+    public bool HaveGrenade {
+        get { return haveGrenade; }
+        set { haveGrenade = value; }
+    }
+
     private int grenadeLayerIndex = 5;
 
     private float animationPercentToRelease = 0.57f;
