@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -46,6 +47,8 @@ public class GameManager : MonoSingleton<GameManager>
     public void StartRound()
     {
         IsStartRound = true;
+        GameObject.Find("LeftHand").transform.Find("Ray Interactor").gameObject.SetActive(false);
+        GameObject.Find("RightHand").transform.Find("Ray Interactor").gameObject.SetActive(false);
 
         // 새로운 씬이 로드될 때마다 weaponChanger를 재참조
         weaponChanger = GameObject.Find("XR Origin").GetComponent<WeaponChanger>();
@@ -62,6 +65,8 @@ public class GameManager : MonoSingleton<GameManager>
     public void EndRound()
     {
         IsStartRound = false;
+        GameObject.Find("LeftHand").transform.Find("Ray Interactor").gameObject.SetActive(true);
+        GameObject.Find("RightHand").transform.Find("Ray Interactor").gameObject.SetActive(true);
     }
     public void UpdateStageInfo(Stage.Group[] groups)
     {
