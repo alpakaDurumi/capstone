@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Enemy: MonoBehaviour
 {
-    [SerializeField] public Transform target;       // target은 XR Origin으로 설정할 것
+    public Transform target { get; set; }               // target을 프로퍼티로 설정
+
     protected NavMeshAgent agent;
     protected Animator animator;
 
@@ -22,15 +21,13 @@ public class Enemy: MonoBehaviour
     protected float attack_timer = 0.0f;            // 공격 타이머
     protected float attack_waitingTime = 2.0f;      // 공격 간격
 
-    WeaponChanger weaponChanger;
+    protected int attackLayerIndex;                     // 공격 애니메이션이 위치한 애니메이션 레이어
 
-    protected int attackLayerIndex;                 // 공격 애니메이션이 위치한 애니메이션 레이어
+    [SerializeField] private GameObject ragdollPrefab;  // 활, 도끼, 수류탄에 의해 사망 시 생성될 래그돌 프리팹
 
     protected virtual void Awake() {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-
-        weaponChanger = target.GetComponent<WeaponChanger>();
     }
 
     protected virtual void Start()
@@ -126,10 +123,54 @@ public class Enemy: MonoBehaviour
         callback(false);
     }
 
+    public void GenerateRagdoll(Projectile projectile, string hitPart) {
+        GameObject ragdoll = Instantiate(ragdollPrefab, transform.position, transform.rotation);  // 래그돌 생성
+
+        // 각 transform 위치를 동일하게 수정
+        Transform[] ragdollJoints = ragdoll.GetComponentsInChildren<Transform>();
+        Transform[] currentJoints = transform.GetComponentsInChildren<Transform>();
+
+        for (int i = 0; i < ragdollJoints.Length; i++) {
+            for (int j = 0; j < currentJoints.Length; j++) {
+                if (ragdollJoints[i].name.Equals(currentJoints[j].name)) {
+                    ragdollJoints[i].position = currentJoints[j].position;
+                    ragdollJoints[i].rotation = currentJoints[j].rotation;
+                    break;
+                }
+            }
+
+            // 맞은 부위에 해당하는 래그돌의 부위에 화살을 고정
+            if (ragdollJoints[i].name.Equals(hitPart)) {
+                projectile.transform.SetParent(ragdollJoints[i]);
+            }
+        }
+    }
+
+    public void GenerateRagdoll() {
+        GameObject ragdoll = Instantiate(ragdollPrefab, transform.position, transform.rotation);  // 래그돌 생성
+
+        // 각 transform 위치를 동일하게 수정
+        Transform[] ragdollJoints = ragdoll.GetComponentsInChildren<Transform>();
+        Transform[] currentJoints = transform.GetComponentsInChildren<Transform>();
+
+        for (int i = 0; i < ragdollJoints.Length; i++) {
+            for (int j = 0; j < currentJoints.Length; j++) {
+                if (ragdollJoints[i].name.Equals(currentJoints[j].name)) {
+                    ragdollJoints[i].position = currentJoints[j].position;
+                    ragdollJoints[i].rotation = currentJoints[j].rotation;
+                    break;
+                }
+            }
+        }
+    }
+
     // Enemy 사망 시 GamaManager의 적 수 감소
-    public void Die() {
+    public void Die(bool killedWithGrenade) {
         GameManager.Instance.DecreaseEnemyCountOnStage();
-        GameManager.Instance.IncreaseKillCountOnStage();
+        // 수류탄 이외의 방법으로 죽은 경우에만 무기 교체 검사
+        if (!killedWithGrenade) {
+            GameManager.Instance.IncreaseKillCountOnStage();
+        }
 
         // 이 Enemy가 해당 스테이지의 마지막 그룹 && 마지막 적일 때
         if(GameManager.Instance.RemainGroupsOnStage == 0

@@ -12,6 +12,8 @@ public class Stage : MonoBehaviour
 
     public Group[] groups;
     private int groupIdx;
+    [SerializeField] private Transform targetForNav;
+    
     private void Awake()
     {
         GameManager.Instance.EndRound();
@@ -45,9 +47,23 @@ public class Stage : MonoBehaviour
         GameManager.Instance.UpdateStageInfo(groups);
         Enemy[] enemies = groups[groupIdx++].enemies;
 
-        foreach (Enemy enemy in enemies)
-        {
-            enemy.gameObject.SetActive(true);
+        List<int> cand = new List<int>();
+
+        for (int i = 0; i < enemies.Length; i++) {
+            enemies[i].gameObject.SetActive(true);
+            enemies[i].target = targetForNav;       // 모든 enemy들에 대하여 target 설정
+
+            if (enemies[i] is Enemy_rifle) {
+                cand.Add(i);
+            }
+        }
+
+        // 웨이브에 원거리 적이 하나 이상 있는 경우에만
+        if(cand.Count > 0) {
+            // Enemy_rifle들 중 하나를 랜덤으로 선택하여 수류탄을 소지하게 하기
+            int selectedIdx = cand[UnityEngine.Random.Range(0, cand.Count)];
+            Enemy_rifle selected = enemies[selectedIdx] as Enemy_rifle;
+            selected.HaveGrenade = true;
         }
         return enemies;
     }

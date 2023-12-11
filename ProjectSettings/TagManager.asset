@@ -17,8 +17,8 @@ TagManager:
   - Weapon
   - Enemy
   - Stage
-  - 
-  - 
+  - Enemy_Detecting_Explosion
+  - Grenade
   - 
   - 
   - 

@@ -587,6 +587,37 @@ Transform:
   m_Father: {fileID: 4341006809430637551}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2081631206938592921
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6147128559486174022}
+  m_Layer: 8
+  m_Name: GrenadePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6147128559486174022
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081631206938592921}
+  m_LocalRotation: {x: 0.66443986, y: -0.74541414, z: 0.03569386, w: 0.04004422}
+  m_LocalPosition: {x: 0.0048, y: 0.1096, z: 0.0452}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7171355820029692017}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 6.109, y: -179.293, z: -83.388}
 --- !u!1 &2123222138455880925
 GameObject:
   m_ObjectHideFlags: 0
@@ -2105,6 +2136,7 @@ Transform:
   - {fileID: 341178905360076981}
   - {fileID: 1083814866687959879}
   - {fileID: 131743912632025021}
+  - {fileID: 6147128559486174022}
   m_Father: {fileID: 6459063724132483601}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2571,7 +2603,8 @@ GameObject:
   - component: {fileID: 948866217}
   - component: {fileID: 78854500}
   - component: {fileID: 9041350778008725006}
-  m_Layer: 8
+  - component: {fileID: 2096396845463632791}
+  m_Layer: 10
   m_Name: Enemy_rifle
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2630,7 +2663,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 3
+  m_StoppingDistance: 10
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -2650,12 +2683,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a51d626bbf315240b204da27c6024d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   attackDistance: 30
-  from: {fileID: 391316878431335743}
+  ragdollPrefab: {fileID: 6380727735148248081, guid: 60522b10600cbc8488445208b8691074,
+    type: 3}
   layerMask_canSee:
     serializedVersion: 2
     m_Bits: 576
+  grenadePrefab: {fileID: 1373268203160630109, guid: 358ec677f4a91c54792622a4257fd681,
+    type: 3}
+  rightHand: {fileID: 2081631206938592921}
+  haveGrenade: 0
 --- !u!114 &948866217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2725,6 +2762,20 @@ MonoBehaviour:
   forceAmount: 1
   targetRagdollPrefab: {fileID: 6380727735148248081, guid: 60522b10600cbc8488445208b8691074,
     type: 3}
+--- !u!136 &2096396845463632791
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8804654735371390540}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.4
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &9191661532665913241
 GameObject:
   m_ObjectHideFlags: 0
@@ -2808,6 +2859,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2990984471462684760, guid: 67497e01ef6afb54f813bd497741c10f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2990984471462684839, guid: 67497e01ef6afb54f813bd497741c10f,
         type: 3}

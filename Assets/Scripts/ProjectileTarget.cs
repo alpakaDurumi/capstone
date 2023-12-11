@@ -23,13 +23,13 @@ public class ProjectileTarget : MonoBehaviour, IProjectileHittable
         string hitPart = hit.transform.name;    // 맞은 부위
 
         // 래그돌 생성
-        GenerateRagdoll(projectile, hitPart);
+        enemy.GenerateRagdoll(projectile, hitPart);
 
         ApplyForce(projectile);
         DisableCollider(projectile);
 
         // 적 사망 함수 호출
-        enemy.Die();
+        enemy.Die(false);
         Destroy(gameObject);
     }
 
@@ -40,37 +40,14 @@ public class ProjectileTarget : MonoBehaviour, IProjectileHittable
         string hitPart = hitTransform.name;    // 맞은 부위
 
         // 래그돌 생성
-        GenerateRagdoll(projectile, hitPart);
+        enemy.GenerateRagdoll(projectile, hitPart);
 
         ApplyForce(projectile);
         DisableCollider(projectile);
 
         // 적 사망 함수 호출
-        enemy.Die();
+        enemy.Die(false);
         Destroy(gameObject);
-    }
-
-    private void GenerateRagdoll(Projectile projectile, string hitPart) {
-        GameObject ragdoll = Instantiate(targetRagdollPrefab, transform.position, transform.rotation);  // 래그돌 생성
-
-        // 각 transform 위치를 동일하게 수정
-        Transform[] ragdollJoints = ragdoll.GetComponentsInChildren<Transform>();
-        Transform[] currentJoints = transform.GetComponentsInChildren<Transform>();
-
-        for (int i = 0; i < ragdollJoints.Length; i++) {
-            for (int j = 0; j < currentJoints.Length; j++) {
-                if (ragdollJoints[i].name.Equals(currentJoints[j].name)) {
-                    ragdollJoints[i].position = currentJoints[j].position;
-                    ragdollJoints[i].rotation = currentJoints[j].rotation;
-                    break;
-                }
-            }
-
-            // 맞은 부위에 해당하는 래그돌의 부위에 화살을 고정
-            if (ragdollJoints[i].name.Equals(hitPart)) {
-                projectile.transform.SetParent(ragdollJoints[i]);
-            }
-        }
     }
 
     private void ApplyForce(Projectile projectile) {

@@ -15,16 +15,16 @@ public class GameManager : MonoSingleton<GameManager>
 
     private WeaponChanger weaponChanger;
 
-    public int killCount { get; private set; }
+    public int killCount { get; private set; } = 0;
     private int killCountToChangeWeapon = 1;
+
+    public bool isPrimaryHandRight { get; set; }
 
     private void Awake()
     {
         IsStartRound = false;
         if(timer == null) 
             timer = gameObject.AddComponent<GameTimer>();
-
-        weaponChanger = GameObject.Find("XR Origin").GetComponent<WeaponChanger>();
     }
     public void ResetGame()
     {
@@ -46,6 +46,9 @@ public class GameManager : MonoSingleton<GameManager>
     public void StartRound()
     {
         IsStartRound = true;
+
+        // 새로운 씬이 로드될 때마다 weaponChanger를 재참조
+        weaponChanger = GameObject.Find("XR Origin").GetComponent<WeaponChanger>();
     }
 
     public void PlayerDie()
