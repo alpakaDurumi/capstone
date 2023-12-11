@@ -414,6 +414,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 285237084, guid: 7cfb174be96ea489aa04be00b27acc9d, type: 3}
+      propertyPath: targetForNav
+      value: 
+      objectReference: {fileID: 413885352}
+    - target: {fileID: 285237084, guid: 7cfb174be96ea489aa04be00b27acc9d, type: 3}
       propertyPath: groups.Array.data[0].enemies.Array.data[0]
       value: 
       objectReference: {fileID: 933750857}
@@ -502,6 +506,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 2046076350494330994, guid: 7cfb174be96ea489aa04be00b27acc9d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Stage
+      objectReference: {fileID: 0}
     - target: {fileID: 2461807350321015136, guid: 7cfb174be96ea489aa04be00b27acc9d,
         type: 3}
       propertyPath: m_Mesh
@@ -537,10 +546,20 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 2890069650307423085, guid: 7cfb174be96ea489aa04be00b27acc9d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Stage
+      objectReference: {fileID: 0}
     - target: {fileID: 2891046829655649710, guid: 7cfb174be96ea489aa04be00b27acc9d,
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2891046829655649710, guid: 7cfb174be96ea489aa04be00b27acc9d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Stage
       objectReference: {fileID: 0}
     - target: {fileID: 4147162991407817656, guid: 7cfb174be96ea489aa04be00b27acc9d,
         type: 3}
@@ -567,15 +586,30 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 5393203512668896459, guid: 7cfb174be96ea489aa04be00b27acc9d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Stage
+      objectReference: {fileID: 0}
     - target: {fileID: 5462583705584718865, guid: 7cfb174be96ea489aa04be00b27acc9d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462583705584718865, guid: 7cfb174be96ea489aa04be00b27acc9d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Stage
+      objectReference: {fileID: 0}
+    - target: {fileID: 5609640640683330276, guid: 7cfb174be96ea489aa04be00b27acc9d,
         type: 3}
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5609640640683330276, guid: 7cfb174be96ea489aa04be00b27acc9d,
         type: 3}
-      propertyPath: m_Layer
-      value: 9
+      propertyPath: m_TagString
+      value: Stage
       objectReference: {fileID: 0}
     - target: {fileID: 5693846256673226552, guid: 7cfb174be96ea489aa04be00b27acc9d,
         type: 3}
@@ -667,6 +701,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 6912665811337216574, guid: 7cfb174be96ea489aa04be00b27acc9d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Stage
+      objectReference: {fileID: 0}
     - target: {fileID: 6963965885252982460, guid: 7cfb174be96ea489aa04be00b27acc9d,
         type: 3}
       propertyPath: m_Mesh
@@ -692,6 +731,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 7250551937423164807, guid: 7cfb174be96ea489aa04be00b27acc9d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Stage
+      objectReference: {fileID: 0}
     - target: {fileID: 7313214134855246858, guid: 7cfb174be96ea489aa04be00b27acc9d,
         type: 3}
       propertyPath: m_Mesh
@@ -706,6 +750,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7589241398504627136, guid: 7cfb174be96ea489aa04be00b27acc9d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Stage
       objectReference: {fileID: 0}
     - target: {fileID: 7801114411629501764, guid: 7cfb174be96ea489aa04be00b27acc9d,
         type: 3}

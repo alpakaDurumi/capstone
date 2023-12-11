@@ -1356,6 +1356,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1927275681, guid: ad4247c12bf5e47aebee6492fda53d8c, type: 3}
+      propertyPath: targetForNav
+      value: 
+      objectReference: {fileID: 1442529920}
+    - target: {fileID: 1927275681, guid: ad4247c12bf5e47aebee6492fda53d8c, type: 3}
       propertyPath: groups.Array.data[0].enemies.Array.data[0]
       value: 
       objectReference: {fileID: 915509275}
@@ -1456,6 +1460,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_VersionIndex
       value: 6084
+      objectReference: {fileID: 0}
+    - target: {fileID: 4935471584684802454, guid: ad4247c12bf5e47aebee6492fda53d8c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Stage
       objectReference: {fileID: 0}
     - target: {fileID: 5028147915980698639, guid: ad4247c12bf5e47aebee6492fda53d8c,
         type: 3}

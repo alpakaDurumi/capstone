@@ -2715,6 +2715,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4311082722406722151, guid: 09dfca12b26bc479f9bbcfab5eb02a56,
         type: 3}
+      propertyPath: targetForNav
+      value: 
+      objectReference: {fileID: 1860785608}
+    - target: {fileID: 4311082722406722151, guid: 09dfca12b26bc479f9bbcfab5eb02a56,
+        type: 3}
       propertyPath: groups.Array.data[0].enemies.Array.data[0]
       value: 
       objectReference: {fileID: 650208454}
@@ -2838,6 +2843,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5454725053600107349, guid: 09dfca12b26bc479f9bbcfab5eb02a56,
+        type: 3}
+      propertyPath: m_TagString
+      value: Stage
+      objectReference: {fileID: 0}
     - target: {fileID: 5454725053600107352, guid: 09dfca12b26bc479f9bbcfab5eb02a56,
         type: 3}
       propertyPath: m_Mesh
@@ -2857,6 +2867,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_VersionIndex
       value: 2267
+      objectReference: {fileID: 0}
+    - target: {fileID: 5454725054475841059, guid: 09dfca12b26bc479f9bbcfab5eb02a56,
+        type: 3}
+      propertyPath: m_TagString
+      value: Stage
       objectReference: {fileID: 0}
     - target: {fileID: 5454725054475841062, guid: 09dfca12b26bc479f9bbcfab5eb02a56,
         type: 3}
@@ -2893,6 +2908,11 @@ PrefabInstance:
       propertyPath: m_VersionIndex
       value: 2296
       objectReference: {fileID: 0}
+    - target: {fileID: 6962301368878000630, guid: 09dfca12b26bc479f9bbcfab5eb02a56,
+        type: 3}
+      propertyPath: m_TagString
+      value: Stage
+      objectReference: {fileID: 0}
     - target: {fileID: 6962301368878000631, guid: 09dfca12b26bc479f9bbcfab5eb02a56,
         type: 3}
       propertyPath: m_Mesh
@@ -2913,11 +2933,21 @@ PrefabInstance:
       propertyPath: m_VersionIndex
       value: 7539
       objectReference: {fileID: 0}
+    - target: {fileID: 6962301368916073389, guid: 09dfca12b26bc479f9bbcfab5eb02a56,
+        type: 3}
+      propertyPath: m_TagString
+      value: Stage
+      objectReference: {fileID: 0}
     - target: {fileID: 6962301368916073391, guid: 09dfca12b26bc479f9bbcfab5eb02a56,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1785343525}
+    - target: {fileID: 6962301370413228385, guid: 09dfca12b26bc479f9bbcfab5eb02a56,
+        type: 3}
+      propertyPath: m_TagString
+      value: Stage
+      objectReference: {fileID: 0}
     - target: {fileID: 6962301370413228386, guid: 09dfca12b26bc479f9bbcfab5eb02a56,
         type: 3}
       propertyPath: m_Mesh
@@ -2948,6 +2978,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 161548045}
+    - target: {fileID: 6962301370620247175, guid: 09dfca12b26bc479f9bbcfab5eb02a56,
+        type: 3}
+      propertyPath: m_TagString
+      value: Stage
+      objectReference: {fileID: 0}
     - target: {fileID: 6962301370620247180, guid: 09dfca12b26bc479f9bbcfab5eb02a56,
         type: 3}
       propertyPath: m_Mesh
