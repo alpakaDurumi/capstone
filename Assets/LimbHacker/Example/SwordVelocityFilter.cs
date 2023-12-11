@@ -23,10 +23,6 @@ namespace NobleMuffins.LimbHacker.Examples
 		{
 			get
 			{
-				if (_IsFastEnoughToCut)
-				{
-					SoundManager.Instance.PlaySwordSliceSound();
-				}
 				return _IsFastEnoughToCut;
 			}
 		}

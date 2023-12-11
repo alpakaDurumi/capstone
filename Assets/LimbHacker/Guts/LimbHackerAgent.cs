@@ -159,6 +159,7 @@ namespace NobleMuffins.LimbHacker.Guts
 				if(backIsNew) {
                     if(jobSpecification.Subject.TryGetComponent(out Enemy enemy)) {
                         enemy.Die(false);
+                        SoundManager.Instance.PlaySwordSliceSound();
                     }
                     else {
                         Debug.Log("Sliced GameObject is not Enemy");
