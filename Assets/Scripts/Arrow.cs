@@ -11,13 +11,13 @@ public class Arrow : Projectile
 
     protected RaycastHit hit;
 
-    // �ʱ�ȭ
+    // 초기화
     protected override void Awake() {
         base.Awake();
         caster = GetComponent<ArrowCaster>();
     }
 
-    // notch(����)�� �������ٸ�
+    // notch(소켓)에 끼워졌다면
     protected override void OnSelectExited(SelectExitEventArgs args) {
         base.OnSelectExited(args);
         if(args.interactorObject is Notch notch) {
@@ -27,7 +27,7 @@ public class Arrow : Projectile
         }
     }
 
-    // ȭ�� �߻�
+    // 화살 발사
     private void LaunchArrow(Notch notch) {
         SoundManager.Instance.PlayBowShootSound();
         launched = true;
@@ -40,12 +40,12 @@ public class Arrow : Projectile
     }
 
     private IEnumerator LaunchRoutine() {
-        // ȭ���� ���𰡿� �浹�� ������ ��� Ȯ��
+        // 화살이 무언가와 충돌할 때까지 계속 확인
         while (!caster.CheckForCollision(out hit)) {
             SetDirection();
             yield return null;
         }
-        // �浹�Ѵٸ� �Ʒ� �Լ��� ����
+        // 충돌한다면 아래 함수들 실행
         DisablePhysics();
         CheckForHittable(hit);
     }
@@ -58,19 +58,19 @@ public class Arrow : Projectile
     private void CheckForHittable(RaycastHit hit) {
         ProjectileTarget target = hit.transform.GetComponentInParent<ProjectileTarget>();
 
-        // ArrowTarget ������Ʈ�� ã�� ��쿡��
-        // ���Ŀ� �±׸� ���� �ĺ��� ������ �� ����
+        // ArrowTarget 컴포넌트를 찾은 경우에만
+        // 추후에 태그를 통한 식별로 변경할 수 있음
         if (target != null) {
             target.Hit(hit, this);
         }
-        // ArrowTarget�� �ƴ� ��� ȭ���� ������ ȿ���� �߻�
-        else {;
-            // ����ü�� ���� ������Ʈ�� ����ü�� �θ�� �����Ͽ� ���� �ִ� ȿ�� ����
+        // ArrowTarget이 아닌 경우 화살이 박히는 효과만 발생
+        else {
+            // 투사체에 맞은 오브젝트를 투사체의 부모로 설정하여 꽂혀 있는 효과 구현
             transform.SetParent(hit.transform);
         }
     }
 
-    // ȭ���� �߻���� ���� ���¿��� ȭ���� select�� �� ����
+    // 화살이 발사되지 않은 상태에만 화살을 select할 수 있음
     public override bool IsSelectableBy(IXRSelectInteractor interactor) {
         return base.IsSelectableBy(interactor) && !launched;
     }
