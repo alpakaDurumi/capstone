@@ -27,6 +27,24 @@ public class GameManager : MonoSingleton<GameManager>
         if(timer == null) 
             timer = gameObject.AddComponent<GameTimer>();
     }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        IsStartRound = false;
+        if (timer == null)
+            timer = gameObject.AddComponent<GameTimer>();
+        SoundManager.Instance.PlayFadeInSound();
+    }
     public void ResetGame()
     {
         Stage = 0;
