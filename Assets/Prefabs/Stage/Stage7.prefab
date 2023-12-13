@@ -57,7 +57,6 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
-    - {fileID: 0}
   - enemies:
     - {fileID: 0}
     - {fileID: 0}
@@ -65,7 +64,7 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
-    - {fileID: 0}
+  targetForNav: {fileID: 0}
 --- !u!1 &5454725053600107349
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,7 +81,7 @@ GameObject:
   - component: {fileID: 5454725053600107352}
   m_Layer: 9
   m_Name: Cylinder (1)
-  m_TagString: Untagged
+  m_TagString: Stage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -964,7 +963,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2264
+  m_VersionIndex: 2267
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1080,7 +1079,7 @@ GameObject:
   - component: {fileID: 5454725054475841062}
   m_Layer: 9
   m_Name: Stairs
-  m_TagString: Untagged
+  m_TagString: Stage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -9809,7 +9808,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 7848
+  m_VersionIndex: 7851
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -9929,7 +9928,7 @@ GameObject:
   - component: {fileID: 6962301368878000631}
   m_Layer: 9
   m_Name: Pipe
-  m_TagString: Untagged
+  m_TagString: Stage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -11179,7 +11178,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2293
+  m_VersionIndex: 2296
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -11296,7 +11295,7 @@ GameObject:
   - component: {fileID: 6962301368916073391}
   m_Layer: 9
   m_Name: Stairs
-  m_TagString: Untagged
+  m_TagString: Stage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -22983,7 +22982,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 7536
+  m_VersionIndex: 7539
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -23103,7 +23102,7 @@ GameObject:
   - component: {fileID: 6962301370413228386}
   m_Layer: 9
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Stage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127
@@ -23985,7 +23984,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2174
+  m_VersionIndex: 2177
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -24101,7 +24100,7 @@ GameObject:
   - component: {fileID: 6962301370620247168}
   m_Layer: 9
   m_Name: Cylinder (1)
-  m_TagString: Untagged
+  m_TagString: Stage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -24983,7 +24982,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2267
+  m_VersionIndex: 2270
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
